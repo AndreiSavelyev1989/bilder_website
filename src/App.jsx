@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Header } from "./components/Header/Header";
 import { NavBar } from "./components/NavBar/NavBar";
 import { COLOR } from "./assets/styles";
+import { ContactInfo } from "./components/ContactInfo/ContactInfo";
 
 const Container = styled.div`
   position: relative;
@@ -25,12 +26,7 @@ const App = () => {
       <Container>
         <Header setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
         <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          reiciendis consequatur beatae adipisci aliquid itaque impedit eligendi
-          maxime id perferendis repellendus eos tenetur hic mollitia, enim
-          nesciunt doloribus consectetur voluptate.
-        </div>
+        <ContactInfo/>
       </Container>
       {isOpenMenu && <Overlay />}
     </>
