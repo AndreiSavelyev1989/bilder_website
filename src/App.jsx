@@ -4,11 +4,14 @@ import { Header } from "./components/Header/Header";
 import { NavBar } from "./components/NavBar/NavBar";
 import { COLOR } from "./assets/styles";
 import { ContactInfo } from "./components/ContactInfo/ContactInfo";
+import { Main } from "./components/Main/Main";
 
 const Container = styled.div`
   position: relative;
   width: 100%;
+  color: ${COLOR.grey400};
 `;
+
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -26,7 +29,11 @@ const App = () => {
       <Container>
         <Header setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
         <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
-        <ContactInfo/>
+        <ContactInfo />
+        <Main />
+        <div
+          style={{ width: "100%", height: "300px", background: "blue" }}
+        ></div>
       </Container>
       {isOpenMenu && <Overlay />}
     </>

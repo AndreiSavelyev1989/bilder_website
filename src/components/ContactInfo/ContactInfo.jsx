@@ -13,6 +13,11 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 125px;
+
+  @media screen and (max-width: 700px) {
+    height: auto;
+    padding-bottom: 24px;
+  }
 `;
 
 const ContactWrapper = styled.div`
