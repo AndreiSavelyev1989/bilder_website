@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { COLOR } from "./assets/styles";
 import { ContactInfo } from "./components/ContactInfo/ContactInfo";
 import { Main } from "./components/Main/Main";
+import { Services } from "./components/Services/Services";
 
 const Container = styled.div`
   position: relative;
@@ -31,9 +32,7 @@ const App = () => {
         <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
         <ContactInfo />
         <Main />
-        <div
-          style={{ width: "100%", height: "300px", background: "blue" }}
-        ></div>
+        <Services/>
       </Container>
       {isOpenMenu && <Overlay />}
     </>

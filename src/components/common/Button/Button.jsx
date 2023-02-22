@@ -19,6 +19,11 @@ const StyledButton = styled.button`
     box-shadow: 0px 5px 10px 2px ${COLOR.grey200};
     transition: 0.5s ease;
   }
+
+  @media screen and (max-width: 530px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 export const Button = ({

@@ -47,16 +47,21 @@ const TitleWrapper = styled.div`
   width: 80%;
 `;
 
-const Title = styled.span`
+const Title = styled.h2`
   min-width: 200px;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 40px;
 `;
 
 const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 80%;
+
+  @media screen and (max-width: 530px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const Main = () => {
