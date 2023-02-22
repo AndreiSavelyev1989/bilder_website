@@ -58,6 +58,11 @@ const PhoneNumber = styled.div`
   font-weight: 700;
   line-height: 1.5;
   color: ${COLOR.grey400};
+  &:hover {
+    transition: 0.5s ease;
+    color: ${COLOR.grey200};
+    transform: scale(1.1);
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -103,17 +108,32 @@ const InstagramIcon = styled(BsInstagram)`
   width: 28px;
   height: 28px;
   color: ${COLOR.grey400};
+  &:hover {
+    transition: 0.5s ease;
+    color: ${COLOR.grey200};
+    transform: scale(1.1);
+  }
 `;
 
 const OdnoklassnikiIcon = styled(SiOdnoklassniki)`
   width: 28px;
   height: 28px;
   color: ${COLOR.grey400};
+  &:hover {
+    transition: 0.5s ease;
+    color: ${COLOR.grey200};
+    transform: scale(1.1);
+  }
 `;
 const VkontakteIcon = styled(SlSocialVkontakte)`
   width: 28px;
   height: 28px;
   color: ${COLOR.grey400};
+  &:hover {
+    transition: 0.5s ease;
+    color: ${COLOR.grey200};
+    transform: scale(1.1);
+  }
 `;
 
 const Link = styled.a`
