@@ -11,6 +11,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   color: ${COLOR.grey400};
+  overflow-x: hidden;
 `;
 
 const Overlay = styled.div`
@@ -32,7 +33,7 @@ const App = () => {
         <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
         <ContactInfo />
         <Main />
-        <Services/>
+        <Services />
       </Container>
       {isOpenMenu && <Overlay />}
     </>
