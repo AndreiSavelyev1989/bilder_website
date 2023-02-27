@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR } from "../../../assets/styles";
+import { VscRunAll } from "react-icons/vsc";
 
 const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: ${({ width }) => width || "190px"};
   height: ${({ height }) => height || "54px"};
   margin: ${({ margin }) => margin || "0"};
@@ -26,6 +30,12 @@ const StyledButton = styled.button`
   }
 `;
 
+const ShowAllIcon = styled(VscRunAll)`
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+`;
+
 export const Button = ({
   title,
   borderColor,
@@ -35,6 +45,7 @@ export const Button = ({
   margin,
   hoverBackground,
   color,
+  isShowAll = false,
 }) => {
   return (
     <StyledButton
@@ -47,6 +58,7 @@ export const Button = ({
       color={color}
     >
       {title}
+      {isShowAll && <ShowAllIcon />}
     </StyledButton>
   );
 };

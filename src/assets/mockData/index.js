@@ -84,3 +84,24 @@ export const services = [
     ],
   },
 ];
+
+export const galleries = {
+  basRelief: [],
+  works: [
+    {
+      id: 1,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/qhzUxOjAAcmGpjtYUVVBIg/r/d/55188396_2.jpg",
+      caption: "Some text",
+    },
+    {
+      id: 2,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/X9FEG0JlgZCr45su0WJ9_Q/r628/d/55162791_2.jpg",
+      caption: "Some text",
+    },
+    {
+      id: 3,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/FZykt-wUSr3Pnj8q53nZCQ/r628/d/55155608_2.jpg",
+      caption: "Some text",
+    },
+  ],
+};

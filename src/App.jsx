@@ -6,6 +6,7 @@ import { COLOR } from "./assets/styles";
 import { ContactInfo } from "./components/ContactInfo/ContactInfo";
 import { Main } from "./components/Main/Main";
 import { Services } from "./components/Services/Services";
+import { Gallery } from "./components/Gallery/Gallery";
 
 const Container = styled.div`
   position: relative;
@@ -34,6 +35,7 @@ const App = () => {
         <ContactInfo />
         <Main />
         <Services />
+        <Gallery />
       </Container>
       {isOpenMenu && <Overlay />}
     </>

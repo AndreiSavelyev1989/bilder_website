@@ -43,7 +43,6 @@ export const Nav = () => {
   return (
     <List>
       <ListItem>Главная</ListItem>
-      <ListItem>О нас</ListItem>
       <ListItem>Услуги</ListItem>
       <ListItem>Галерея</ListItem>
       <ListItem>Отзывы</ListItem>
