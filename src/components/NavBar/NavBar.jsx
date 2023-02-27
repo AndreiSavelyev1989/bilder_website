@@ -12,7 +12,7 @@ const Container = styled.div`
   right: ${({ isOpenMenu }) => (isOpenMenu ? "0" : "-250px")};
   background: ${COLOR.orange200};
   transition: ease 1s;
-  z-index: 2;
+  z-index: 11;
 `;
 
 const CloseWrapper = styled.div`

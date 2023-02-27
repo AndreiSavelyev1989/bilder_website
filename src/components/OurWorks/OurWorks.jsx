@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../common/Button/Button";
 import { Slideshow } from "../Slideshow/Slideshow";
-import { VscRunAll } from "react-icons/vsc";
 import { COLOR } from "../../assets/styles";
+import { Modal } from "../Modal/Modal";
+import { Galleries } from "../Galleries/Galleries";
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 800px;
+  overflow-y: hidden;
 `;
 
 const Title = styled.h2`
@@ -36,7 +39,11 @@ const ButtonWrapper = styled.div`
   margin-top: 40px;
 `;
 
-export const Gallery = () => {
+export const OurWorks = ({ isOpenModal, setIsOpenModal }) => {
+  const modalHandler = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
   return (
     <Container>
       <Title>Наши работы</Title>
@@ -49,8 +56,14 @@ export const Gallery = () => {
           width={"350px"}
           isShowAll={true}
           background={COLOR.grey100}
+          callback={modalHandler}
         />
       </ButtonWrapper>
+      {isOpenModal && (
+        <Modal callback={modalHandler}>
+          <Galleries />
+        </Modal>
+      )}
     </Container>
   );
 };

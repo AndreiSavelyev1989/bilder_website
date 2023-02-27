@@ -6,7 +6,7 @@ import { COLOR } from "./assets/styles";
 import { ContactInfo } from "./components/ContactInfo/ContactInfo";
 import { Main } from "./components/Main/Main";
 import { Services } from "./components/Services/Services";
-import { Gallery } from "./components/Gallery/Gallery";
+import { OurWorks } from "./components/OurWorks/OurWorks";
 
 const Container = styled.div`
   position: relative;
@@ -20,13 +20,16 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: ${COLOR.grey100};
   opacity: 0.5;
+  z-index: 10;
 `;
 
 const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   return (
     <>
       <Container>
@@ -35,9 +38,10 @@ const App = () => {
         <ContactInfo />
         <Main />
         <Services />
-        <Gallery />
+        <OurWorks isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
+        {isOpenModal && <Overlay />}
+        {isOpenMenu && <Overlay />}
       </Container>
-      {isOpenMenu && <Overlay />}
     </>
   );
 };
