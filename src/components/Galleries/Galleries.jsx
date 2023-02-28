@@ -7,8 +7,9 @@ import { Select } from "../common/Select/Select";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 97%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
+  margin: 0 0 40px 0;
 `;
 
 const HeaderWrapper = styled.div`
@@ -16,7 +17,14 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 20px 20px 0 0;
+  margin: 40px 20px 0 0;
+
+  @media screen and (max-width: 871px) {
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    gap: 20px;
+  }
 `;
 
 const GalleriesWrapper = styled.div`
@@ -36,6 +44,10 @@ const GalleriesWrapper = styled.div`
   &::-webkit-scrollbar-thumb {
     background: ${COLOR.grey100};
     border-radius: 10px;
+  }
+
+  @media screen and (max-width: 440px) {
+    padding: 5px;
   }
 `;
 
@@ -59,8 +71,21 @@ const Image = styled.img`
 `;
 
 const Title = styled.h1`
-  margin: 0 0 0 20px;
+  width: 100%;
+  margin: 0 0 0 70px;
   font-size: 40px;
+
+  @media screen and (max-width: 871px) {
+    margin: 0;
+    text-align: center;
+  }
+`;
+
+const SelectWrapper = styled.div`
+  margin-right: 70px;
+  @media screen and (max-width: 871px) {
+    margin: 0;
+  }
 `;
 
 export const Galleries = ({ setIsImagePreview, setImagePreviewUrl }) => {
@@ -87,15 +112,17 @@ export const Galleries = ({ setIsImagePreview, setImagePreviewUrl }) => {
     <Container>
       <HeaderWrapper>
         <Title>Наши работы</Title>
-        <Select
-          options={[
-            { id: 1, title: "Ремонт жилых комнат" },
-            { id: 2, title: "Ремонт ванных комнат" },
-            { id: 3, title: "Барельеф" },
-            { id: 4, title: "Все работы" },
-          ]}
-          getSelectedOption={getSelectedCategory}
-        />
+        <SelectWrapper>
+          <Select
+            options={[
+              { id: 1, title: "Ремонт жилых комнат" },
+              { id: 2, title: "Ремонт ванных комнат" },
+              { id: 3, title: "Барельеф" },
+              { id: 4, title: "Все работы" },
+            ]}
+            getSelectedOption={getSelectedCategory}
+          />
+        </SelectWrapper>
       </HeaderWrapper>
       <GalleriesWrapper>
         {selectedCategory?.title === "Барельеф" &&

@@ -11,7 +11,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 800px;
   overflow-y: hidden;
 `;
 
@@ -27,14 +26,16 @@ const WorksWrapper = styled.div`
   justify-content: center;
   gap: 20px;
   width: 100%;
-  min-height: 600px;
+  /* min-height: 600px; */
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 40px;
+  align-items: center;
+  height: 80px;
+  width: 80%;
+  margin-top: 30px;
 `;
 
 export const OurWorks = ({ isOpenModal, setIsOpenModal }) => {
@@ -51,6 +52,7 @@ export const OurWorks = ({ isOpenModal, setIsOpenModal }) => {
       <ButtonWrapper>
         <Button
           title={`Показать все работы `}
+          height={"54px"}
           width={"350px"}
           isShowAll={true}
           background={COLOR.grey100}

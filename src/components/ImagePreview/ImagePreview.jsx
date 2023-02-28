@@ -20,6 +20,14 @@ const ImageWrapper = styled.div`
   position: relative;
   max-width: 1280px;
   height: 700px;
+
+  @media screen and (max-width: 1300px) {
+    width: 75%;
+  }
+
+  @media screen and (max-width: 750px) {
+    height: 50%;
+  }
 `;
 
 const Image = styled.img`

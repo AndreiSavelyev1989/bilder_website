@@ -8,6 +8,10 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 const Container = styled.div`
   width: 92%;
+
+  @media screen and (max-width: 500px) {
+    height: 400px;
+  }
 `;
 
 const Image = styled.div`
@@ -20,6 +24,10 @@ const Image = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
+
+  @media screen and (max-width: 500px) {
+    height: 400px;
+  }
 `;
 
 const Button = styled.button`
@@ -76,9 +84,9 @@ export const Slideshow = () => {
     <Container>
       <Slide {...properties}>
         {galleries.works.map((slideImage, index) => (
-          <div key={index}>
-            <Image url={slideImage.url} />
-          </div>
+          // <div key={index}>
+            <Image key={index} url={slideImage.url} />
+          // </div>
         ))}
       </Slide>
     </Container>

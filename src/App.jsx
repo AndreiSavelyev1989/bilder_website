@@ -10,6 +10,7 @@ import { OurWorks } from "./components/OurWorks/OurWorks";
 import { Modal } from "./components/Modal/Modal";
 import { Galleries } from "./components/Galleries/Galleries";
 import { ImagePreview } from "./components/ImagePreview/ImagePreview";
+import { Order } from "./components/Order/Order";
 
 const Container = styled.div`
   position: relative;
@@ -47,6 +48,7 @@ const App = () => {
       <Main />
       <Services />
       <OurWorks isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <Order />
       {isOpenModal || isOpenMenu ? <Overlay /> : null}
       {isOpenModal && (
         <Modal callback={modalHandler}>
