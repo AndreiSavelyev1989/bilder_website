@@ -148,8 +148,8 @@ export const ContactInfo = () => {
         <PhoneIcon />
         <NumberWrapper>
           <Schedule>ежедневно с 10:00 до 22:00</Schedule>
-          <Link href={"tel:+375292536635"}>
-            <PhoneNumber>+375 (29) 253-66-35</PhoneNumber>
+          <Link href={"tel:+375291111111"}>
+            <PhoneNumber>+375 (29) 111-11-11</PhoneNumber>
           </Link>
         </NumberWrapper>
       </ContactWrapper>

@@ -9,6 +9,7 @@ import { Services } from "./components/Services/Services";
 import { OurWorks } from "./components/OurWorks/OurWorks";
 import { Modal } from "./components/Modal/Modal";
 import { Galleries } from "./components/Galleries/Galleries";
+import { ImagePreview } from "./components/ImagePreview/ImagePreview";
 
 const Container = styled.div`
   position: relative;
@@ -31,28 +32,37 @@ const Overlay = styled.div`
 const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isImagePreview, setIsImagePreview] = useState(false);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
 
   const modalHandler = () => {
     setIsOpenModal(!isOpenModal);
   };
 
   return (
-    <>
-      <Container>
-        <Header setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
-        <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
-        <ContactInfo />
-        <Main />
-        <Services />
-        <OurWorks isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
-        {isOpenModal || isOpenMenu ? <Overlay /> : null}
-        {isOpenModal && (
-          <Modal callback={modalHandler}>
-            <Galleries />
-          </Modal>
-        )}
-      </Container>
-    </>
+    <Container>
+      <Header setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
+      <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
+      <ContactInfo />
+      <Main />
+      <Services />
+      <OurWorks isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      {isOpenModal || isOpenMenu ? <Overlay /> : null}
+      {isOpenModal && (
+        <Modal callback={modalHandler}>
+          <Galleries
+            setIsImagePreview={setIsImagePreview}
+            setImagePreviewUrl={setImagePreviewUrl}
+          />
+        </Modal>
+      )}
+      {isImagePreview && (
+        <ImagePreview
+          setIsImagePreview={setIsImagePreview}
+          imagePreviewUrl={imagePreviewUrl}
+        />
+      )}
+    </Container>
   );
 };
 

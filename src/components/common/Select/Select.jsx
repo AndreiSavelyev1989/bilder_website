@@ -91,7 +91,8 @@ const Label = styled.span`
   min-width: 50px;
   height: 20px;
   padding: 0 5px 0 5px;
-  background: ${COLOR.orange200};
+  background: ${COLOR.white};
+  border: 2px solid ${COLOR.orange200};
   border-radius: 5px;
   text-align: center;
 `;

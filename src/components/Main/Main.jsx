@@ -1,12 +1,7 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
-
-const lazyBlockDisplay = keyframes`
-  0% { width: 0; }
- 100% { width: 50%}
-`;
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +26,6 @@ const MainBlock = styled.div`
   background: ${COLOR.white};
   opacity: 0.9;
   gap: 40px;
-  animation: linear 1s ${lazyBlockDisplay};
 
   @media screen and (max-width: 900px) {
     width: 70%;
