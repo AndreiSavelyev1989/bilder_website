@@ -7,6 +7,8 @@ import { ContactInfo } from "./components/ContactInfo/ContactInfo";
 import { Main } from "./components/Main/Main";
 import { Services } from "./components/Services/Services";
 import { OurWorks } from "./components/OurWorks/OurWorks";
+import { Modal } from "./components/Modal/Modal";
+import { Galleries } from "./components/Galleries/Galleries";
 
 const Container = styled.div`
   position: relative;
@@ -30,6 +32,10 @@ const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+  const modalHandler = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
   return (
     <>
       <Container>
@@ -39,8 +45,12 @@ const App = () => {
         <Main />
         <Services />
         <OurWorks isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
-        {isOpenModal && <Overlay />}
-        {isOpenMenu && <Overlay />}
+        {isOpenModal || isOpenMenu ? <Overlay /> : null}
+        {isOpenModal && (
+          <Modal callback={modalHandler}>
+            <Galleries />
+          </Modal>
+        )}
       </Container>
     </>
   );

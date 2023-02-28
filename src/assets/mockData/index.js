@@ -86,7 +86,96 @@ export const services = [
 ];
 
 export const galleries = {
-  basRelief: [],
+  basReliefs: [
+    {
+      id: 1,
+      url: "https://amiel.club/uploads/posts/2022-10/thumbs/1665120646_1-amiel-club-p-barelef-tsveti-dizain-vkontakte-1.jpg",
+    },
+    {
+      id: 2,
+      url: "https://amiel.club/uploads/posts/2022-10/thumbs/1665120723_7-amiel-club-p-barelef-tsveti-dizain-vkontakte-7.jpg",
+    },
+    {
+      id: 3,
+      url: "https://amiel.club/uploads/posts/2022-10/1665120698_5-amiel-club-p-barelef-tsveti-dizain-vkontakte-5.jpg",
+    },
+    {
+      id: 4,
+      url: "https://amiel.club/uploads/posts/2022-10/thumbs/1665120705_15-amiel-club-p-barelef-tsveti-dizain-vkontakte-15.jpg",
+    },
+  ],
+  repairs: [
+    {
+      id: 1,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/4ikDSJE983MDKrc5tjUaiQ/r628/d/55188396_2.jpg",
+    },
+    {
+      id: 2,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/X9FEG0JlgZCr45su0WJ9_Q/r628/d/55162791_2.jpg",
+    },
+    {
+      id: 3,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/FZykt-wUSr3Pnj8q53nZCQ/r628/d/55155608_2.jpg",
+    },
+    {
+      id: 4,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/6_ocTqbZk4xK-POsu74c2w/r628/d/55155607_2.jpg",
+    },
+    {
+      id: 5,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/eJtT4HnhjlGBPOfnAgVgVA/r628/d/55155605_2.jpg",
+    },
+    {
+      id: 6,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/6yVfaLtQQujUS-Gc5xmTNA/r628/d/55136844_2.jpg",
+    },
+    {
+      id: 7,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/v6cezX4sUCyCP_hM3v5mVA/r628/d/55143623_2.jpg",
+    },
+    {
+      id: 8,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/dcV66hE3WM_8iP9vA1hOmQ/r628/d/55151427_2.jpg",
+    },
+    {
+      id: 9,
+      url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/tneOMIzI5mMHugLYZEjlxQ/r628/d/55155590_2.jpg",
+    },
+  ],
+  bathRepairs: [
+    {
+      id: 1,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060291_30-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-64.jpg",
+    },
+    {
+      id: 2,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060271_44-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-88.jpg",
+    },
+    {
+      id: 3,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060263_38-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-81.jpg",
+    },
+    {
+      id: 4,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060354_45-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-91.jpg",
+    },
+    {
+      id: 5,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060253_2-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-3.jpg",
+    },
+    {
+      id: 6,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060257_25-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-57.jpg",
+    },
+    {
+      id: 7,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060356_34-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-69.jpg",
+    },
+    {
+      id: 8,
+      url: "https://bigfoto.name/uploads/posts/2021-10/thumbs/1635060259_20-bigfoto-name-p-komnata-kosmeticheskii-remont-vannaya-49.jpg",
+    },
+  ],
   works: [
     {
       id: 1,

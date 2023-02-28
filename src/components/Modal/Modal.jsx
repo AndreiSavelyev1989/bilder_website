@@ -9,9 +9,12 @@ const modalDisplay = keyframes`
 `;
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: ${({ width }) => width || "80%"};
-  height: ${({ height }) => height || "660px"};
+  height: ${({ height }) => height || "800px"};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

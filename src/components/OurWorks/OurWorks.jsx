@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Button } from "../common/Button/Button";
 import { Slideshow } from "../Slideshow/Slideshow";
 import { COLOR } from "../../assets/styles";
-import { Modal } from "../Modal/Modal";
-import { Galleries } from "../Galleries/Galleries";
 
 const Container = styled.div`
   position: relative;
@@ -59,11 +57,6 @@ export const OurWorks = ({ isOpenModal, setIsOpenModal }) => {
           callback={modalHandler}
         />
       </ButtonWrapper>
-      {isOpenModal && (
-        <Modal callback={modalHandler}>
-          <Galleries />
-        </Modal>
-      )}
     </Container>
   );
 };
