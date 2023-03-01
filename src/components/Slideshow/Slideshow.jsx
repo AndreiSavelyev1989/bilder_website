@@ -84,9 +84,7 @@ export const Slideshow = () => {
     <Container>
       <Slide {...properties}>
         {galleries.works.map((slideImage, index) => (
-          // <div key={index}>
-            <Image key={index} url={slideImage.url} />
-          // </div>
+          <Image key={index} url={slideImage.url} />
         ))}
       </Slide>
     </Container>

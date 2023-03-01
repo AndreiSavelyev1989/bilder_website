@@ -14,6 +14,10 @@ import { Order } from "./components/Order/Order";
 
 const Container = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   color: ${COLOR.grey400};
   overflow-x: hidden;

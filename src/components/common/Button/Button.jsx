@@ -13,7 +13,7 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${({ width }) => width || "190px"};
+  width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "54px"};
   margin: ${({ margin }) => margin || "0"};
   font-weight: 600;

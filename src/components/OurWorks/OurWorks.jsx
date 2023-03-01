@@ -26,7 +26,6 @@ const WorksWrapper = styled.div`
   justify-content: center;
   gap: 20px;
   width: 100%;
-  /* min-height: 600px; */
 `;
 
 const ButtonWrapper = styled.div`

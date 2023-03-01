@@ -4,6 +4,10 @@
     url("./assets/fonts/Sansita-Regular.ttf") format("truetype");
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Sansita", sans-serif;
