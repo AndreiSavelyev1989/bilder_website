@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Sansita";
-  src: local("Sansita"),
-    url("./assets/fonts/Sansita-Regular.ttf") format("truetype");
+  font-family: "SofiaSansExtraCondensed";
+  src: local("SofiaSansExtraCondensed"),
+    url("./assets/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf") format("truetype");
 }
 
 * {
@@ -10,7 +10,7 @@
 
 body {
   margin: 0;
-  font-family: "Sansita", sans-serif;
+  font-family: "SofiaSansExtraCondensed", sans-serif;
   font-weight: 400;
 }
 

@@ -1,33 +1,30 @@
 import React from "react";
+import styled from "styled-components";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import styled from "styled-components";
-import { galleries } from "../../assets/mockData";
-import { COLOR } from "./../../assets/styles/index";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { COLOR } from "../../assets/styles";
+import { comments } from "../../assets/mockData";
+import { Comment } from "../Comment/Comment";
 
 const Container = styled.div`
-  width: 92%;
-
-  @media screen and (max-width: 500px) {
-    height: 400px;
-  }
-`;
-
-const Image = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 600px;
-  background-image: ${({ url }) => `url(${url})`};
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
+  flex-direction: column;
+  width: 100%;
+  height: 700px;
+`;
 
-  @media screen and (max-width: 500px) {
-    height: 400px;
-  }
+const Title = styled.h2`
+  width: 100%;
+  margin: 60px 0 0 0;
+  text-align: center;
+  font-size: 40px;
+`;
+
+const SlideWrapper = styled.div`
+  width: 90%;
+  margin-top: 40px;
 `;
 
 const PrevButton = styled(BiLeftArrow)`
@@ -58,6 +55,10 @@ const ButtonWrapper = styled.button`
     transition: 0.5s ease;
     transform: scale(1.2);
   }
+
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
 `;
 
 const properties = {
@@ -73,14 +74,17 @@ const properties = {
   ),
 };
 
-export const Slideshow = () => {
+export const Comments = () => {
   return (
     <Container>
-      <Slide {...properties}>
-        {galleries.works.map((slideImage, index) => (
-          <Image key={index} url={slideImage.url} />
-        ))}
-      </Slide>
+      <Title>Отзывы наших клиентов</Title>
+      <SlideWrapper>
+        <Slide {...properties} autoplay={false}>
+          {comments.map((el, index) => (
+            <Comment data={el} index={index} />
+          ))}
+        </Slide>
+      </SlideWrapper>
     </Container>
   );
 };

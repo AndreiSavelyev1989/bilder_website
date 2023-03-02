@@ -194,3 +194,24 @@ export const galleries = {
     },
   ],
 };
+
+export const comments = [
+  {
+    id: 1,
+    url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/NTjd0uJQjZNrNBIg6y32Og/c/d/fgs16_v3photo-pic-107.jpg",
+    caption: "Some text",
+    background: "white",
+  },
+  {
+    id: 2,
+    url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/7bnIOSzcyKoawaTtV5kw6A/c/d/fgs16_v3photo-pic-106.jpg",
+    caption: "Some text",
+    background: "white",
+  },
+  {
+    id: 3,
+    url: "https://lp3-gr-apartments-repair-decoration.oml.ru/thumb/2/ujIGeA-s_OHe9r6ifBYjng/c/d/fgs16_v3photo-pic-104.jpg",
+    caption: "Some text",
+    background: "white",
+  },
+];
