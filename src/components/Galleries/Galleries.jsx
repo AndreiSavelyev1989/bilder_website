@@ -70,10 +70,10 @@ const Image = styled.img`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   width: 100%;
   margin: 0 0 0 70px;
-  font-size: 40px;
+  font-size: 45px;
 
   @media screen and (max-width: 871px) {
     margin: 0;

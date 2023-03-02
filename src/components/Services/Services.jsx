@@ -7,22 +7,21 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   min-height: 500px;
 `;
 
 const Title = styled.h2`
   min-width: 300px;
-  font-size: 40px;
+  font-size: 55px;
   text-align: center;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 95%;
-  padding: 0 30px 0 30px;
+  width: 100%;
   gap: 30px;
 
   @media screen and (max-width: 1030px) {

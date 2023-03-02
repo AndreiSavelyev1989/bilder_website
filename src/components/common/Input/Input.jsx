@@ -22,6 +22,7 @@ const Asterisk = styled.span`
 const Label = styled.span`
   margin-left: 5px;
   font-weight: 600;
+  font-size: 18px;
   letter-spacing: 1px;
 `;
 

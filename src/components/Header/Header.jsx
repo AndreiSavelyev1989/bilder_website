@@ -61,6 +61,7 @@ const List = styled.ul`
   padding: 0;
   list-style: none;
   font-weight: 600;
+  font-size: 22px;
   color: ${COLOR.grey400};
   @media screen and (max-width: 700px) {
     flex-direction: column;

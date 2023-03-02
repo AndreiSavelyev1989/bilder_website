@@ -39,14 +39,14 @@ const MessageWrapper = styled.div`
 
 const Message = styled.div`
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
 `;
 
 const MessageOwner = styled.div`
   text-align: center;
   margin-top: 20px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 24px;
 `;
 
 export const Comment = ({ data, index }) => {
@@ -61,7 +61,7 @@ export const Comment = ({ data, index }) => {
             aspernatur corrupti nulla numquam laboriosam illo ratione voluptate
             perferendis, ipsam eveniet ea modi ad.
           </Message>
-          <MessageOwner>John</MessageOwner>
+          <MessageOwner>John Smith</MessageOwner>
         </MessageWrapper>
       </Item>
     </ItemWrapper>

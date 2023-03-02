@@ -19,7 +19,7 @@ const Title = styled.h2`
   width: 100%;
   margin: 60px 0 0 0;
   text-align: center;
-  font-size: 40px;
+  font-size: 55px;
 `;
 
 const SlideWrapper = styled.div`

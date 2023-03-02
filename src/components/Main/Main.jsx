@@ -21,7 +21,7 @@ const MainBlock = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
+  width: 45%;
   height: 85%;
   background: ${COLOR.white};
   opacity: 0.9;
@@ -47,10 +47,14 @@ const TitleWrapper = styled.div`
   width: 80%;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   min-width: 200px;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 76px;
+
+  @media screen and (max-width: 400px) {
+    font-size: 50px
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -72,11 +76,11 @@ export const Main = () => {
           <Title>Откройте дверь в свою новую квартиру</Title>
         </TitleWrapper>
         <ButtonsWrapper>
-          <Button title={"Узнать больше"} />
+          <Button title={"Узнать больше"} width={"50%"} />
           <Button
             title={"Получить консультацию"}
             margin={"0 0 0 20px"}
-            width={"250px"}
+            width={"50%"}
             background={COLOR.grey100}
           />
         </ButtonsWrapper>

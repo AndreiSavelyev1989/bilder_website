@@ -47,14 +47,16 @@ const NumberWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
 `;
+
 const Schedule = styled.div`
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.46;
   color: ${COLOR.orange50};
 `;
+
 const PhoneNumber = styled.div`
-  font-size: 20px;
+  font-size: 27px;
   font-weight: 700;
   line-height: 1.5;
   color: ${COLOR.grey400};
@@ -81,12 +83,12 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 26px;
+  font-size: 38px;
   font-weight: 700;
 `;
 
 const Description = styled.div`
-  font-size: 18px;
+  font-size: 22px;
 `;
 
 const SocialLinksWrapper = styled.div`
@@ -125,6 +127,7 @@ const OdnoklassnikiIcon = styled(SiOdnoklassniki)`
     transform: scale(1.1);
   }
 `;
+
 const VkontakteIcon = styled(SlSocialVkontakte)`
   width: 28px;
   height: 28px;

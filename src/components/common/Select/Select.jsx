@@ -29,6 +29,7 @@ const DropDownHeader = styled.div`
 
 const Title = styled.div`
   margin-left: 15px;
+  font-size: 20px;
 `;
 
 const DropDownListItemContainer = styled.div`
@@ -61,6 +62,7 @@ const ListItem = styled.li`
   list-style: none;
   margin-left: 0.8em;
   height: 18px;
+  font-size: 20px;
 `;
 
 const TriangleSelect = styled.div`

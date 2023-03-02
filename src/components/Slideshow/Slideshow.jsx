@@ -7,7 +7,7 @@ import { COLOR } from "./../../assets/styles/index";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 const Container = styled.div`
-  width: 92%;
+  width: 90%;
 
   @media screen and (max-width: 500px) {
     height: 400px;

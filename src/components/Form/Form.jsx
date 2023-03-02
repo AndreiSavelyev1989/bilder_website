@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h2`
   margin: 20px 0 0 0;
-  font-size: 30px;
+  font-size: 32px;
 `;
 
 const ProcessingPersonalDataWrapper = styled.div`
@@ -40,17 +40,17 @@ const ProcessingPersonalDataWrapper = styled.div`
   width: 100%;
 `;
 
-const ProcessingPersonalData = styled.span`
-  margin-left: 30px;
-  color: ${COLOR.orange50};
-  text-decoration: underline;
-  text-decoration-color: ${COLOR.orange50};
-  cursor: pointer;
+// const ProcessingPersonalData = styled.span`
+//   margin-left: 30px;
+//   color: ${COLOR.orange50};
+//   text-decoration: underline;
+//   text-decoration-color: ${COLOR.orange50};
+//   cursor: pointer;
 
-  &:hover {
-    text-decoration: none;
-  }
-`;
+//   &:hover {
+//     text-decoration: none;
+//   }
+// `;
 
 const ButtonWrapper = styled.div`
   width: 100%;
@@ -65,8 +65,8 @@ export const Form = () => {
         <Input label={"Телефон"} />
         <Input label={"E-Mail"} />
         <ProcessingPersonalDataWrapper>
-          <Checkbox text={"Я согласен на обработку моих"} isRequired={true} />
-          <ProcessingPersonalData>персональных данных</ProcessingPersonalData>
+          <Checkbox text={"Я согласен на обработку моих"} isRequired={true} isAgreeProcessingPersonalData={true}/>
+          {/* <ProcessingPersonalData>персональных данных</ProcessingPersonalData> */}
         </ProcessingPersonalDataWrapper>
         <ButtonWrapper>
           <Button title={"Отправить"} />

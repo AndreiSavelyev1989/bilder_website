@@ -61,12 +61,12 @@ const ListWrapper = styled.ul`
 `;
 
 const ListItem = styled.li`
-  font-size: 18px;
+  font-size: 24px;
 `;
 
 const Title = styled.h3`
   width: 100%;
-  font-size: 22px;
+  font-size: 35px;
 `;
 
 export const Service = ({ title, services, photoSrc }) => {

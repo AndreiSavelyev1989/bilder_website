@@ -5,9 +5,14 @@ import {
   CheckboxDisplay,
   CheckboxText,
   Asterisk,
+  ProcessingPersonalData,
 } from "./styled";
 
-export const Checkbox = ({ text = "Select", isRequired }) => {
+export const Checkbox = ({
+  text = "Select",
+  isRequired,
+  isAgreeProcessingPersonalData,
+}) => {
   const [checked, setChecked] = useState(false);
 
   const onChange = () => {
@@ -20,6 +25,9 @@ export const Checkbox = ({ text = "Select", isRequired }) => {
       <CheckboxDisplay />
       {isRequired && <Asterisk>*</Asterisk>}
       <CheckboxText>{text}</CheckboxText>
+      {isAgreeProcessingPersonalData && (
+        <ProcessingPersonalData> персональных данных</ProcessingPersonalData>
+      )}
     </Label>
   );
 };

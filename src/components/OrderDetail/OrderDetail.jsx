@@ -18,8 +18,8 @@ const DetailMark = styled.div`
 `;
 
 const DetailTitle = styled.div`
-  margin-left: 10px;
-  font-size: 25px;
+  margin-left: 20px;
+  font-size: 30px;
 `;
 
 const Icon = styled(BsCheck2Square)`

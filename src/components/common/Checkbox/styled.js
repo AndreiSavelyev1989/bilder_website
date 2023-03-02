@@ -9,8 +9,22 @@ export const Label = styled.label`
   cursor: pointer;
 `;
 
+export const ProcessingPersonalData = styled.span`
+  font-size: 18px;
+  color: ${COLOR.orange50};
+  text-decoration: underline;
+  text-decoration-color: ${COLOR.orange50};
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
 export const CheckboxDisplay = styled.div``;
-export const CheckboxText = styled.div``;
+export const CheckboxText = styled.div`
+  font-size: 18px;
+`;
 export const Asterisk = styled.span`
   color: ${COLOR.red};
 `;

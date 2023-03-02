@@ -16,8 +16,9 @@ const StyledButton = styled.button`
   width: ${({ width }) => width || "100%"};
   height: ${({ height }) => height || "54px"};
   margin: ${({ margin }) => margin || "0"};
+  font-family: "SofiaSansExtraCondensed", sans-serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 23px;
   background: ${({ background }) => background || COLOR.orange200};
   border-radius: 5px;
   border: ${({ borderColor }) =>
