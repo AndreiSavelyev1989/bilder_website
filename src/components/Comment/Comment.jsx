@@ -8,7 +8,7 @@ const ItemWrapper = styled.div`
   height: 300px;
   background: ${({ background }) => background};
   @media screen and (max-width: 770px) {
-    height: 600px;
+    height: 650px;
   }
 `;
 

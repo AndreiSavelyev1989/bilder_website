@@ -12,7 +12,10 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 700px;
+  height: 500px;
+  @media screen and (max-width: 770px) {
+    height: 900px;
+  }
 `;
 
 const Title = styled.h2`
