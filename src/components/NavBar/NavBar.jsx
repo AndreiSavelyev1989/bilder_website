@@ -41,7 +41,7 @@ const NavBarWrapper = styled.div`
 `;
 
 export const NavBar = forwardRef((props, ref) => {
-  const { setIsOpenMenu, isOpenMenu, executeScroll, reference } = props;
+  const { setIsOpenMenu, isOpenMenu, reference } = props;
 
   const onClickHandler = () => {
     setIsOpenMenu(false);
@@ -55,7 +55,6 @@ export const NavBar = forwardRef((props, ref) => {
         </CloseWrapper>
         <Nav
           reference={reference}
-          executeScroll={executeScroll}
           onOpenMenuHandler={onClickHandler}
         />
       </NavBarWrapper>

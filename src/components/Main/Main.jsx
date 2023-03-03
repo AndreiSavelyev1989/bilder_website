@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { forwardRef } from "react";
+import { executeScroll } from "../../assets/helpers";
 
 const Container = styled.div`
   display: flex;
@@ -53,6 +54,10 @@ const Title = styled.h1`
   font-weight: 700;
   font-size: 76px;
 
+  @media screen and (max-width: 1100px) {
+    font-size: 60px;
+  }
+
   @media screen and (max-width: 400px) {
     font-size: 50px;
   }
@@ -70,6 +75,8 @@ const ButtonsWrapper = styled.div`
 `;
 
 export const Main = forwardRef((props, ref) => {
+  const { reference } = props;
+
   return (
     <Container ref={ref}>
       <MainBlock>
@@ -77,7 +84,11 @@ export const Main = forwardRef((props, ref) => {
           <Title>Откройте дверь в свою новую квартиру</Title>
         </TitleWrapper>
         <ButtonsWrapper>
-          <Button title={"Узнать больше"} width={"50%"} />
+          <Button
+            title={"Узнать больше"}
+            width={"50%"}
+            callback={() => executeScroll(reference.servicesRef)}
+          />
           <Button
             title={"Получить консультацию"}
             margin={"0 0 0 20px"}

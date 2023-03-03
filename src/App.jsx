@@ -58,24 +58,20 @@ const App = () => {
     setIsOpenModal(!isOpenModal);
   };
 
-  const executeScroll = (ref) => ref.current.scrollIntoView();
-
   return (
     <Container>
       <Header
         setIsOpenMenu={setIsOpenMenu}
         isOpenMenu={isOpenMenu}
-        executeScroll={executeScroll}
         reference={reference}
       />
       <NavBar
         setIsOpenMenu={setIsOpenMenu}
         isOpenMenu={isOpenMenu}
-        executeScroll={executeScroll}
         reference={reference}
       />
       <ContactInfo />
-      <Main ref={mainRef} />
+      <Main ref={mainRef} reference={reference} />
       <Services ref={servicesRef} />
       <OurWorks
         isOpenModal={isOpenModal}

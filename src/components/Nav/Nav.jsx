@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
+import { executeScroll } from './../../assets/helpers';
 
 const List = styled.ul`
   display: flex;
@@ -41,7 +42,7 @@ const ListItem = styled.li`
 `;
 
 export const Nav = forwardRef((props, ref) => {
-  const { executeScroll, onOpenMenuHandler, reference } = props;
+  const { onOpenMenuHandler, reference } = props;
 
   const onClickHandler = (ref) => {
     onOpenMenuHandler();

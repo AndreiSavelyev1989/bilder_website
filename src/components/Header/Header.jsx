@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { executeScroll } from "./../../assets/helpers";
 
 const Container = styled.div`
   display: flex;
@@ -90,7 +91,7 @@ const ListItem = styled.li`
 `;
 
 export const Header = forwardRef((props, ref) => {
-  const { setIsOpenMenu, isOpenMenu, executeScroll, reference } = props;
+  const { setIsOpenMenu, isOpenMenu, reference } = props;
 
   const onClickHandler = () => {
     setIsOpenMenu(!isOpenMenu);

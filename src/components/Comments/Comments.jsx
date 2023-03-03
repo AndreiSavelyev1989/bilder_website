@@ -84,7 +84,7 @@ export const Comments = forwardRef((props, ref) => {
       <SlideWrapper>
         <Slide {...properties} autoplay={false}>
           {comments.map((el, index) => (
-            <Comment data={el} index={index} />
+            <Comment key={el.id} data={el} index={index} />
           ))}
         </Slide>
       </SlideWrapper>
