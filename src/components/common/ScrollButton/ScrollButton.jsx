@@ -15,8 +15,8 @@ const Button = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 5px;
-  border: none;
   background: ${COLOR.orange200};
+  border: 1px solid ${COLOR.grey100};
   cursor: pointer;
 
   &:hover ${Arrow} {

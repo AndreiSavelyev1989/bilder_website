@@ -24,10 +24,12 @@ export const Checkbox = ({
       <CheckboxInput checked={checked} onChange={onChange} />
       <CheckboxDisplay />
       {isRequired && <Asterisk>*</Asterisk>}
-      <CheckboxText>{text}</CheckboxText>
-      {isAgreeProcessingPersonalData && (
-        <ProcessingPersonalData> персональных данных</ProcessingPersonalData>
-      )}
+      <CheckboxText>
+        {text}
+        {isAgreeProcessingPersonalData && (
+          <ProcessingPersonalData> персональных данных</ProcessingPersonalData>
+        )}
+      </CheckboxText>
     </Label>
   );
 };

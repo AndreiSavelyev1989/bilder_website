@@ -22,6 +22,10 @@ const Container = styled.div`
   background: ${COLOR.white};
   animation: 0.3s linear ${modalDisplay};
   z-index: 11;
+
+  @media screen and (max-width: 460px) {
+    width: 95%;
+  }
 `;
 
 export const Modal = ({ callback, children }) => {

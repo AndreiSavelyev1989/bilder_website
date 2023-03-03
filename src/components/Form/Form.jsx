@@ -19,6 +19,10 @@ const Container = styled.div`
   @media screen and (max-width: 530px) {
     width: 330px;
   }
+
+  @media screen and (max-width: 360px) {
+    border: 1px solid ${COLOR.grey100};
+  }
 `;
 
 const Wrapper = styled.div`
@@ -40,18 +44,6 @@ const ProcessingPersonalDataWrapper = styled.div`
   width: 100%;
 `;
 
-// const ProcessingPersonalData = styled.span`
-//   margin-left: 30px;
-//   color: ${COLOR.orange50};
-//   text-decoration: underline;
-//   text-decoration-color: ${COLOR.orange50};
-//   cursor: pointer;
-
-//   &:hover {
-//     text-decoration: none;
-//   }
-// `;
-
 const ButtonWrapper = styled.div`
   width: 100%;
 `;
@@ -65,8 +57,11 @@ export const Form = () => {
         <Input label={"Телефон"} />
         <Input label={"E-Mail"} />
         <ProcessingPersonalDataWrapper>
-          <Checkbox text={"Я согласен на обработку моих"} isRequired={true} isAgreeProcessingPersonalData={true}/>
-          {/* <ProcessingPersonalData>персональных данных</ProcessingPersonalData> */}
+          <Checkbox
+            text={"Я согласен на обработку моих"}
+            isRequired={true}
+            isAgreeProcessingPersonalData={true}
+          />
         </ProcessingPersonalDataWrapper>
         <ButtonWrapper>
           <Button title={"Отправить"} />

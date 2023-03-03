@@ -34,9 +34,14 @@ const Button = styled.button`
     transition: 0.5s ease;
     transform: scale(1.2);
   }
+
+  @media screen and (max-width: 440px) {
+    top: 0;
+    right: 0;
+  }
 `;
 
-export const CloseButton = ({callback}) => {
+export const CloseButton = ({ callback }) => {
   return (
     <Button onClick={callback}>
       <Cross />
