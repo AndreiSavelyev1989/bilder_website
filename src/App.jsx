@@ -13,6 +13,9 @@ import { ImagePreview } from "./components/ImagePreview/ImagePreview";
 import { Order } from "./components/Order/Order";
 import { Comments } from "./components/Comments/Comments";
 import { Footer } from "./components/Footer/Footer";
+import { useScrollYPosition } from "./assets/hooks";
+import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
+import { scrollToTop } from "./assets/helpers";
 
 const Container = styled.div`
   position: relative;
@@ -41,6 +44,7 @@ const App = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isImagePreview, setIsImagePreview] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const scrollPosition = useScrollYPosition();
   const mainRef = useRef(null);
   const servicesRef = useRef(null);
   const ourWorksRef = useRef(null);
@@ -96,6 +100,7 @@ const App = () => {
           imagePreviewUrl={imagePreviewUrl}
         />
       )}
+      {scrollPosition > 200 && <ScrollButton callback={scrollToTop} />}
     </Container>
   );
 };
