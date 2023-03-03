@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
@@ -77,9 +77,9 @@ const properties = {
   ),
 };
 
-export const Comments = () => {
+export const Comments = forwardRef((props, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <Title>Отзывы наших клиентов</Title>
       <SlideWrapper>
         <Slide {...properties} autoplay={false}>
@@ -90,4 +90,4 @@ export const Comments = () => {
       </SlideWrapper>
     </Container>
   );
-};
+});

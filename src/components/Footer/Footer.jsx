@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
@@ -60,16 +60,16 @@ const AddressIcon = styled(GrMapLocation)`
   height: 25px;
 `;
 
-export const Footer = () => {
+export const Footer = forwardRef((props, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <Title>Контакты</Title>
       <Wrapper>
         <Contact icon={<PhoneIcon />} contact={"+375 (29) 111-11-11"} />
         <Contact icon={<EmailIcon />} contact={"veronika@gmail.com"} />
         <Contact icon={<AddressIcon />} contact={"г. Могилев"} />
-        <SocialLinks width={"25%"} small />
+        <SocialLinks width={"25%"} small="true" />
       </Wrapper>
     </Container>
   );
-};
+});

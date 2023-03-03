@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { Button } from "../common/Button/Button";
 import { Slideshow } from "../Slideshow/Slideshow";
@@ -37,13 +37,15 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
 `;
 
-export const OurWorks = ({ isOpenModal, setIsOpenModal }) => {
+export const OurWorks = forwardRef((props, ref) => {
+  const { isOpenModal, setIsOpenModal } = props;
+
   const modalHandler = () => {
     setIsOpenModal(!isOpenModal);
   };
 
   return (
-    <Container>
+    <Container ref={ref}>
       <Title>Наши работы</Title>
       <WorksWrapper>
         <Slideshow />
@@ -60,4 +62,4 @@ export const OurWorks = ({ isOpenModal, setIsOpenModal }) => {
       </ButtonWrapper>
     </Container>
   );
-};
+});

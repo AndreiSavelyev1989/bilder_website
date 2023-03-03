@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 
@@ -40,14 +40,31 @@ const ListItem = styled.li`
   }
 `;
 
-export const Nav = () => {
+export const Nav = forwardRef((props, ref) => {
+  const { executeScroll, onOpenMenuHandler, reference } = props;
+
+  const onClickHandler = (ref) => {
+    onOpenMenuHandler();
+    executeScroll(ref);
+  };
+
   return (
     <List>
-      <ListItem>Главная</ListItem>
-      <ListItem>Услуги</ListItem>
-      <ListItem>Галерея</ListItem>
-      <ListItem>Отзывы</ListItem>
-      <ListItem>Контакты</ListItem>
+      <ListItem onClick={() => onClickHandler(reference.mainRef)}>
+        Главная
+      </ListItem>
+      <ListItem onClick={() => onClickHandler(reference.servicesRef)}>
+        Услуги
+      </ListItem>
+      <ListItem onClick={() => onClickHandler(reference.ourWorksRef)}>
+        Галерея
+      </ListItem>
+      <ListItem onClick={() => onClickHandler(reference.commentsRef)}>
+        Отзывы
+      </ListItem>
+      <ListItem onClick={() => onClickHandler(reference.contactsRef)}>
+        Контакты
+      </ListItem>
     </List>
   );
-};
+});

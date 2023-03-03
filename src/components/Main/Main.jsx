@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
+import { forwardRef } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -53,7 +54,7 @@ const Title = styled.h1`
   font-size: 76px;
 
   @media screen and (max-width: 400px) {
-    font-size: 50px
+    font-size: 50px;
   }
 `;
 
@@ -68,9 +69,9 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Main = () => {
+export const Main = forwardRef((props, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <MainBlock>
         <TitleWrapper>
           <Title>Откройте дверь в свою новую квартиру</Title>
@@ -87,4 +88,4 @@ export const Main = () => {
       </MainBlock>
     </Container>
   );
-};
+});

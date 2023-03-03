@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -89,7 +89,9 @@ const ListItem = styled.li`
   }
 `;
 
-export const Header = ({ setIsOpenMenu, isOpenMenu }) => {
+export const Header = forwardRef((props, ref) => {
+  const { setIsOpenMenu, isOpenMenu, executeScroll, reference } = props;
+
   const onClickHandler = () => {
     setIsOpenMenu(!isOpenMenu);
   };
@@ -101,13 +103,23 @@ export const Header = ({ setIsOpenMenu, isOpenMenu }) => {
       </HamburgerWrapper>
       <NavWrapper>
         <List>
-          <ListItem>Главная</ListItem>
-          <ListItem>Услуги</ListItem>
-          <ListItem>Галерея</ListItem>
-          <ListItem>Отзывы</ListItem>
-          <ListItem>Контакты</ListItem>
+          <ListItem onClick={() => executeScroll(reference.mainRef)}>
+            Главная
+          </ListItem>
+          <ListItem onClick={() => executeScroll(reference.servicesRef)}>
+            Услуги
+          </ListItem>
+          <ListItem onClick={() => executeScroll(reference.ourWorksRef)}>
+            Галерея
+          </ListItem>
+          <ListItem onClick={() => executeScroll(reference.commentsRef)}>
+            Отзывы
+          </ListItem>
+          <ListItem onClick={() => executeScroll(reference.contactsRef)}>
+            Контакты
+          </ListItem>
         </List>
       </NavWrapper>
     </Container>
   );
-};
+});

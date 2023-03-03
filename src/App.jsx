@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "./components/Header/Header";
 import { NavBar } from "./components/NavBar/NavBar";
@@ -41,22 +41,50 @@ const App = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isImagePreview, setIsImagePreview] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const mainRef = useRef(null);
+  const servicesRef = useRef(null);
+  const ourWorksRef = useRef(null);
+  const commentsRef = useRef(null);
+  const contactsRef = useRef(null);
+  const reference = {
+    mainRef: mainRef,
+    servicesRef: servicesRef,
+    ourWorksRef: ourWorksRef,
+    commentsRef: commentsRef,
+    contactsRef: contactsRef,
+  };
 
   const modalHandler = () => {
     setIsOpenModal(!isOpenModal);
   };
 
+  const executeScroll = (ref) => ref.current.scrollIntoView();
+
   return (
     <Container>
-      <Header setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
-      <NavBar setIsOpenMenu={setIsOpenMenu} isOpenMenu={isOpenMenu} />
+      <Header
+        setIsOpenMenu={setIsOpenMenu}
+        isOpenMenu={isOpenMenu}
+        executeScroll={executeScroll}
+        reference={reference}
+      />
+      <NavBar
+        setIsOpenMenu={setIsOpenMenu}
+        isOpenMenu={isOpenMenu}
+        executeScroll={executeScroll}
+        reference={reference}
+      />
       <ContactInfo />
-      <Main />
-      <Services />
-      <OurWorks isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <Main ref={mainRef} />
+      <Services ref={servicesRef} />
+      <OurWorks
+        isOpenModal={isOpenModal}
+        setIsOpenModal={setIsOpenModal}
+        ref={ourWorksRef}
+      />
       <Order />
-      <Comments />
-      <Footer />
+      <Comments ref={commentsRef} />
+      <Footer ref={contactsRef} />
       {isOpenModal || isOpenMenu ? <Overlay /> : null}
       {isOpenModal && (
         <Modal callback={modalHandler}>

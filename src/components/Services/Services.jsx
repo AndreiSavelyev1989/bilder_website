@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { Service } from "../Service/Service";
 import { services } from "./../../assets/mockData/index";
@@ -30,9 +30,9 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Services = () => {
+export const Services = forwardRef((props, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <Title>Наши услуги</Title>
       <Wrapper>
         {services.map((el) => (
@@ -46,4 +46,4 @@ export const Services = () => {
       </Wrapper>
     </Container>
   );
-};
+});

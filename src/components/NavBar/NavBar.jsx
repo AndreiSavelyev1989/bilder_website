@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { Nav } from "../Nav/Nav";
 import { COLOR } from "../../assets/styles";
@@ -40,18 +40,25 @@ const NavBarWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const NavBar = ({ setIsOpenMenu, isOpenMenu }) => {
+export const NavBar = forwardRef((props, ref) => {
+  const { setIsOpenMenu, isOpenMenu, executeScroll, reference } = props;
+
   const onClickHandler = () => {
     setIsOpenMenu(false);
   };
+
   return (
     <Container isOpenMenu={isOpenMenu}>
       <NavBarWrapper>
         <CloseWrapper>
           <Close onClick={onClickHandler} />
         </CloseWrapper>
-        <Nav />
+        <Nav
+          reference={reference}
+          executeScroll={executeScroll}
+          onOpenMenuHandler={onClickHandler}
+        />
       </NavBarWrapper>
     </Container>
   );
-};
+});
