@@ -14,7 +14,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: ${({ width }) => width || "80%"};
-  height: ${({ height }) => height || "700px"};
+  height: ${({ height }) => height || "95%"};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -23,15 +23,26 @@ const Container = styled.div`
   animation: 0.3s linear ${modalDisplay};
   z-index: 11;
 
+  @media screen and (max-width: 860px) {
+    width: 65%;
+  }
+
   @media screen and (max-width: 460px) {
     width: 95%;
   }
 `;
 
-export const Modal = ({ callback, children }) => {
+export const Modal = ({
+  callback,
+  setIsOpenModal,
+  isOpenModal,
+  width,
+  height,
+  children,
+}) => {
   return (
-    <Container>
-      <CloseButton callback={callback} />
+    <Container width={width} height={height}>
+      <CloseButton callback={() => callback(isOpenModal, setIsOpenModal)} />
       {children}
     </Container>
   );

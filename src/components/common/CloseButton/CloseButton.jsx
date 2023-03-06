@@ -35,9 +35,9 @@ const Button = styled.button`
     transform: scale(1.2);
   }
 
-  @media screen and (max-width: 440px) {
-    top: 0;
-    right: 0;
+  @media screen and (max-width: 460px) {
+    top: 10px;
+    right: 10px;
   }
 `;
 

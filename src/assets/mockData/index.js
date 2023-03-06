@@ -1,3 +1,5 @@
+import birds from "../images/birds.jpg"
+
 export const services = [
   {
     id: 1,
@@ -102,6 +104,10 @@ export const galleries = {
     {
       id: 4,
       url: "https://amiel.club/uploads/posts/2022-10/thumbs/1665120705_15-amiel-club-p-barelef-tsveti-dizain-vkontakte-15.jpg",
+    },
+    {
+      id: 5,
+      url: birds,
     },
   ],
   repairs: [

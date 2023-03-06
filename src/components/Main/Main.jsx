@@ -75,7 +75,7 @@ const ButtonsWrapper = styled.div`
 `;
 
 export const Main = forwardRef((props, ref) => {
-  const { reference } = props;
+  const { reference, setIsOpenModal } = props;
 
   return (
     <Container ref={ref}>
@@ -94,6 +94,7 @@ export const Main = forwardRef((props, ref) => {
             margin={"0 0 0 20px"}
             width={"50%"}
             background={COLOR.grey100}
+            callback={() => setIsOpenModal(true)}
           />
         </ButtonsWrapper>
       </MainBlock>

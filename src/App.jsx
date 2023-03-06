@@ -16,6 +16,7 @@ import { Footer } from "./components/Footer/Footer";
 import { useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { scrollToTop } from "./assets/helpers";
+import { Form } from "./components/Form/Form";
 
 const Container = styled.div`
   position: relative;
@@ -41,7 +42,8 @@ const Overlay = styled.div`
 
 const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
+  const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
   const [isImagePreview, setIsImagePreview] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const scrollPosition = useScrollYPosition();
@@ -58,8 +60,8 @@ const App = () => {
     contactsRef: contactsRef,
   };
 
-  const modalHandler = () => {
-    setIsOpenModal(!isOpenModal);
+  const modalHandler = (isOpen, setIsOpen) => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -75,23 +77,44 @@ const App = () => {
         reference={reference}
       />
       <ContactInfo />
-      <Main ref={mainRef} reference={reference} />
-      <Services ref={servicesRef} />
+      <Main
+        ref={mainRef}
+        reference={reference}
+        setIsOpenModal={setIsOpenOrderModal}
+      />
+      <Services ref={servicesRef} setIsOpenModal={setIsOpenOrderModal} />
       <OurWorks
-        isOpenModal={isOpenModal}
-        setIsOpenModal={setIsOpenModal}
+        isOpenModal={isOpenGalleryModal}
+        setIsOpenModal={setIsOpenGalleryModal}
         ref={ourWorksRef}
       />
       <Order />
       <Comments ref={commentsRef} />
       <Footer ref={contactsRef} />
-      {isOpenModal || isOpenMenu ? <Overlay /> : null}
-      {isOpenModal && (
-        <Modal callback={modalHandler}>
+      {isOpenGalleryModal || isOpenOrderModal || isOpenMenu ? (
+        <Overlay />
+      ) : null}
+      {isOpenGalleryModal && (
+        <Modal
+          isOpenModal={isOpenGalleryModal}
+          setIsOpenModal={setIsOpenGalleryModal}
+          callback={modalHandler}
+        >
           <Galleries
             setIsImagePreview={setIsImagePreview}
             setImagePreviewUrl={setImagePreviewUrl}
           />
+        </Modal>
+      )}
+      {isOpenOrderModal && (
+        <Modal
+          isOpenModal={isOpenOrderModal}
+          setIsOpenModal={setIsOpenOrderModal}
+          callback={modalHandler}
+          width={"35%"}
+          height={"550px"}
+        >
+          <Form width={"100%"} height={"100%"} isModal={true} />
         </Modal>
       )}
       {isImagePreview && (

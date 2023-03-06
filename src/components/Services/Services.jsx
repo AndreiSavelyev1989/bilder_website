@@ -31,6 +31,7 @@ const Wrapper = styled.div`
 `;
 
 export const Services = forwardRef((props, ref) => {
+  const { setIsOpenModal } = props;
   return (
     <Container ref={ref}>
       <Title>Наши услуги</Title>
@@ -41,6 +42,7 @@ export const Services = forwardRef((props, ref) => {
             title={el.title}
             services={el.services}
             photoSrc={el.src}
+            setIsOpenModal={setIsOpenModal}
           />
         ))}
       </Wrapper>

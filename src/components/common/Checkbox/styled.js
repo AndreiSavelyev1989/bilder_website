@@ -23,14 +23,6 @@ export const ProcessingPersonalData = styled.span`
   @media screen and (max-width: 1130px) {
     font-size: 14px;
   }
-
-  @media screen and (max-width: 1050px) {
-    font-size: 18px;
-  }
-
-  @media screen and (max-width: 560px) {
-    font-size: 14px;
-  }
 `;
 
 export const CheckboxDisplay = styled.div``;
@@ -38,14 +30,6 @@ export const CheckboxText = styled.span`
   font-size: 18px;
 
   @media screen and (max-width: 1130px) {
-    font-size: 14px;
-  }
-
-  @media screen and (max-width: 1050px) {
-    font-size: 18px;
-  }
-
-  @media screen and (max-width: 560px) {
     font-size: 14px;
   }
 `;

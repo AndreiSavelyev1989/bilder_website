@@ -69,7 +69,7 @@ const Title = styled.h3`
   font-size: 35px;
 `;
 
-export const Service = ({ title, services, photoSrc }) => {
+export const Service = ({ title, services, photoSrc, setIsOpenModal }) => {
   return (
     <Container>
       <PhotoBlock photoSrc={photoSrc} />
@@ -83,7 +83,11 @@ export const Service = ({ title, services, photoSrc }) => {
               ))}
             </ListWrapper>
           </Wrapper>
-          <Button title={"Заказать"} width={"100%"} />
+          <Button
+            title={"Заказать"}
+            width={"100%"}
+            callback={() => setIsOpenModal(true)}
+          />
         </DescriptionBlock>
       </DescriptionBlockWrapper>
     </Container>

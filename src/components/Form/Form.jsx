@@ -10,9 +10,9 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  width: 70%;
-  height: 585px;
-  margin-top: 40px;
+  width: ${({ width }) => width || "70%"};
+  height: ${({ height }) => height || "585px"};
+  margin-top: ${({ isModal }) => (isModal ? "0" : "40px")};
   border-radius: 10px;
   background: ${COLOR.white};
 
@@ -21,7 +21,8 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 360px) {
-    border: 1px solid ${COLOR.grey100};
+    border: ${({ isModal }) =>
+      isModal ? "none" : `1px solid ${COLOR.grey100}`};
   }
 `;
 
@@ -48,9 +49,9 @@ const ButtonWrapper = styled.div`
   width: 100%;
 `;
 
-export const Form = () => {
+export const Form = ({ width, height, isModal }) => {
   return (
-    <Container>
+    <Container width={width} height={height} isModal={isModal}>
       <Wrapper>
         <Title>Оставить заявку</Title>
         <Input label={"Имя"} />
