@@ -12,6 +12,7 @@ export const Checkbox = ({
   text = "Select",
   isRequired,
   isAgreeProcessingPersonalData,
+  setIsOpenModal,
 }) => {
   const [checked, setChecked] = useState(false);
 
@@ -27,7 +28,15 @@ export const Checkbox = ({
       <CheckboxText>
         {text}
         {isAgreeProcessingPersonalData && (
-          <ProcessingPersonalData> персональных данных</ProcessingPersonalData>
+          <ProcessingPersonalData
+            onClick={(e) => {
+              e.preventDefault();
+              setIsOpenModal(true);
+            }}
+          >
+            {" "}
+            персональных данных
+          </ProcessingPersonalData>
         )}
       </CheckboxText>
     </Label>

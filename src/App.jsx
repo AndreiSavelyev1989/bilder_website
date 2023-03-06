@@ -17,6 +17,7 @@ import { useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { scrollToTop } from "./assets/helpers";
 import { Form } from "./components/Form/Form";
+import { PersonalData } from "./components/PersonalData/PersonalData";
 
 const Container = styled.div`
   position: relative;
@@ -44,6 +45,7 @@ const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
   const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
+  const [isOpenPersonalDataModal, setIsOpenPersonalDataModal] = useState(false);
   const [isImagePreview, setIsImagePreview] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const scrollPosition = useScrollYPosition();
@@ -114,7 +116,22 @@ const App = () => {
           width={"35%"}
           height={"550px"}
         >
-          <Form width={"100%"} height={"100%"} isModal={true} />
+          <Form
+            width={"100%"}
+            height={"100%"}
+            isModal={true}
+            setIsOpenModal={setIsOpenPersonalDataModal}
+          />
+        </Modal>
+      )}
+      {isOpenPersonalDataModal && (
+        <Modal
+          isOpenModal={isOpenPersonalDataModal}
+          setIsOpenModal={setIsOpenPersonalDataModal}
+          callback={modalHandler}
+          width="40%"
+        >
+          <PersonalData />
         </Modal>
       )}
       {isImagePreview && (

@@ -49,7 +49,7 @@ const ButtonWrapper = styled.div`
   width: 100%;
 `;
 
-export const Form = ({ width, height, isModal }) => {
+export const Form = ({ width, height, isModal, setIsOpenModal }) => {
   return (
     <Container width={width} height={height} isModal={isModal}>
       <Wrapper>
@@ -62,6 +62,7 @@ export const Form = ({ width, height, isModal }) => {
             text={"Я согласен на обработку моих"}
             isRequired={true}
             isAgreeProcessingPersonalData={true}
+            setIsOpenModal={setIsOpenModal}
           />
         </ProcessingPersonalDataWrapper>
         <ButtonWrapper>
