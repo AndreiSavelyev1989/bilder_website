@@ -52,7 +52,7 @@ const Details = styled.div`
   width: 100%;
 `;
 
-export const Order = () => {
+export const Order = ({ setIsOpenModal }) => {
   return (
     <Container>
       <DetailsWrapper>
@@ -71,7 +71,7 @@ export const Order = () => {
         </Details>
       </DetailsWrapper>
       <FormWrapper>
-        <Form />
+        <Form setIsOpenModal={setIsOpenModal} />
       </FormWrapper>
     </Container>
   );

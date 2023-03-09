@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLOR } from "../../assets/styles";
 
 const Container = styled.div`
   display: flex;
@@ -7,8 +8,18 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   height: 100%;
+  width: 100%;
   padding: 30px;
   overflow-y: auto;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: ${COLOR.grey100};
+    border-radius: 10px;
+  }
 `;
 
 const Title = styled.h3`

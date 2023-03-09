@@ -24,7 +24,7 @@ const Container = styled.div`
   z-index: 11;
 
   @media screen and (max-width: 860px) {
-    width: 65%;
+    width: ${({ isShowPersonalData }) => (isShowPersonalData ? "90%" : "65%")};
   }
 
   @media screen and (max-width: 460px) {
@@ -38,10 +38,15 @@ export const Modal = ({
   isOpenModal,
   width,
   height,
+  isShowPersonalData,
   children,
 }) => {
   return (
-    <Container width={width} height={height}>
+    <Container
+      width={width}
+      height={height}
+      isShowPersonalData={isShowPersonalData}
+    >
       <CloseButton callback={() => callback(isOpenModal, setIsOpenModal)} />
       {children}
     </Container>

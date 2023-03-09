@@ -90,10 +90,13 @@ const App = () => {
         setIsOpenModal={setIsOpenGalleryModal}
         ref={ourWorksRef}
       />
-      <Order />
+      <Order setIsOpenModal={setIsOpenPersonalDataModal} />
       <Comments ref={commentsRef} />
       <Footer ref={contactsRef} />
-      {isOpenGalleryModal || isOpenOrderModal || isOpenMenu ? (
+      {isOpenGalleryModal ||
+      isOpenOrderModal ||
+      isOpenPersonalDataModal ||
+      isOpenMenu ? (
         <Overlay />
       ) : null}
       {isOpenGalleryModal && (
@@ -129,7 +132,8 @@ const App = () => {
           isOpenModal={isOpenPersonalDataModal}
           setIsOpenModal={setIsOpenPersonalDataModal}
           callback={modalHandler}
-          width="40%"
+          width="90%"
+          isShowPersonalData={true}
         >
           <PersonalData />
         </Modal>

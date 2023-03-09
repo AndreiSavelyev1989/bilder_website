@@ -16,8 +16,13 @@ const Button = styled.button`
   height: 50px;
   border-radius: 5px;
   background: ${COLOR.orange200};
-  border: 1px solid ${COLOR.grey100};
+  border: 3px solid ${COLOR.grey400};
   cursor: pointer;
+
+  &:hover {
+    transition: 0.5s ease;
+    border: 3px solid ${COLOR.grey200};
+  }
 
   &:hover ${Arrow} {
     transition: 0.5s ease;

@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { MdPhoneInTalk } from "react-icons/md";
-// import { BsInstagram } from "react-icons/bs";
-// import { SiOdnoklassniki } from "react-icons/si";
-// import { SlSocialVkontakte } from "react-icons/sl";
 import { COLOR } from "../../assets/styles";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
 
@@ -92,54 +89,6 @@ const Description = styled.div`
   font-size: 22px;
 `;
 
-// const SocialLinksWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   width: 33.33%;
-//   gap: 20px;
-
-//   @media screen and (max-width: 700px) {
-//     order: 3;
-//     margin-top: 24px;
-//   }
-//   @media screen and (max-width: 665px) {
-//     width: 100%;
-//   }
-// `;
-
-// const InstagramIcon = styled(BsInstagram)`
-//   width: 28px;
-//   height: 28px;
-//   color: ${COLOR.grey400};
-//   &:hover {
-//     transition: 0.5s ease;
-//     color: ${COLOR.grey200};
-//     transform: scale(1.1);
-//   }
-// `;
-
-// const OdnoklassnikiIcon = styled(SiOdnoklassniki)`
-//   width: 28px;
-//   height: 28px;
-//   color: ${COLOR.grey400};
-//   &:hover {
-//     transition: 0.5s ease;
-//     color: ${COLOR.grey200};
-//     transform: scale(1.1);
-//   }
-// `;
-
-// const VkontakteIcon = styled(SlSocialVkontakte)`
-//   width: 28px;
-//   height: 28px;
-//   color: ${COLOR.grey400};
-//   &:hover {
-//     transition: 0.5s ease;
-//     color: ${COLOR.grey200};
-//     transform: scale(1.1);
-//   }
-// `;
-
 const Link = styled.a`
   text-decoration: none;
   cursor: pointer;
@@ -159,20 +108,9 @@ export const ContactInfo = () => {
       </ContactWrapper>
       <TitleWrapper>
         <Title>Вероника и Юрий</Title>
-        <Description>Ремонт и отделка квартир</Description>
+        <Description>Барельеф, ремонт и отделка квартир</Description>
       </TitleWrapper>
       <SocialLinks />
-      {/* <SocialLinksWrapper>
-        <Link target={"_blank"} href={"https://www.instagram.com/"}>
-          <InstagramIcon />
-        </Link>
-        <Link target={"_blank"} href={"https://ok.ru/"}>
-          <OdnoklassnikiIcon />
-        </Link>
-        <Link target={"_blank"} href={"https://vk.com/"}>
-          <VkontakteIcon />
-        </Link>
-      </SocialLinksWrapper> */}
     </Container>
   );
 };
