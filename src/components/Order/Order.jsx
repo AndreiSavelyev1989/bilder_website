@@ -72,7 +72,7 @@ export const Order = memo(({ setIsOpenModal, setFormData }) => {
         </Details>
       </DetailsWrapper>
       <FormWrapper>
-        <Form setIsOpenModal={setIsOpenModal} setFormData={setFormData} />
+        <Form setIsOpenPersonalDataModal={setIsOpenModal} setFormData={setFormData} />
       </FormWrapper>
     </Container>
   );
