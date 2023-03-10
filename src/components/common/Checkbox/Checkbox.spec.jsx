@@ -16,11 +16,14 @@ describe("CustomCheckbox", () => {
   });
 
   test("toggles checked state when clicked", () => {
-    const { container } = render(<Checkbox />);
+    const mockHandler = jest.fn();
+    const { container } = render(<Checkbox onChange={mockHandler} />);
     const checkbox = container.querySelector("input");
     fireEvent.click(checkbox);
+    expect(mockHandler).toHaveBeenCalled();
     expect(checkbox.checked).toBe(true);
     fireEvent.click(checkbox);
+    expect(mockHandler).toHaveBeenCalled();
     expect(checkbox.checked).toBe(false);
   });
 });

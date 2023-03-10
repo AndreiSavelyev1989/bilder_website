@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import {
   Label,
   CheckboxInput,
@@ -8,37 +8,55 @@ import {
   ProcessingPersonalData,
 } from "./styled";
 
-export const Checkbox = ({
-  text = "Select",
-  isRequired,
-  isAgreeProcessingPersonalData,
-  setIsOpenModal,
-}) => {
-  const [checked, setChecked] = useState(false);
+export const Checkbox = forwardRef(
+  (
+    {
+      text = "Select",
+      isRequired,
+      isAgreeProcessingPersonalData,
+      setIsOpenModal,
+      name,
+      onChange,
+      isSubmitted,
+    },
+    ref
+  ) => {
+    const [checked, setChecked] = useState(isSubmitted);
 
-  const onChange = () => {
-    setChecked(!checked);
-  };
+    useEffect(() => {
+      setChecked(isSubmitted);
+    }, [isSubmitted]);
 
-  return (
-    <Label>
-      <CheckboxInput checked={checked} onChange={onChange} />
-      <CheckboxDisplay />
-      {isRequired && <Asterisk>*</Asterisk>}
-      <CheckboxText>
-        {text}
-        {isAgreeProcessingPersonalData && (
-          <ProcessingPersonalData
-            onClick={(e) => {
-              e.preventDefault();
-              setIsOpenModal(true);
-            }}
-          >
-            {" "}
-            персональных данных
-          </ProcessingPersonalData>
-        )}
-      </CheckboxText>
-    </Label>
-  );
-};
+    const onChangeHandler = (e) => {
+      onChange(e);
+      setChecked(!checked);
+    };
+
+    return (
+      <Label>
+        <CheckboxInput
+          name={name}
+          checked={checked}
+          onChange={onChangeHandler}
+          ref={ref}
+        />
+        <CheckboxDisplay />
+        {isRequired && <Asterisk>*</Asterisk>}
+        <CheckboxText>
+          {text}
+          {isAgreeProcessingPersonalData && (
+            <ProcessingPersonalData
+              onClick={(e) => {
+                e.preventDefault();
+                setIsOpenModal(true);
+              }}
+            >
+              {" "}
+              персональных данных
+            </ProcessingPersonalData>
+          )}
+        </CheckboxText>
+      </Label>
+    );
+  }
+);

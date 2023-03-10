@@ -9,4 +9,5 @@ export const COLOR = {
   grey400: "#4d4d4d",
   white: "#fff",
   red: "#dc2222",
+  lightRed: "#f8e0e0",
 };

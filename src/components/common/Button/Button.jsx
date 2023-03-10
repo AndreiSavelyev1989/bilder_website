@@ -24,17 +24,22 @@ const StyledButton = styled.button`
   border: ${({ borderColor }) =>
     borderColor ? `2px solid ${borderColor}` : "2px solid transparent"};
   color: ${({ color }) => color || COLOR.grey400};
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "auto" : "pointer")};
 
   &:hover {
-    opacity: 0.8;
-    box-shadow: 0px 5px 10px 2px ${COLOR.grey200};
+    opacity: ${({ disabled }) => (disabled ? "1" : "0.8")};
+    box-shadow: ${({ disabled }) =>
+      disabled ? "none" : `0px 5px 10px 2px ${COLOR.grey200}`};
     transition: 0.5s ease;
   }
 
   &:hover ${ShowAllIcon} {
     transform: scale(1.2);
     transition: 0.5s ease;
+  }
+
+  &:disabled {
+    background: ${COLOR.grey100};
   }
 
   @media screen and (max-width: 530px) {
@@ -54,6 +59,8 @@ export const Button = ({
   color,
   isShowAll = false,
   callback,
+  type,
+  disabled,
 }) => {
   return (
     <StyledButton
@@ -65,6 +72,8 @@ export const Button = ({
       hoverBackground={hoverBackground}
       color={color}
       onClick={callback}
+      type={type}
+      disabled={disabled}
     >
       {title}
       {isShowAll && <ShowAllIcon />}

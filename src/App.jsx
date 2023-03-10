@@ -48,12 +48,15 @@ const App = () => {
   const [isOpenPersonalDataModal, setIsOpenPersonalDataModal] = useState(false);
   const [isImagePreview, setIsImagePreview] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [formData, setFormData] = useState(null);
   const scrollPosition = useScrollYPosition();
+
   const mainRef = useRef(null);
   const servicesRef = useRef(null);
   const ourWorksRef = useRef(null);
   const commentsRef = useRef(null);
   const contactsRef = useRef(null);
+
   const reference = {
     mainRef: mainRef,
     servicesRef: servicesRef,
@@ -65,6 +68,8 @@ const App = () => {
   const modalHandler = (isOpen, setIsOpen) => {
     setIsOpen(!isOpen);
   };
+
+  // console.log("formData", formData);
 
   return (
     <Container>
@@ -90,7 +95,10 @@ const App = () => {
         setIsOpenModal={setIsOpenGalleryModal}
         ref={ourWorksRef}
       />
-      <Order setIsOpenModal={setIsOpenPersonalDataModal} />
+      <Order
+        setIsOpenModal={setIsOpenPersonalDataModal}
+        setFormData={setFormData}
+      />
       <Comments ref={commentsRef} />
       <Footer ref={contactsRef} />
       {isOpenGalleryModal ||
@@ -117,13 +125,15 @@ const App = () => {
           setIsOpenModal={setIsOpenOrderModal}
           callback={modalHandler}
           width={"35%"}
-          height={"550px"}
+          height={"auto"}
         >
           <Form
             width={"100%"}
             height={"100%"}
             isModal={true}
-            setIsOpenModal={setIsOpenPersonalDataModal}
+            setIsOpenModal={setIsOpenOrderModal}
+            setIsOpenPersonalDataModal={setIsOpenPersonalDataModal}
+            setFormData={setFormData}
           />
         </Modal>
       )}

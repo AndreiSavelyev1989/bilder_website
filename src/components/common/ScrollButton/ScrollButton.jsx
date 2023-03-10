@@ -18,7 +18,8 @@ const Button = styled.button`
   background: ${COLOR.orange200};
   border: 3px solid ${COLOR.grey400};
   cursor: pointer;
-
+  z-index: 11;
+  
   &:hover {
     transition: 0.5s ease;
     border: 3px solid ${COLOR.grey200};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled, { keyframes } from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { CloseButton } from "./../common/CloseButton/CloseButton";
@@ -23,32 +23,34 @@ const Container = styled.div`
   animation: 0.3s linear ${modalDisplay};
   z-index: 11;
 
-  @media screen and (max-width: 860px) {
+  @media screen and (max-width: 900px) {
     width: ${({ isShowPersonalData }) => (isShowPersonalData ? "90%" : "65%")};
   }
 
-  @media screen and (max-width: 460px) {
+  @media screen and (max-width: 490px) {
     width: 95%;
   }
 `;
 
-export const Modal = ({
-  callback,
-  setIsOpenModal,
-  isOpenModal,
-  width,
-  height,
-  isShowPersonalData,
-  children,
-}) => {
-  return (
-    <Container
-      width={width}
-      height={height}
-      isShowPersonalData={isShowPersonalData}
-    >
-      <CloseButton callback={() => callback(isOpenModal, setIsOpenModal)} />
-      {children}
-    </Container>
-  );
-};
+export const Modal = memo(
+  ({
+    callback,
+    setIsOpenModal,
+    isOpenModal,
+    width,
+    height,
+    isShowPersonalData,
+    children,
+  }) => {
+    return (
+      <Container
+        width={width}
+        height={height}
+        isShowPersonalData={isShowPersonalData}
+      >
+        <CloseButton callback={() => callback(isOpenModal, setIsOpenModal)} />
+        {children}
+      </Container>
+    );
+  }
+);

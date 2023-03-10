@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../../assets/styles";
 
@@ -34,6 +34,7 @@ const InputField = styled.input`
   border-radius: 5px;
   border: 1px solid ${COLOR.grey100};
   outline: transparent;
+  background: ${({ isError }) => isError && COLOR.lightRed};
 
   &:hover,
   &:focus {
@@ -41,14 +42,23 @@ const InputField = styled.input`
   }
 `;
 
-export const Input = ({ label }) => {
-  return (
-    <Container>
-      <LabelWrapper>
-        <Asterisk>*</Asterisk>
-        <Label>{label}</Label>
-      </LabelWrapper>
-      <InputField />
-    </Container>
-  );
-};
+export const Input = forwardRef(
+  ({ title, onChange, onBlur, name, isRequired, type, isError }, ref) => {
+    return (
+      <Container>
+        <LabelWrapper>
+          {isRequired && <Asterisk>*</Asterisk>}
+          <Label>{title}</Label>
+        </LabelWrapper>
+        <InputField
+          type={type}
+          name={name}
+          ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
+          isError={isError}
+        />
+      </Container>
+    );
+  }
+);

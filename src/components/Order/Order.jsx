@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { Form } from "../Form/Form";
@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const DetailsWrapper = styled.div`
   width: 50%;
-  height: 100%;
+  height: 650px;
   background: ${COLOR.white};
 
   @media screen and (max-width: 1050px) {
@@ -28,8 +28,9 @@ const DetailsWrapper = styled.div`
 const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 50%;
-  height: 665px;
+  height: 650px;
   background: ${COLOR.orange100};
 
   @media screen and (max-width: 1050px) {
@@ -52,7 +53,7 @@ const Details = styled.div`
   width: 100%;
 `;
 
-export const Order = ({ setIsOpenModal }) => {
+export const Order = memo(({ setIsOpenModal, setFormData }) => {
   return (
     <Container>
       <DetailsWrapper>
@@ -71,8 +72,8 @@ export const Order = ({ setIsOpenModal }) => {
         </Details>
       </DetailsWrapper>
       <FormWrapper>
-        <Form setIsOpenModal={setIsOpenModal} />
+        <Form setIsOpenModal={setIsOpenModal} setFormData={setFormData} />
       </FormWrapper>
     </Container>
   );
-};
+});
