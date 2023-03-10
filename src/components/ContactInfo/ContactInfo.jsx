@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { MdPhoneInTalk } from "react-icons/md";
 import { COLOR } from "../../assets/styles";
@@ -94,7 +94,7 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-export const ContactInfo = () => {
+export const ContactInfo = memo(() => {
   return (
     <Container>
       <ContactWrapper>
@@ -113,4 +113,4 @@ export const ContactInfo = () => {
       <SocialLinks />
     </Container>
   );
-};
+});

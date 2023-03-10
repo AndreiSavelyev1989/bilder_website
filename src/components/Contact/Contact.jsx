@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -23,7 +23,7 @@ const StyledContact = styled.div`
   margin-left: 10px;
 `;
 
-export const Contact = ({ icon, contact }) => {
+export const Contact = memo(({ icon, contact }) => {
   return (
     <Container>
       <Wrapper>
@@ -32,4 +32,4 @@ export const Contact = ({ icon, contact }) => {
       </Wrapper>
     </Container>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "./components/Header/Header";
 import { NavBar } from "./components/NavBar/NavBar";
@@ -15,7 +15,7 @@ import { Comments } from "./components/Comments/Comments";
 import { Footer } from "./components/Footer/Footer";
 import { useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
-import { scrollToTop } from "./assets/helpers";
+import { executeScroll, scrollToTop } from "./assets/helpers";
 import { Form } from "./components/Form/Form";
 import { PersonalData } from "./components/PersonalData/PersonalData";
 
@@ -41,7 +41,7 @@ const Overlay = styled.div`
   z-index: 13;
 `;
 
-const App = () => {
+const App = memo(() => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
   const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
@@ -77,6 +77,7 @@ const App = () => {
         setIsOpenMenu={setIsOpenMenu}
         isOpenMenu={isOpenMenu}
         reference={reference}
+        executeScroll={executeScroll}
       />
       <NavBar
         setIsOpenMenu={setIsOpenMenu}
@@ -157,6 +158,6 @@ const App = () => {
       {scrollPosition > 200 && <ScrollButton callback={scrollToTop} />}
     </Container>
   );
-};
+});
 
 export default App;

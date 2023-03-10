@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { Button } from "../common/Button/Button";
 
@@ -69,7 +69,7 @@ const Title = styled.h3`
   font-size: 35px;
 `;
 
-export const Service = ({ title, services, photoSrc, setIsOpenModal }) => {
+export const Service = memo(({ title, services, photoSrc, setIsOpenModal }) => {
   return (
     <Container>
       <PhotoBlock photoSrc={photoSrc} />
@@ -92,4 +92,4 @@ export const Service = ({ title, services, photoSrc, setIsOpenModal }) => {
       </DescriptionBlockWrapper>
     </Container>
   );
-};
+});

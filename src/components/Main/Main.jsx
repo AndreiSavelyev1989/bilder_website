@@ -74,9 +74,7 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Main = forwardRef((props, ref) => {
-  const { reference, setIsOpenModal } = props;
-
+export const Main = forwardRef(({ reference, setIsOpenModal }, ref) => {
   return (
     <Container ref={ref}>
       <MainBlock>

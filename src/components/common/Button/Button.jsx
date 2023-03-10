@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../../assets/styles";
 import { VscRunAll } from "react-icons/vsc";
@@ -48,35 +48,37 @@ const StyledButton = styled.button`
   }
 `;
 
-export const Button = ({
-  title,
-  borderColor,
-  width,
-  height,
-  background,
-  margin,
-  hoverBackground,
-  color,
-  isShowAll = false,
-  callback,
-  type,
-  disabled,
-}) => {
-  return (
-    <StyledButton
-      borderColor={borderColor}
-      width={width}
-      height={height}
-      background={background}
-      margin={margin}
-      hoverBackground={hoverBackground}
-      color={color}
-      onClick={callback}
-      type={type}
-      disabled={disabled}
-    >
-      {title}
-      {isShowAll && <ShowAllIcon />}
-    </StyledButton>
-  );
-};
+export const Button = memo(
+  ({
+    title,
+    borderColor,
+    width,
+    height,
+    background,
+    margin,
+    hoverBackground,
+    color,
+    isShowAll = false,
+    callback,
+    type,
+    disabled,
+  }) => {
+    return (
+      <StyledButton
+        borderColor={borderColor}
+        width={width}
+        height={height}
+        background={background}
+        margin={margin}
+        hoverBackground={hoverBackground}
+        color={color}
+        onClick={callback}
+        type={type}
+        disabled={disabled}
+      >
+        {title}
+        {isShowAll && <ShowAllIcon />}
+      </StyledButton>
+    );
+  }
+);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 
@@ -33,7 +33,7 @@ const Paragraph = styled.p`
   margin: 10px 0;
 `;
 
-export const PersonalData = () => {
+export const PersonalData = memo(() => {
   return (
     <Container>
       <Title>Пользовательское соглашение</Title>
@@ -64,4 +64,4 @@ export const PersonalData = () => {
       </Paragraph>
     </Container>
   );
-};
+});

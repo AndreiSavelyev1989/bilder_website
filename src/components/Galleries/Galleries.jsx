@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import styled from "styled-components";
 import { galleries } from "../../assets/mockData";
 import { COLOR } from "../../assets/styles";
 import { Select } from "../common/Select/Select";
+import { Gallery } from "../Gallery/Gallery";
 
 const Container = styled.div`
   display: flex;
@@ -51,25 +52,6 @@ const GalleriesWrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
-  width: 330px;
-  height: 330px;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s ease;
-
-  &:hover {
-    transition: transform 0.8s ease;
-    transform: scale(1.5);
-  }
-`;
-
 const Title = styled.h2`
   width: 100%;
   margin: 0 0 0 70px;
@@ -88,7 +70,7 @@ const SelectWrapper = styled.div`
   }
 `;
 
-export const Galleries = ({ setIsImagePreview, setImagePreviewUrl }) => {
+export const Galleries = memo(({ setIsImagePreview, setImagePreviewUrl }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const getSelectedCategory = (value) => {
@@ -101,10 +83,8 @@ export const Galleries = ({ setIsImagePreview, setImagePreviewUrl }) => {
   };
 
   const renderImages = (arr) => {
-    return arr.map((el, index) => (
-      <ImageWrapper key={el.id} data-id={index}>
-        <Image src={el.url} alt="bas-relief" onClick={onImagePreviewClick} />
-      </ImageWrapper>
+    return arr.map((el) => (
+      <Gallery key={el.id} callback={onImagePreviewClick} src={el.url} />
     ));
   };
 
@@ -141,4 +121,4 @@ export const Galleries = ({ setIsImagePreview, setImagePreviewUrl }) => {
       </GalleriesWrapper>
     </Container>
   );
-};
+});

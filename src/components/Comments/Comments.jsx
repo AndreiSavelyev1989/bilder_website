@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, memo } from "react";
 import styled from "styled-components";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
@@ -77,17 +77,19 @@ const properties = {
   ),
 };
 
-export const Comments = forwardRef((props, ref) => {
-  return (
-    <Container ref={ref}>
-      <Title>Отзывы наших клиентов</Title>
-      <SlideWrapper>
-        <Slide {...properties} autoplay={false}>
-          {comments.map((el, index) => (
-            <Comment key={el.id} data={el} index={index} />
-          ))}
-        </Slide>
-      </SlideWrapper>
-    </Container>
-  );
-});
+export const Comments = memo(
+  forwardRef((props, ref) => {
+    return (
+      <Container ref={ref}>
+        <Title>Отзывы наших клиентов</Title>
+        <SlideWrapper>
+          <Slide {...properties} autoplay={false}>
+            {comments.map((el, index) => (
+              <Comment key={el.id} data={el} index={index} />
+            ))}
+          </Slide>
+        </SlideWrapper>
+      </Container>
+    );
+  })
+);

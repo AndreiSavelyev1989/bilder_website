@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { BiUpArrow } from "react-icons/bi";
 import styled from "styled-components";
 import { COLOR } from "../../../assets/styles";
@@ -19,7 +19,7 @@ const Button = styled.button`
   border: 3px solid ${COLOR.grey400};
   cursor: pointer;
   z-index: 11;
-  
+
   &:hover {
     transition: 0.5s ease;
     border: 3px solid ${COLOR.grey200};
@@ -32,10 +32,10 @@ const Button = styled.button`
   }
 `;
 
-export const ScrollButton = ({ callback }) => {
+export const ScrollButton = memo(({ callback }) => {
   return (
     <Button onClick={callback}>
       <Arrow />
     </Button>
   );
-};
+});

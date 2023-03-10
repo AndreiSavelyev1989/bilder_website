@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
 const ItemWrapper = styled.div`
@@ -49,7 +49,7 @@ const MessageOwner = styled.div`
   font-size: 24px;
 `;
 
-export const Comment = ({ data, index }) => {
+export const Comment = memo(({ data, index }) => {
   return (
     <ItemWrapper key={index} url={data.url} background={data.background}>
       <Item>
@@ -66,4 +66,4 @@ export const Comment = ({ data, index }) => {
       </Item>
     </ItemWrapper>
   );
-};
+});

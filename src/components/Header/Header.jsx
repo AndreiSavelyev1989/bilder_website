@@ -90,37 +90,37 @@ const ListItem = styled.li`
   }
 `;
 
-export const Header = forwardRef((props, ref) => {
-  const { setIsOpenMenu, isOpenMenu, reference } = props;
+export const Header = forwardRef(
+  ({ setIsOpenMenu, isOpenMenu, reference }, ref) => {
+    const onClickHandler = () => {
+      setIsOpenMenu(!isOpenMenu);
+    };
 
-  const onClickHandler = () => {
-    setIsOpenMenu(!isOpenMenu);
-  };
-
-  return (
-    <Container>
-      <HamburgerWrapper>
-        <Hamburger onClick={onClickHandler} />
-      </HamburgerWrapper>
-      <NavWrapper>
-        <List>
-          <ListItem onClick={() => executeScroll(reference.mainRef)}>
-            Главная
-          </ListItem>
-          <ListItem onClick={() => executeScroll(reference.servicesRef)}>
-            Услуги
-          </ListItem>
-          <ListItem onClick={() => executeScroll(reference.ourWorksRef)}>
-            Галерея
-          </ListItem>
-          <ListItem onClick={() => executeScroll(reference.commentsRef)}>
-            Отзывы
-          </ListItem>
-          <ListItem onClick={() => executeScroll(reference.contactsRef)}>
-            Контакты
-          </ListItem>
-        </List>
-      </NavWrapper>
-    </Container>
-  );
-});
+    return (
+      <Container>
+        <HamburgerWrapper>
+          <Hamburger onClick={onClickHandler} />
+        </HamburgerWrapper>
+        <NavWrapper>
+          <List>
+            <ListItem onClick={() => executeScroll(reference.mainRef)}>
+              Главная
+            </ListItem>
+            <ListItem onClick={() => executeScroll(reference.servicesRef)}>
+              Услуги
+            </ListItem>
+            <ListItem onClick={() => executeScroll(reference.ourWorksRef)}>
+              Галерея
+            </ListItem>
+            <ListItem onClick={() => executeScroll(reference.commentsRef)}>
+              Отзывы
+            </ListItem>
+            <ListItem onClick={() => executeScroll(reference.contactsRef)}>
+              Контакты
+            </ListItem>
+          </List>
+        </NavWrapper>
+      </Container>
+    );
+  }
+);

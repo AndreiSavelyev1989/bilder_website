@@ -12,7 +12,7 @@ const Container = styled.div`
   right: ${({ isOpenMenu }) => (isOpenMenu ? "0" : "-250px")};
   background: ${COLOR.orange200};
   transition: ease 1s;
-  z-index: 11;
+  z-index: 14;
 `;
 
 const CloseWrapper = styled.div`
@@ -40,24 +40,21 @@ const NavBarWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const NavBar = forwardRef((props, ref) => {
-  const { setIsOpenMenu, isOpenMenu, reference } = props;
+export const NavBar = forwardRef(
+  ({ setIsOpenMenu, isOpenMenu, reference }, ref) => {
+    const onClickHandler = () => {
+      setIsOpenMenu(false);
+    };
 
-  const onClickHandler = () => {
-    setIsOpenMenu(false);
-  };
-
-  return (
-    <Container isOpenMenu={isOpenMenu}>
-      <NavBarWrapper>
-        <CloseWrapper>
-          <Close onClick={onClickHandler} />
-        </CloseWrapper>
-        <Nav
-          reference={reference}
-          onOpenMenuHandler={onClickHandler}
-        />
-      </NavBarWrapper>
-    </Container>
-  );
-});
+    return (
+      <Container isOpenMenu={isOpenMenu}>
+        <NavBarWrapper>
+          <CloseWrapper>
+            <Close onClick={onClickHandler} />
+          </CloseWrapper>
+          <Nav reference={reference} onOpenMenuHandler={onClickHandler} />
+        </NavBarWrapper>
+      </Container>
+    );
+  }
+);

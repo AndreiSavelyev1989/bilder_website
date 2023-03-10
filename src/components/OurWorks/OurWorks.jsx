@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, memo } from "react";
 import styled from "styled-components";
 import { Button } from "../common/Button/Button";
 import { Slideshow } from "../Slideshow/Slideshow";
@@ -37,29 +37,29 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
 `;
 
-export const OurWorks = forwardRef((props, ref) => {
-  const { isOpenModal, setIsOpenModal } = props;
+export const OurWorks = memo(
+  forwardRef(({ isOpenModal, setIsOpenModal }, ref) => {
+    const modalHandler = () => {
+      setIsOpenModal(!isOpenModal);
+    };
 
-  const modalHandler = () => {
-    setIsOpenModal(!isOpenModal);
-  };
-
-  return (
-    <Container ref={ref}>
-      <Title>Наши работы</Title>
-      <WorksWrapper>
-        <Slideshow />
-      </WorksWrapper>
-      <ButtonWrapper>
-        <Button
-          title={`Показать все работы `}
-          height={"54px"}
-          width={"350px"}
-          isShowAll={true}
-          background={COLOR.grey100}
-          callback={modalHandler}
-        />
-      </ButtonWrapper>
-    </Container>
-  );
-});
+    return (
+      <Container ref={ref}>
+        <Title>Наши работы</Title>
+        <WorksWrapper>
+          <Slideshow />
+        </WorksWrapper>
+        <ButtonWrapper>
+          <Button
+            title={`Показать все работы `}
+            height={"54px"}
+            width={"350px"}
+            isShowAll={true}
+            background={COLOR.grey100}
+            callback={modalHandler}
+          />
+        </ButtonWrapper>
+      </Container>
+    );
+  })
+);

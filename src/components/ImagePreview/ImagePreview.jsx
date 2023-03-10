@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { CloseButton } from "../common/CloseButton/CloseButton";
@@ -13,7 +13,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   background: ${COLOR.grey400};
-  z-index: 12;
+  z-index: 14;
 `;
 
 const ImageWrapper = styled.div`
@@ -35,7 +35,8 @@ const Image = styled.img`
   height: 100%;
 `;
 
-export const ImagePreview = ({ setIsImagePreview, imagePreviewUrl }) => {
+export const ImagePreview = memo(({ setIsImagePreview, imagePreviewUrl }) => {
+  console.log("render ImagePreview");
   const onCloseClickHandler = () => {
     setIsImagePreview(false);
   };
@@ -48,4 +49,4 @@ export const ImagePreview = ({ setIsImagePreview, imagePreviewUrl }) => {
       </ImageWrapper>
     </Container>
   );
-};
+});

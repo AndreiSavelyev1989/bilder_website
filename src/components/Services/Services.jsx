@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, memo } from "react";
 import styled from "styled-components";
 import { Service } from "../Service/Service";
 import { services } from "./../../assets/mockData/index";
@@ -30,22 +30,23 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Services = forwardRef((props, ref) => {
-  const { setIsOpenModal } = props;
-  return (
-    <Container ref={ref}>
-      <Title>Наши услуги</Title>
-      <Wrapper>
-        {services.map((el) => (
-          <Service
-            key={el.id}
-            title={el.title}
-            services={el.services}
-            photoSrc={el.src}
-            setIsOpenModal={setIsOpenModal}
-          />
-        ))}
-      </Wrapper>
-    </Container>
-  );
-});
+export const Services = memo(
+  forwardRef(({ setIsOpenModal }, ref) => {
+    return (
+      <Container ref={ref}>
+        <Title>Наши услуги</Title>
+        <Wrapper>
+          {services.map((el) => (
+            <Service
+              key={el.id}
+              title={el.title}
+              services={el.services}
+              photoSrc={el.src}
+              setIsOpenModal={setIsOpenModal}
+            />
+          ))}
+        </Wrapper>
+      </Container>
+    );
+  })
+);
