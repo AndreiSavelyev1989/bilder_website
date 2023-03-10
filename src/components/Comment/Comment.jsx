@@ -53,7 +53,7 @@ export const Comment = memo(({ data, index }) => {
   return (
     <ItemWrapper key={index} url={data.url} background={data.background}>
       <Item>
-        <Image src={data.url} />
+        <Image src={data.url} alt={"comment-owner"}/>
         <MessageWrapper>
           <Message>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio

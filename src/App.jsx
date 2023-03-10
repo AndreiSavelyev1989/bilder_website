@@ -18,6 +18,7 @@ import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { executeScroll, scrollToTop } from "./assets/helpers";
 import { Form } from "./components/Form/Form";
 import { PersonalData } from "./components/PersonalData/PersonalData";
+// import emailjs from "@emailjs/browser";
 
 const Container = styled.div`
   position: relative;
@@ -48,7 +49,10 @@ const App = memo(() => {
   const [isOpenPersonalDataModal, setIsOpenPersonalDataModal] = useState(false);
   const [isImagePreview, setIsImagePreview] = useState(false);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
-  const [formData, setFormData] = useState(null);
+  const [isSentMessageSuccess, setIsSentMessageSuccess] = useState(false);
+  const [isSentMessageError, setIsSentMessageError] = useState(false);
+  // console.log("isSentMessageSuccess", isSentMessageSuccess);
+  // console.log("isSentMessageError", isSentMessageError);
   const scrollPosition = useScrollYPosition();
 
   const mainRef = useRef(null);
@@ -68,8 +72,6 @@ const App = memo(() => {
   const modalHandler = (isOpen, setIsOpen) => {
     setIsOpen(!isOpen);
   };
-
-  // console.log("formData", formData);
 
   return (
     <Container>
@@ -98,7 +100,8 @@ const App = memo(() => {
       />
       <Order
         setIsOpenModal={setIsOpenPersonalDataModal}
-        setFormData={setFormData}
+        setIsSentMessageError={setIsSentMessageError}
+        setIsSentMessageSuccess={setIsSentMessageSuccess}
       />
       <Comments ref={commentsRef} />
       <Footer ref={contactsRef} />
@@ -134,7 +137,8 @@ const App = memo(() => {
             isModal={true}
             setIsOpenModal={setIsOpenOrderModal}
             setIsOpenPersonalDataModal={setIsOpenPersonalDataModal}
-            setFormData={setFormData}
+            setIsSentMessageError={setIsSentMessageError}
+            setIsSentMessageSuccess={setIsSentMessageSuccess}
           />
         </Modal>
       )}

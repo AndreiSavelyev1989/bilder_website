@@ -4,6 +4,7 @@ import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { forwardRef } from "react";
 import { executeScroll } from "../../assets/helpers";
+import { main } from "../../assets/images";
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const Container = styled.div`
   width: 100%;
   height: 80vh;
   background-attachment: fixed;
-  background-image: url("https://lp3-gr-apartments-repair-decoration.oml.ru/d/3890686/d/1512555.jpg");
+  background-image: url(${main});
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;

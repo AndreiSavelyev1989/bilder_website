@@ -5,6 +5,8 @@ import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { Input } from "../common/Input/Input";
 import { Checkbox } from "./../common/Checkbox/Checkbox";
+import emailjs from "@emailjs/browser";
+import { sendEmail } from "./../../assets/helpers/index";
 
 const Container = styled.div`
   display: flex;
@@ -63,7 +65,8 @@ export const Form = memo(
     isModal,
     setIsOpenModal,
     setIsOpenPersonalDataModal,
-    setFormData,
+    setIsSentMessageError,
+    setIsSentMessageSuccess,
   }) => {
     const {
       register,
@@ -80,21 +83,23 @@ export const Form = memo(
       },
     });
 
+    const renderError = (isError, errorMsg) => {
+      return <Error isVisible={isError}>{isError ? errorMsg : ""}</Error>;
+    };
+
     const onSubmit = (data) => {
       if (isModal) {
         setIsOpenModal(false);
       }
-      setFormData(data);
+
       reset({
         email: "",
         name: "",
         phoneNumber: "",
         isPrivateDataChecked: false,
       });
-    };
 
-    const renderError = (isError, errorMsg) => {
-      return <Error isVisible={isError}>{isError ? errorMsg : ""}</Error>;
+      sendEmail(data, setIsSentMessageSuccess, setIsSentMessageError);
     };
 
     return (
@@ -103,6 +108,7 @@ export const Form = memo(
         <FormWrapper onSubmit={handleSubmit(onSubmit)}>
           <InputWrapper>
             <Input
+              inputId={"name"}
               title={"Имя"}
               {...register("name", {
                 required: "Имя обязательное для заполнения",
@@ -114,6 +120,7 @@ export const Form = memo(
           </InputWrapper>
           <InputWrapper>
             <Input
+              inputId={"tel"}
               type={"tel"}
               title={"Телефон"}
               {...register("phoneNumber", {
@@ -129,6 +136,7 @@ export const Form = memo(
           </InputWrapper>
           <InputWrapper>
             <Input
+              inputId={"email"}
               title={"E-Mail"}
               {...register("email", {
                 pattern: {

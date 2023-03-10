@@ -61,13 +61,25 @@ const Link = styled.a`
 export const SocialLinks = ({ width, small }) => {
   return (
     <SocialLinksWrapper width={width}>
-      <Link target={"_blank"} href={"https://www.instagram.com/"}>
+      <Link
+        target={"_blank"}
+        href={"https://www.instagram.com/"}
+        aria-label="Go to instagram social network"
+      >
         <InstagramIcon small={small} />
       </Link>
-      <Link target={"_blank"} href={"https://ok.ru/"}>
+      <Link
+        target={"_blank"}
+        href={"https://ok.ru/"}
+        aria-label="Go to odnoklasniki social network"
+      >
         <OdnoklassnikiIcon small={small} />
       </Link>
-      <Link target={"_blank"} href={"https://vk.com/"}>
+      <Link
+        target={"_blank"}
+        href={"https://vk.com/"}
+        aria-label="Go to vKontakte social network"
+      >
         <VkontakteIcon small={small} />
       </Link>
     </SocialLinksWrapper>

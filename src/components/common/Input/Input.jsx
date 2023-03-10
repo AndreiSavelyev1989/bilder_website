@@ -19,7 +19,7 @@ const LabelWrapper = styled.div`
 const Asterisk = styled.span`
   color: red;
 `;
-const Label = styled.span`
+const Label = styled.label`
   margin-left: 5px;
   font-weight: 600;
   font-size: 18px;
@@ -43,14 +43,18 @@ const InputField = styled.input`
 `;
 
 export const Input = forwardRef(
-  ({ title, onChange, onBlur, name, isRequired, type, isError }, ref) => {
+  (
+    { title, onChange, onBlur, name, isRequired, type, isError, inputId },
+    ref
+  ) => {
     return (
       <Container>
         <LabelWrapper>
           {isRequired && <Asterisk>*</Asterisk>}
-          <Label>{title}</Label>
+          <Label htmlFor={inputId}>{title}</Label>
         </LabelWrapper>
         <InputField
+          id={inputId}
           type={type}
           name={name}
           ref={ref}
