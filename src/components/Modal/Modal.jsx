@@ -21,7 +21,7 @@ const Container = styled.div`
   border-radius: 10px;
   background: ${COLOR.white};
   animation: 0.3s linear ${modalDisplay};
-  z-index: 11;
+  z-index: 13;
 
   @media screen and (max-width: 900px) {
     width: ${({ isShowPersonalData }) => (isShowPersonalData ? "90%" : "65%")};

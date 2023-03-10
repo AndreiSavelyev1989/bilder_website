@@ -38,7 +38,7 @@ const Overlay = styled.div`
   height: 100%;
   background: ${COLOR.grey100};
   opacity: 0.5;
-  z-index: 10;
+  z-index: 13;
 `;
 
 const App = () => {
