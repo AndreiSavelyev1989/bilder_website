@@ -8,9 +8,14 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 const Container = styled.div`
   width: 90%;
+  height: 450px;
 
   @media screen and (max-width: 500px) {
     height: 400px;
+  }
+
+  @media screen and (max-height: 500px) {
+    height: 350px;
   }
 `;
 
@@ -18,7 +23,7 @@ const Image = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 600px;
+  height: 450px;
   background-image: ${({ url }) => `url(${url})`};
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -27,6 +32,9 @@ const Image = styled.div`
 
   @media screen and (max-width: 500px) {
     height: 400px;
+  }
+  @media screen and (max-height: 500px) {
+    height: 350px;
   }
 `;
 

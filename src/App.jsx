@@ -86,9 +86,8 @@ const App = memo(() => {
         isOpenMenu={isOpenMenu}
         reference={reference}
       />
-      <ContactInfo />
+      <ContactInfo/>
       <Main
-        ref={mainRef}
         reference={reference}
         setIsOpenModal={setIsOpenOrderModal}
       />
@@ -116,6 +115,8 @@ const App = memo(() => {
           isOpenModal={isOpenGalleryModal}
           setIsOpenModal={setIsOpenGalleryModal}
           callback={modalHandler}
+          height={"80%"}
+          width={"90%"}
         >
           <Galleries
             setIsImagePreview={setIsImagePreview}
@@ -129,7 +130,7 @@ const App = memo(() => {
           setIsOpenModal={setIsOpenOrderModal}
           callback={modalHandler}
           width={"35%"}
-          height={"auto"}
+          height={"80%"}
         >
           <Form
             width={"100%"}
@@ -148,6 +149,7 @@ const App = memo(() => {
           setIsOpenModal={setIsOpenPersonalDataModal}
           callback={modalHandler}
           width="90%"
+          height="85%"
           isShowPersonalData={true}
         >
           <PersonalData />

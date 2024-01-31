@@ -15,7 +15,7 @@ const Container = styled.div`
   justify-content: center;
   width: ${({ width }) => width || "80%"};
   height: ${({ height }) => height || "95%"};
-  top: 50%;
+  top: calc(50% + 32.5px);
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;

@@ -46,6 +46,10 @@ const StyledButton = styled.button`
     width: 100%;
     margin: 0;
   }
+
+  /* @media screen and (max-height: 500px) {
+    height: 35px;
+  } */
 `;
 
 export const Button = memo(

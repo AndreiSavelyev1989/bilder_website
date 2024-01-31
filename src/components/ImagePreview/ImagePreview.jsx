@@ -13,13 +13,13 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   background: ${COLOR.grey400};
-  z-index: 14;
+  z-index: 1000;
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   max-width: 1280px;
-  height: 700px;
+  max-height: 600px;
 
   @media screen and (max-width: 1300px) {
     width: 75%;
@@ -28,11 +28,19 @@ const ImageWrapper = styled.div`
   @media screen and (max-width: 750px) {
     height: 50%;
   }
+
+  @media screen and (max-height: 500px) {
+    max-height: 450px;
+  }
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 100%;
+  max-height: 600px;
+
+  @media screen and (max-height: 500px) {
+    max-height: 450px;
+  }
 `;
 
 export const ImagePreview = memo(({ setIsImagePreview, imagePreviewUrl }) => {

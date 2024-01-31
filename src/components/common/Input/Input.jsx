@@ -40,6 +40,10 @@ const InputField = styled.input`
   &:focus {
     background: ${COLOR.orange80};
   }
+
+  /* @media screen and (max-height: 500px) {
+    height: 35px;
+  } */
 `;
 
 export const Input = forwardRef(

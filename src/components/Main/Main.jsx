@@ -24,7 +24,7 @@ const MainBlock = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 45%;
+  width: 50%;
   height: 85%;
   background: ${COLOR.white};
   opacity: 0.9;
@@ -54,6 +54,7 @@ const Title = styled.h1`
   min-width: 200px;
   font-weight: 700;
   font-size: 76px;
+  margin: 0;
 
   @media screen and (max-width: 1100px) {
     font-size: 60px;
@@ -75,9 +76,9 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Main = forwardRef(({ reference, setIsOpenModal }, ref) => {
+export const Main = ({ reference, setIsOpenModal })=> {
   return (
-    <Container ref={ref}>
+    <Container>
       <MainBlock>
         <TitleWrapper>
           <Title>Откройте дверь в свою новую квартиру</Title>
@@ -99,4 +100,4 @@ export const Main = forwardRef(({ reference, setIsOpenModal }, ref) => {
       </MainBlock>
     </Container>
   );
-});
+};

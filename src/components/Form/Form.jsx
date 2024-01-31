@@ -27,28 +27,52 @@ const Container = styled.div`
     border: ${({ isModal }) =>
       isModal ? "none" : `1px solid ${COLOR.grey100}`};
   }
+
+  @media screen and (max-height: 500px) {
+    height: 405px;
+    gap: 0px;
+  }
 `;
 
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 8px;
   width: 90%;
+
+  /* @media screen and (max-height: 500px) {
+    gap: 5px;
+  } */
 `;
 
 const Title = styled.h2`
   margin: 20px 0 0 0;
   font-size: 32px;
+
+  @media screen and (max-height: 500px) {
+    height: 405px;
+    margin-top: 10px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
   width: 100%;
   margin-bottom: 20px;
+  @media screen and (max-height: 500px) {
+    button {
+      height: 35px;
+    }
+  }
 `;
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (max-height: 500px) {
+    input {
+      height: 35px;
+    }
+  }
 `;
 
 const Error = styled.p`

@@ -40,6 +40,9 @@ const FormWrapper = styled.div`
   @media screen and (max-width: 360px) {
     background: none;
   }
+  @media screen and (max-height: 500px) {
+    height: 525px;
+  }
 `;
 
 const Title = styled.h2`

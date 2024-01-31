@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
-import { executeScroll } from './../../assets/helpers';
+import { executeScroll, scrollToTop } from './../../assets/helpers';
 
 const List = styled.ul`
   display: flex;
@@ -51,7 +51,7 @@ export const Nav = forwardRef((props, ref) => {
 
   return (
     <List>
-      <ListItem onClick={() => onClickHandler(reference.mainRef)}>
+      <ListItem onClick={() => scrollToTop()}>
         Главная
       </ListItem>
       <ListItem onClick={() => onClickHandler(reference.servicesRef)}>

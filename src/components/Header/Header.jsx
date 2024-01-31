@@ -2,15 +2,19 @@ import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { executeScroll } from "./../../assets/helpers";
+import { executeScroll, scrollToTop } from "./../../assets/helpers";
 
 const Container = styled.div`
+  position: fixed;
+  top:0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 65px;
   background: ${COLOR.orange200};
+  z-index: 100;
 
   @media screen and (max-width: 700px) {
     justify-content: flex-end;
@@ -103,7 +107,7 @@ export const Header = forwardRef(
         </HamburgerWrapper>
         <NavWrapper>
           <List>
-            <ListItem onClick={() => executeScroll(reference.mainRef)}>
+            <ListItem onClick={() => scrollToTop()}>
               Главная
             </ListItem>
             <ListItem onClick={() => executeScroll(reference.servicesRef)}>

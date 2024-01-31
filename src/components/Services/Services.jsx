@@ -30,10 +30,17 @@ const Wrapper = styled.div`
   }
 `;
 
+const RefBlock = styled.div`
+  height: 20px;
+  width: 100%;
+`;
+
 export const Services = memo(
   forwardRef(({ setIsOpenModal }, ref) => {
+
     return (
-      <Container ref={ref}>
+      <Container>
+        <RefBlock ref={ref} />
         <Title>Наши услуги</Title>
         <Wrapper>
           {services.map((el) => (

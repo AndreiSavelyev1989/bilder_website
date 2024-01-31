@@ -37,6 +37,11 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
 `;
 
+const RefBlock = styled.div`
+  height: 20px;
+  width: 100%;
+`;
+
 export const OurWorks = memo(
   forwardRef(({ isOpenModal, setIsOpenModal }, ref) => {
     const modalHandler = () => {
@@ -44,7 +49,8 @@ export const OurWorks = memo(
     };
 
     return (
-      <Container ref={ref}>
+      <Container>
+        <RefBlock ref={ref} />
         <Title>Наши работы</Title>
         <WorksWrapper>
           <Slideshow />

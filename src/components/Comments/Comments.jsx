@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const Title = styled.h2`
   width: 100%;
-  margin: 60px 0 0 0;
+  margin: 40px 0 0 0;
   text-align: center;
   font-size: 55px;
 `;
@@ -77,10 +77,16 @@ const properties = {
   ),
 };
 
+const RefBlock = styled.div`
+  height: 20px;
+  width: 100%;
+`;
+
 export const Comments = memo(
   forwardRef((props, ref) => {
     return (
-      <Container ref={ref}>
+      <Container>
+        <RefBlock ref={ref} />
         <Title>Отзывы наших клиентов</Title>
         <SlideWrapper>
           <Slide {...properties} autoplay={false}>

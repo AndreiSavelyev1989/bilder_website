@@ -14,7 +14,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
+  top: 0px;
   right: -40px;
   width: 30px;
   height: 30px;
@@ -38,6 +38,9 @@ const Button = styled.button`
   @media screen and (max-width: 460px) {
     top: 10px;
     right: 10px;
+  }
+  @media screen and (max-height: 500px) {
+    top: -6px;
   }
 `;
 

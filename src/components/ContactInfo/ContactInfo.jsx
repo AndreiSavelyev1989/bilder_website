@@ -11,6 +11,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 125px;
+  margin-top: 65px;
 
   @media screen and (max-width: 700px) {
     height: auto;

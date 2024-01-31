@@ -2,8 +2,8 @@ import React, { memo } from "react";
 import styled from "styled-components";
 
 const ImageWrapper = styled.div`
-  width: 330px;
-  height: 330px;
+  width: 250px;
+  height: 250px;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
