@@ -1,8 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
-import { forwardRef } from "react";
 import { executeScroll } from "../../assets/helpers";
 import { main } from "../../assets/images";
 
@@ -10,7 +9,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 80vh;
+  height: 72vh;
   background-attachment: fixed;
   background-image: url(${main});
   background-position: 50% 50%;
@@ -53,7 +52,7 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
   min-width: 200px;
   font-weight: 700;
-  font-size: 76px;
+  font-size: 70px;
   margin: 0;
 
   @media screen and (max-width: 1100px) {
@@ -61,6 +60,10 @@ const Title = styled.h1`
   }
 
   @media screen and (max-width: 400px) {
+    font-size: 50px;
+  }
+
+  @media screen and (max-height: 500px) {
     font-size: 50px;
   }
 `;
@@ -76,7 +79,7 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Main = ({ reference, setIsOpenModal })=> {
+export const Main = memo(({ reference, setIsOpenModal }) => {
   return (
     <Container>
       <MainBlock>
@@ -100,4 +103,4 @@ export const Main = ({ reference, setIsOpenModal })=> {
       </MainBlock>
     </Container>
   );
-};
+});

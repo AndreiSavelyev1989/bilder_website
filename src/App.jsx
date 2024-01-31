@@ -130,7 +130,7 @@ const App = memo(() => {
           setIsOpenModal={setIsOpenOrderModal}
           callback={modalHandler}
           width={"35%"}
-          height={"80%"}
+          height={"auto"}
         >
           <Form
             width={"100%"}
