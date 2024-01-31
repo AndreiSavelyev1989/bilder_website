@@ -1,13 +1,14 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Nav } from "../Nav/Nav";
 import { COLOR } from "../../assets/styles";
 import { RxCross1 } from "react-icons/rx";
+import { useMarginTop } from "../../hooks";
 
 const Container = styled.div`
   position: absolute;
   width: 200px;
-  height: 100vh;
+  height: 100%;
   top: 0;
   right: ${({ isOpenMenu }) => (isOpenMenu ? "0" : "-250px")};
   background: ${COLOR.orange200};
@@ -42,9 +43,11 @@ const NavBarWrapper = styled.div`
 
 export const NavBar = forwardRef(
   ({ setIsOpenMenu, isOpenMenu, reference }, ref) => {
-    const onClickHandler = () => {
+    const { marginTop } = useMarginTop(onClickHandler);
+
+    function onClickHandler() {
       setIsOpenMenu(false);
-    };
+    }
 
     return (
       <Container isOpenMenu={isOpenMenu}>
@@ -52,7 +55,11 @@ export const NavBar = forwardRef(
           <CloseWrapper>
             <Close onClick={onClickHandler} />
           </CloseWrapper>
-          <Nav reference={reference} onOpenMenuHandler={onClickHandler} />
+          <Nav
+            reference={reference}
+            onOpenMenuHandler={onClickHandler}
+            marginTop={marginTop}
+          />
         </NavBarWrapper>
       </Container>
     );

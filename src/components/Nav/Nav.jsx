@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
-import { executeScroll, scrollToTop } from './../../assets/helpers';
+import { executeScroll, scrollToTop } from "./../../assets/helpers";
 
 const List = styled.ul`
   display: flex;
@@ -22,6 +22,7 @@ const List = styled.ul`
     align-items: flex-start;
     padding: 0 0 0 30px;
   }
+  margin-top: ${({ marginTop }) => `${marginTop}px`};
 `;
 
 const ListItem = styled.li`
@@ -41,31 +42,34 @@ const ListItem = styled.li`
   }
 `;
 
-export const Nav = forwardRef((props, ref) => {
-  const { onOpenMenuHandler, reference } = props;
+export const Nav = forwardRef(
+  ({ onOpenMenuHandler, reference, marginTop }, ref) => {
+    const onClickHandler = (ref) => {
+      onOpenMenuHandler();
+      executeScroll(ref);
+    };
 
-  const onClickHandler = (ref) => {
-    onOpenMenuHandler();
-    executeScroll(ref);
-  };
+    const onMainBlockNavHandler = () => {
+      scrollToTop();
+      onOpenMenuHandler();
+    };
 
-  return (
-    <List>
-      <ListItem onClick={() => scrollToTop()}>
-        Главная
-      </ListItem>
-      <ListItem onClick={() => onClickHandler(reference.servicesRef)}>
-        Услуги
-      </ListItem>
-      <ListItem onClick={() => onClickHandler(reference.ourWorksRef)}>
-        Галерея
-      </ListItem>
-      <ListItem onClick={() => onClickHandler(reference.commentsRef)}>
-        Отзывы
-      </ListItem>
-      <ListItem onClick={() => onClickHandler(reference.contactsRef)}>
-        Контакты
-      </ListItem>
-    </List>
-  );
-});
+    return (
+      <List marginTop={marginTop}>
+        <ListItem onClick={onMainBlockNavHandler}>Главная</ListItem>
+        <ListItem onClick={() => onClickHandler(reference.servicesRef)}>
+          Услуги
+        </ListItem>
+        <ListItem onClick={() => onClickHandler(reference.ourWorksRef)}>
+          Галерея
+        </ListItem>
+        <ListItem onClick={() => onClickHandler(reference.commentsRef)}>
+          Отзывы
+        </ListItem>
+        <ListItem onClick={() => onClickHandler(reference.contactsRef)}>
+          Контакты
+        </ListItem>
+      </List>
+    );
+  }
+);
