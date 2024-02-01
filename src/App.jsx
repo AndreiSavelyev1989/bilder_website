@@ -7,18 +7,12 @@ import { ContactInfo } from "./components/ContactInfo/ContactInfo";
 import { Main } from "./components/Main/Main";
 import { Services } from "./components/Services/Services";
 import { OurWorks } from "./components/OurWorks/OurWorks";
-import { Modal } from "./components/Modal/Modal";
-import { Galleries } from "./components/Galleries/Galleries";
-import { ImagePreview } from "./components/ImagePreview/ImagePreview";
 import { Order } from "./components/Order/Order";
-import { Comments } from "./components/Comments/Comments";
+import { Feedback } from "./components/Feedback/Feedback";
 import { Footer } from "./components/Footer/Footer";
 import { useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { executeScroll, scrollToTop } from "./assets/helpers";
-import { Form } from "./components/Form/Form";
-import { PersonalData } from "./components/PersonalData/PersonalData";
-// import emailjs from "@emailjs/browser";
 
 const Container = styled.div`
   position: relative;
@@ -31,28 +25,8 @@ const Container = styled.div`
   overflow-x: hidden;
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: ${COLOR.grey100};
-  opacity: 0.5;
-  z-index: 13;
-`;
-
 const App = memo(() => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [isOpenGalleryModal, setIsOpenGalleryModal] = useState(false);
-  const [isOpenOrderModal, setIsOpenOrderModal] = useState(false);
-  const [isOpenPersonalDataModal, setIsOpenPersonalDataModal] = useState(false);
-  const [isImagePreview, setIsImagePreview] = useState(false);
-  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
-  const [isSentMessageSuccess, setIsSentMessageSuccess] = useState(false);
-  const [isSentMessageError, setIsSentMessageError] = useState(false);
-  // console.log("isSentMessageSuccess", isSentMessageSuccess);
-  // console.log("isSentMessageError", isSentMessageError);
   const scrollPosition = useScrollYPosition();
 
   const mainRef = useRef(null);
@@ -69,10 +43,6 @@ const App = memo(() => {
     contactsRef: contactsRef,
   };
 
-  const modalHandler = (isOpen, setIsOpen) => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <Container>
       <Header
@@ -86,81 +56,13 @@ const App = memo(() => {
         isOpenMenu={isOpenMenu}
         reference={reference}
       />
-      <ContactInfo/>
-      <Main
-        reference={reference}
-        setIsOpenModal={setIsOpenOrderModal}
-      />
-      <Services ref={servicesRef} setIsOpenModal={setIsOpenOrderModal} />
-      <OurWorks
-        isOpenModal={isOpenGalleryModal}
-        setIsOpenModal={setIsOpenGalleryModal}
-        ref={ourWorksRef}
-      />
-      <Order
-        setIsOpenModal={setIsOpenPersonalDataModal}
-        setIsSentMessageError={setIsSentMessageError}
-        setIsSentMessageSuccess={setIsSentMessageSuccess}
-      />
-      <Comments ref={commentsRef} />
+      <ContactInfo />
+      <Main reference={reference} />
+      <Services ref={servicesRef} />
+      <OurWorks ref={ourWorksRef} />
+      <Order />
+      <Feedback ref={commentsRef} />
       <Footer ref={contactsRef} />
-      {isOpenGalleryModal ||
-      isOpenOrderModal ||
-      isOpenPersonalDataModal ||
-      isOpenMenu ? (
-        <Overlay />
-      ) : null}
-      {isOpenGalleryModal && (
-        <Modal
-          isOpenModal={isOpenGalleryModal}
-          setIsOpenModal={setIsOpenGalleryModal}
-          callback={modalHandler}
-          height={"80%"}
-          width={"90%"}
-        >
-          <Galleries
-            setIsImagePreview={setIsImagePreview}
-            setImagePreviewUrl={setImagePreviewUrl}
-          />
-        </Modal>
-      )}
-      {isOpenOrderModal && (
-        <Modal
-          isOpenModal={isOpenOrderModal}
-          setIsOpenModal={setIsOpenOrderModal}
-          callback={modalHandler}
-          width={"35%"}
-          height={"auto"}
-        >
-          <Form
-            width={"100%"}
-            height={"100%"}
-            isModal={true}
-            setIsOpenModal={setIsOpenOrderModal}
-            setIsOpenPersonalDataModal={setIsOpenPersonalDataModal}
-            setIsSentMessageError={setIsSentMessageError}
-            setIsSentMessageSuccess={setIsSentMessageSuccess}
-          />
-        </Modal>
-      )}
-      {isOpenPersonalDataModal && (
-        <Modal
-          isOpenModal={isOpenPersonalDataModal}
-          setIsOpenModal={setIsOpenPersonalDataModal}
-          callback={modalHandler}
-          width="90%"
-          height="85%"
-          isShowPersonalData={true}
-        >
-          <PersonalData />
-        </Modal>
-      )}
-      {isImagePreview && (
-        <ImagePreview
-          setIsImagePreview={setIsImagePreview}
-          imagePreviewUrl={imagePreviewUrl}
-        />
-      )}
       {scrollPosition > 200 && <ScrollButton callback={scrollToTop} />}
     </Container>
   );

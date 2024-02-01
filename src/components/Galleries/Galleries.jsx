@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { galleries } from "../../assets/mockData";
 import { COLOR } from "../../assets/styles";
 import { Select } from "../common/Select/Select";
-import { Gallery } from "../Gallery/Gallery";
+import { GalleryItem } from "../GalleryItem/GalleryItem";
+import { createPortal } from "react-dom";
+import { useImagePreview } from "../../hooks";
 
 const Container = styled.div`
   display: flex;
@@ -64,27 +66,23 @@ const Title = styled.h2`
 `;
 
 const SelectWrapper = styled.div`
-  margin-right: 70px;
+  margin-right: 51px;
   @media screen and (max-width: 871px) {
     margin: 0;
   }
 `;
 
-export const Galleries = memo(({ setIsImagePreview, setImagePreviewUrl }) => {
+export const Galleries = memo(() => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const { displayImagePreview, onImagePreviewClick } = useImagePreview();
 
   const getSelectedCategory = (value) => {
     setSelectedCategory(value);
   };
 
-  const onImagePreviewClick = (event) => {
-    setImagePreviewUrl(event.target.src);
-    setIsImagePreview(true);
-  };
-
   const renderImages = (arr) => {
     return arr.map((el) => (
-      <Gallery key={el.id} callback={onImagePreviewClick} src={el.url} />
+      <GalleryItem key={el.id} callback={onImagePreviewClick} src={el.url} />
     ));
   };
 
@@ -119,6 +117,7 @@ export const Galleries = memo(({ setIsImagePreview, setImagePreviewUrl }) => {
             ])
           : null}
       </GalleriesWrapper>
+      {createPortal(displayImagePreview(), document.body)}
     </Container>
   );
 });

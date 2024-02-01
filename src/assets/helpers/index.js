@@ -5,7 +5,12 @@ export const scrollToTop = () => window.scrollTo({ top: 0 });
 
 export const sendEmail = (formData, setSuccess, setError) => {
   emailjs
-    .send("service_scbve5v", "template_fv7i9rw", formData, "mpmTmPw53yiw11l-a")
+    .send(
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
+      formData,
+      process.env.REACT_APP_USER_ID
+    )
     .then(
       (result) => {
         setSuccess(true);

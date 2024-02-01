@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Button } from "../common/Button/Button";
 import { Slideshow } from "../Slideshow/Slideshow";
 import { COLOR } from "../../assets/styles";
+import { createPortal } from "react-dom";
+import { useGalleryModal } from "../../hooks";
 
 const Container = styled.div`
   position: relative;
@@ -43,9 +45,11 @@ const RefBlock = styled.div`
 `;
 
 export const OurWorks = memo(
-  forwardRef(({ isOpenModal, setIsOpenModal }, ref) => {
+  forwardRef((props, ref) => {
+    const { displayModal, setIsOpen } = useGalleryModal();
+
     const modalHandler = () => {
-      setIsOpenModal(!isOpenModal);
+      setIsOpen(true);
     };
 
     return (
@@ -65,6 +69,7 @@ export const OurWorks = memo(
             callback={modalHandler}
           />
         </ButtonWrapper>
+        {createPortal(displayModal(), document.body)}
       </Container>
     );
   })

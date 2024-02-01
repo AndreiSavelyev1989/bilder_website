@@ -4,6 +4,8 @@ import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { executeScroll } from "../../assets/helpers";
 import { main } from "../../assets/images";
+import { createPortal } from "react-dom";
+import { useOrderModal } from "../../hooks";
 
 const Container = styled.div`
   display: flex;
@@ -79,7 +81,9 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Main = memo(({ reference, setIsOpenModal }) => {
+export const Main = memo(({ reference }) => {
+  const { setIsOpen, displayModal } = useOrderModal();
+
   return (
     <Container>
       <MainBlock>
@@ -97,10 +101,11 @@ export const Main = memo(({ reference, setIsOpenModal }) => {
             margin={"0 0 0 20px"}
             width={"50%"}
             background={COLOR.grey100}
-            callback={() => setIsOpenModal(true)}
+            callback={() => setIsOpen(true)}
           />
         </ButtonsWrapper>
       </MainBlock>
+      {createPortal(displayModal(), document.body)}
     </Container>
   );
 });

@@ -20,7 +20,7 @@ const Image = styled.img`
   }
 `;
 
-export const Gallery = memo(({ src, callback }) => {
+export const GalleryItem = memo(({ src, callback }) => {
   return (
     <ImageWrapper>
       <Image src={src} alt="bas-relief" onClick={callback} />

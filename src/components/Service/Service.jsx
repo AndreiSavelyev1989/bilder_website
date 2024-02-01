@@ -1,6 +1,8 @@
 import React, { memo } from "react";
 import styled from "styled-components";
 import { Button } from "../common/Button/Button";
+import { createPortal } from "react-dom";
+import { useOrderModal } from "../../hooks";
 
 const Container = styled.div`
   display: flex;
@@ -70,6 +72,8 @@ const Title = styled.h3`
 `;
 
 export const Service = memo(({ title, services, photoSrc, setIsOpenModal }) => {
+  const { displayModal, setIsOpen } = useOrderModal();
+
   return (
     <Container>
       <PhotoBlock photoSrc={photoSrc} />
@@ -86,10 +90,11 @@ export const Service = memo(({ title, services, photoSrc, setIsOpenModal }) => {
           <Button
             title={"Заказать"}
             width={"100%"}
-            callback={() => setIsOpenModal(true)}
+            callback={() => setIsOpen(true)}
           />
         </DescriptionBlock>
       </DescriptionBlockWrapper>
+      {createPortal(displayModal(), document.body)}
     </Container>
   );
 });

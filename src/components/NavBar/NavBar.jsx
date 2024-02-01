@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { Nav } from "../Nav/Nav";
 import { COLOR } from "../../assets/styles";

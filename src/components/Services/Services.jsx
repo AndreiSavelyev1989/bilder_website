@@ -36,8 +36,7 @@ const RefBlock = styled.div`
 `;
 
 export const Services = memo(
-  forwardRef(({ setIsOpenModal }, ref) => {
-
+  forwardRef((props, ref) => {
     return (
       <Container>
         <RefBlock ref={ref} />
@@ -49,7 +48,6 @@ export const Services = memo(
               title={el.title}
               services={el.services}
               photoSrc={el.src}
-              setIsOpenModal={setIsOpenModal}
             />
           ))}
         </Wrapper>
