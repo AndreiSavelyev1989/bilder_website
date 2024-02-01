@@ -2,7 +2,7 @@ import React, { forwardRef, memo } from "react";
 import styled from "styled-components";
 import "react-slideshow-image/dist/styles.css";
 import { COLOR } from "../../assets/styles";
-import { comments } from "../../assets/mockData";
+import { sliderComments as comments } from "../../assets/mockData";
 import { Button } from "../common/Button/Button";
 import { createPortal } from "react-dom";
 import { CommentsSlider } from "../CommentsSlider/CommentsSlider";
@@ -15,7 +15,7 @@ const Container = styled.div`
   width: 100%;
   min-height: 500px;
   @media screen and (max-width: 770px) {
-    height: 900px;
+    min-height: 900px;
   }
 `;
 
@@ -36,6 +36,14 @@ const RefBlock = styled.div`
   width: 100%;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  /* height: 80px; */
+  margin-bottom: 40px;
+  width: 80%;
+`;
+
 export const Feedback = memo(
   forwardRef((props, ref) => {
     const { displayModal, setIsOpen } = useCommentsModal();
@@ -51,15 +59,16 @@ export const Feedback = memo(
         <SlideWrapper>
           <CommentsSlider comments={comments} />
         </SlideWrapper>
-        <Button
-          title="Показать все отзывы"
-          width="350px"
-          hoverBackground={COLOR.grey200}
-          background={COLOR.grey100}
-          margin="0 0 40px 0"
-          isShowAll
-          callback={modalHandler}
-        />
+        <ButtonWrapper>
+          <Button
+            title="Показать все отзывы"
+            width="350px"
+            hoverBackground={COLOR.grey200}
+            background={COLOR.grey100}
+            isShowAll
+            callback={modalHandler}
+          />
+        </ButtonWrapper>
         {createPortal(displayModal(), document.body)}
       </Container>
     );

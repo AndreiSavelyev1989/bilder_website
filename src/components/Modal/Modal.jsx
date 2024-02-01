@@ -26,6 +26,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   animation: 0.5s linear ${modalDisplay};
   z-index: 100;
+  color: ${COLOR.grey400};
 `;
 
 const ContentWrapper = styled.div`
