@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
@@ -7,7 +7,8 @@ import { Input } from "../common/Input/Input";
 import { Checkbox } from "./../common/Checkbox/Checkbox";
 import { sendEmail } from "./../../assets/helpers/index";
 import { createPortal } from "react-dom";
-import { usePersonalDataModal } from "../../hooks";
+import { useNotification, usePersonalDataModal } from "../../hooks";
+import { Notification } from "../Notification/Notification";
 
 const Container = styled.div`
   display: flex;
@@ -80,9 +81,10 @@ const Error = styled.p`
 `;
 
 export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
-  const [isSentMessageSuccess, setIsSentMessageSuccess] = useState(false);
-  const [isSentMessageError, setIsSentMessageError] = useState(false);
   const { displayModal, setIsOpen } = usePersonalDataModal();
+  const { message, status, setStatus, setMessage } =
+    useNotification(setIsOpenModal, isModal);
+
   const {
     register,
     handleSubmit,
@@ -98,23 +100,31 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
     },
   });
 
+  useEffect(() => {
+    if (status.success) {
+      reset({
+        email: "",
+        name: "",
+        phoneNumber: "",
+        isPrivateDataChecked: false,
+      });
+    }
+  }, [status]);
+
   const renderError = (isError, errorMsg) => {
     return <Error isVisible={isError}>{isError ? errorMsg : ""}</Error>;
   };
 
   const onSubmit = (data) => {
-    if (isModal) {
-      setIsOpenModal(false);
-    }
-
-    reset({
-      email: "",
-      name: "",
-      phoneNumber: "",
-      isPrivateDataChecked: false,
-    });
-
-    sendEmail(data, setIsSentMessageSuccess, setIsSentMessageError);
+    sendEmail(data)
+      .then((result) => {
+        setStatus((prev) => ({ ...prev, success: true }));
+        setMessage("Отправлено успешно!");
+      })
+      .catch((error) => {
+        setStatus((prev) => ({ ...prev, error: true }));
+        setMessage(`Произошла ошибка: ${error.text}`);
+      });
   };
 
   return (
@@ -196,6 +206,16 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
         </ButtonWrapper>
       </FormWrapper>
       {createPortal(displayModal(), document.body)}
+      {createPortal(
+        (status.success || status.error) && (
+          <Notification
+            message={message}
+            isSuccess={status.success}
+            isError={status.error}
+          />
+        ),
+        document.body
+      )}
     </Container>
   );
 });

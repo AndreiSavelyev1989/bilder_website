@@ -132,7 +132,7 @@ export const useCommentsModal = () => {
       {
         width: "50%",
         alignItems: "flex-start",
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
       },
       <Comments />
     );
@@ -169,5 +169,39 @@ export const useImagePreview = () => {
   return {
     displayImagePreview,
     onImagePreviewClick,
+  };
+};
+
+export const useNotification = (callback, isModal) => {
+  const [status, setStatus] = useState({
+    success: false,
+    error: false,
+  });
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    let timeoutId;
+    if (status.success) {
+      timeoutId = setTimeout(() => {
+        setStatus((prev) => ({ ...prev, success: false }));
+        isModal && callback(false);
+      }, 3000);
+    }
+    if (status.error) {
+      timeoutId = setTimeout(() => {
+        setStatus((prev) => ({ ...prev, error: false }));
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [status]);
+
+  return {
+    status,
+    message,
+    setStatus,
+    setMessage,
   };
 };
