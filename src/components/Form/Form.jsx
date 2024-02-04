@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
@@ -8,7 +8,7 @@ import { Checkbox } from "./../common/Checkbox/Checkbox";
 import { sendEmail } from "./../../assets/helpers/index";
 import { createPortal } from "react-dom";
 import { useNotification, usePersonalDataModal } from "../../hooks";
-import { Notification } from "../Notification/Notification";
+import { ResponseContext } from "../../context/context";
 
 const Container = styled.div`
   display: flex;
@@ -82,8 +82,8 @@ const Error = styled.p`
 
 export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
   const { displayModal, setIsOpen } = usePersonalDataModal();
-  const { message, status, setStatus, setMessage } =
-    useNotification(setIsOpenModal, isModal);
+  const context = useContext(ResponseContext);
+  const { status } = useNotification(context.response);
 
   const {
     register,
@@ -101,7 +101,7 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
   });
 
   useEffect(() => {
-    if (status.success) {
+    if (status.success && !isModal) {
       reset({
         email: "",
         name: "",
@@ -118,12 +118,12 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
   const onSubmit = (data) => {
     sendEmail(data)
       .then((result) => {
-        setStatus((prev) => ({ ...prev, success: true }));
-        setMessage("Отправлено успешно!");
+        context.updateResponse(result);
+        isModal && setIsOpenModal(false);
       })
       .catch((error) => {
-        setStatus((prev) => ({ ...prev, error: true }));
-        setMessage(`Произошла ошибка: ${error.text}`);
+        context.updateResponse(error);
+        isModal && setIsOpenModal(false);
       });
   };
 
@@ -206,16 +206,6 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
         </ButtonWrapper>
       </FormWrapper>
       {createPortal(displayModal(), document.body)}
-      {createPortal(
-        (status.success || status.error) && (
-          <Notification
-            message={message}
-            isSuccess={status.success}
-            isError={status.error}
-          />
-        ),
-        document.body
-      )}
     </Container>
   );
 });

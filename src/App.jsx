@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { memo, useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "./components/Header/Header";
 import { NavBar } from "./components/NavBar/NavBar";
@@ -13,6 +13,10 @@ import { Footer } from "./components/Footer/Footer";
 import { useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { executeScroll, scrollToTop } from "./assets/helpers";
+import { useNotification } from "./hooks";
+import { createPortal } from "react-dom";
+import { Notification } from "./components/Notification/Notification";
+import { ResponseContext } from "./context/context";
 
 const Container = styled.div`
   position: relative;
@@ -28,6 +32,8 @@ const Container = styled.div`
 const App = memo(() => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const scrollPosition = useScrollYPosition();
+  const context = useContext(ResponseContext);
+  const { message, status } = useNotification(context.response);
 
   const mainRef = useRef(null);
   const servicesRef = useRef(null);
@@ -64,6 +70,16 @@ const App = memo(() => {
       <Feedback ref={commentsRef} />
       <Footer ref={contactsRef} />
       {scrollPosition > 200 && <ScrollButton callback={scrollToTop} />}
+      {createPortal(
+        (status.success || status.error) && (
+          <Notification
+            message={message}
+            isSuccess={status.success}
+            isError={status.error}
+          />
+        ),
+        document.body
+      )}
     </Container>
   );
 });

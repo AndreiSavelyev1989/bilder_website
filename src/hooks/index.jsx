@@ -172,7 +172,7 @@ export const useImagePreview = () => {
   };
 };
 
-export const useNotification = (callback, isModal) => {
+export const useNotification = (response) => {
   const [status, setStatus] = useState({
     success: false,
     error: false,
@@ -184,7 +184,6 @@ export const useNotification = (callback, isModal) => {
     if (status.success) {
       timeoutId = setTimeout(() => {
         setStatus((prev) => ({ ...prev, success: false }));
-        isModal && callback(false);
       }, 3000);
     }
     if (status.error) {
@@ -198,10 +197,20 @@ export const useNotification = (callback, isModal) => {
     };
   }, [status]);
 
+  useEffect(() => {
+    if (response) {
+      if (response.status >= 200 && response.status < 300) {
+        setStatus((prev) => ({ ...prev, success: true }));
+        setMessage("Отправлено успешно!");
+      } else {
+        setStatus((prev) => ({ ...prev, error: true }));
+        setMessage(`Произошла ошибка: ${response.text}`);
+      }
+    }
+  }, [response]);
+
   return {
     status,
     message,
-    setStatus,
-    setMessage,
   };
 };
