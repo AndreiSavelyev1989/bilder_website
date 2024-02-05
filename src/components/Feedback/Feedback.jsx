@@ -14,7 +14,7 @@ import {
   Title,
 } from "./FeedbackStyles";
 
-export const Feedback = forwardRef((props, ref) => {
+const Feedback = forwardRef((props, ref) => {
   const { displayModal, setIsOpen } = useCommentsModal();
 
   const modalHandler = () => {
@@ -42,3 +42,5 @@ export const Feedback = forwardRef((props, ref) => {
     </Container>
   );
 });
+
+export default Feedback;

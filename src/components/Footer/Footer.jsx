@@ -10,7 +10,7 @@ import {
   Wrapper,
 } from "./FooterStyles";
 
-export const Footer = memo(
+const Footer = memo(
   forwardRef((props, ref) => {
     return (
       <Container ref={ref}>
@@ -25,3 +25,5 @@ export const Footer = memo(
     );
   })
 );
+
+export default Footer;

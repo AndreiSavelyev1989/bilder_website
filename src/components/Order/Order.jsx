@@ -9,7 +9,7 @@ import {
   Title,
 } from "./OrderStyles";
 
-export const Order = memo(() => {
+const Order = memo(() => {
   return (
     <Container>
       <DetailsWrapper>
@@ -33,3 +33,5 @@ export const Order = memo(() => {
     </Container>
   );
 });
+
+export default Order;

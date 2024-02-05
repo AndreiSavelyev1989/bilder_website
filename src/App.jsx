@@ -1,22 +1,25 @@
-import { memo, useContext, useRef, useState } from "react";
+import { lazy, useContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "./components/Header/Header";
-import { NavBar } from "./components/NavBar/NavBar";
 import { COLOR } from "./assets/styles";
-import { ContactInfo } from "./components/ContactInfo/ContactInfo";
-import { Main } from "./components/Main/Main";
-import { Services } from "./components/Services/Services";
-import { OurWorks } from "./components/OurWorks/OurWorks";
-import { Order } from "./components/Order/Order";
-import { Feedback } from "./components/Feedback/Feedback";
-import { Footer } from "./components/Footer/Footer";
 import { useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { executeScroll, scrollToTop } from "./assets/helpers";
 import { useNotification } from "./hooks";
 import { createPortal } from "react-dom";
-import { Notification } from "./components/Notification/Notification";
 import { ResponseContext } from "./context/context";
+
+const NavBar = lazy(() => import("./components/NavBar/NavBar"));
+const ContactInfo = lazy(() => import("./components/ContactInfo/ContactInfo"));
+const Main = lazy(() => import("./components/Main/Main"));
+const Services = lazy(() => import("./components/Services/Services"));
+const OurWorks = lazy(() => import("./components/OurWorks/OurWorks"));
+const Order = lazy(() => import("./components/Order/Order"));
+const Feedback = lazy(() => import("./components/Feedback/Feedback"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
+const Notification = lazy(() =>
+  import("./components/Notification/Notification")
+);
 
 const Container = styled.div`
   position: relative;
@@ -29,7 +32,7 @@ const Container = styled.div`
   overflow-x: hidden;
 `;
 
-const App = memo(() => {
+const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const scrollPosition = useScrollYPosition();
   const context = useContext(ResponseContext);
@@ -82,6 +85,6 @@ const App = memo(() => {
       )}
     </Container>
   );
-});
+};
 
 export default App;

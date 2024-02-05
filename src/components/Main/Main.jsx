@@ -12,7 +12,7 @@ import {
   TitleWrapper,
 } from "./MainStyles";
 
-export const Main = ({ reference }) => {
+const Main = ({ reference }) => {
   const { setIsOpen, displayModal } = useOrderModal();
 
   return (
@@ -40,3 +40,5 @@ export const Main = ({ reference }) => {
     </Container>
   );
 };
+
+export default Main;

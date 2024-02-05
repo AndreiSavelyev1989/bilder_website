@@ -13,7 +13,7 @@ import {
   TitleWrapper,
 } from "./ContactInfoStyles";
 
-export const ContactInfo = memo(() => {
+const ContactInfo = memo(() => {
   return (
     <Container>
       <ContactWrapper>
@@ -33,3 +33,5 @@ export const ContactInfo = memo(() => {
     </Container>
   );
 });
+
+export default ContactInfo;

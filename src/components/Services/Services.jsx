@@ -3,7 +3,7 @@ import { Service } from "../Service/Service";
 import { services } from "./../../assets/mockData/index";
 import { Container, RefBlock, Title, Wrapper } from "./ServicesStyles";
 
-export const Services = memo(
+const Services = memo(
   forwardRef((props, ref) => {
     return (
       <Container>
@@ -23,3 +23,5 @@ export const Services = memo(
     );
   })
 );
+
+export default Services;

@@ -12,7 +12,7 @@ import {
   WorksWrapper,
 } from "./OurWorksStyles";
 
-export const OurWorks = forwardRef((props, ref) => {
+const OurWorks = forwardRef((props, ref) => {
   const { displayModal, setIsOpen } = useGalleryModal();
 
   const modalHandler = useCallback(() => {
@@ -40,3 +40,5 @@ export const OurWorks = forwardRef((props, ref) => {
     </Container>
   );
 });
+
+export default OurWorks;
