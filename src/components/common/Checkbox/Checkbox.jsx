@@ -6,7 +6,7 @@ import {
   CheckboxText,
   Asterisk,
   ProcessingPersonalData,
-} from "./styled";
+} from "./CheckbboxStyles";
 
 export const Checkbox = forwardRef(
   (

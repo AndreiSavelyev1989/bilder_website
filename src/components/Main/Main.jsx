@@ -1,87 +1,18 @@
-import React, { memo } from "react";
-import styled from "styled-components";
+import React from "react";
 import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { executeScroll } from "../../assets/helpers";
-import { main } from "../../assets/images";
 import { createPortal } from "react-dom";
 import { useOrderModal } from "../../hooks";
+import {
+  ButtonsWrapper,
+  Container,
+  MainBlock,
+  Title,
+  TitleWrapper,
+} from "./MainStyles";
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 72vh;
-  background-attachment: fixed;
-  background-image: url(${main});
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-`;
-
-const MainBlock = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 50%;
-  height: 85%;
-  background: ${COLOR.white};
-  opacity: 0.9;
-  gap: 40px;
-
-  @media screen and (max-width: 900px) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 700px) {
-    width: 85%;
-  }
-
-  @media screen and (max-width: 700px) {
-    width: 100%;
-  }
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-`;
-
-const Title = styled.h1`
-  min-width: 200px;
-  font-weight: 700;
-  font-size: 70px;
-  margin: 0;
-
-  @media screen and (max-width: 1100px) {
-    font-size: 60px;
-  }
-
-  @media screen and (max-width: 400px) {
-    font-size: 50px;
-  }
-
-  @media screen and (max-height: 500px) {
-    font-size: 50px;
-  }
-`;
-
-const ButtonsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 80%;
-
-  @media screen and (max-width: 530px) {
-    flex-direction: column;
-    gap: 20px;
-  }
-`;
-
-export const Main = memo(({ reference }) => {
+export const Main = ({ reference }) => {
   const { setIsOpen, displayModal } = useOrderModal();
 
   return (
@@ -108,4 +39,4 @@ export const Main = memo(({ reference }) => {
       {createPortal(displayModal(), document.body)}
     </Container>
   );
-});
+};

@@ -2,8 +2,8 @@ import styled, { keyframes } from "styled-components";
 import { COLOR } from "../../../assets/styles";
 
 const rotate = keyframes`
-    0% { transform : rotate(0deg);}
-    100% { transform : rotate(360deg); }
+    0% { transform : rotate(0deg)}
+    100% { transform : rotate(360deg)}
 `;
 
 export const Container = styled.div`

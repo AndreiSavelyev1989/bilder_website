@@ -1,27 +1,5 @@
 import React, { memo } from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25%;
-
-  @media screen and (max-width: 750px) {
-    width: 100%;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledContact = styled.div`
-  width: 100%;
-  margin-left: 10px;
-`;
+import { Container, StyledContact, Wrapper } from "./ContactStyles";
 
 export const Contact = memo(({ icon, contact }) => {
   return (

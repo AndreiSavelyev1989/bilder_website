@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Modal } from "../components/Modal/Modal";
 import { Form } from "../components/Form/Form";
 import { PersonalData } from "../components/PersonalData/PersonalData";
 import { Galleries } from "../components/Galleries/Galleries";
 import { ImagePreview } from "../components/ImagePreview/ImagePreview";
 import { Comments } from "../components/Comments/Comments";
+import { Modal } from "../components/common/Modal/Modal";
 
 export const useMarginTop = (callback) => {
   const [marginTop, setMarginTop] = useState(0);

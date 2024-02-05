@@ -1,7 +1,5 @@
-import React, { memo, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { Input } from "../common/Input/Input";
 import { Checkbox } from "./../common/Checkbox/Checkbox";
@@ -10,78 +8,16 @@ import { createPortal } from "react-dom";
 import { useNotification, usePersonalDataModal } from "../../hooks";
 import { ResponseContext } from "../../context/context";
 import { Loader } from "../common/Loader/Loader";
+import {
+  ButtonWrapper,
+  Container,
+  Error,
+  FormWrapper,
+  InputWrapper,
+  Title,
+} from "./FormStyles";
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-  width: ${({ width }) => width || "70%"};
-  height: ${({ height }) => height || "530px"};
-  border-radius: 10px;
-  background: ${COLOR.white};
-
-  @media screen and (max-width: 530px) {
-    width: 330px;
-  }
-
-  @media screen and (max-width: 360px) {
-    margin-top: 80px;
-    border: ${({ isModal }) =>
-      isModal ? "none" : `1px solid ${COLOR.grey100}`};
-  }
-
-  @media screen and (max-height: 500px) {
-    height: 405px;
-    gap: 0px;
-  }
-`;
-
-const FormWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 90%;
-`;
-
-const Title = styled.h2`
-  margin: 20px 0 0 0;
-  font-size: 32px;
-
-  @media screen and (max-height: 500px) {
-    height: 405px;
-    margin-top: 10px;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  width: 100%;
-  margin-bottom: 20px;
-  @media screen and (max-height: 500px) {
-    button {
-      height: 35px;
-    }
-  }
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media screen and (max-height: 500px) {
-    input {
-      height: 35px;
-    }
-  }
-`;
-
-const Error = styled.p`
-  height: 10px;
-  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
-  margin: 3px 0;
-  color: ${COLOR.red};
-`;
-
-export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
+export const Form = ({ width, height, isModal, setIsOpenModal }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { displayModal, setIsOpen } = usePersonalDataModal();
   const context = useContext(ResponseContext);
@@ -215,4 +151,4 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
       {createPortal(isLoading && <Loader />, document.body)}
     </Container>
   );
-});
+};

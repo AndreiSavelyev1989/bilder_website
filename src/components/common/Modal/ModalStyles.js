@@ -1,8 +1,5 @@
-import React, { memo } from "react";
 import styled, { keyframes } from "styled-components";
-import { COLOR } from "../../assets/styles";
-import { CloseButton } from "./../common/CloseButton/CloseButton";
-import { useScrollVisibility } from "../../hooks";
+import { COLOR } from "../../../assets/styles";
 
 const modalDisplay = keyframes`
     0% { opacity : 0;}
@@ -14,7 +11,7 @@ const modalContentDisplay = keyframes`
     100% { transform : scale(1); }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   position: fixed;
   display: flex;
   align-items: center;
@@ -29,7 +26,7 @@ const Container = styled.div`
   color: ${COLOR.grey400};
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: ${({ alignItems }) => alignItems || "center"};
@@ -48,32 +45,3 @@ const ContentWrapper = styled.div`
     width: 95%;
   }
 `;
-
-export const Modal = memo(
-  ({
-    setIsOpenModal,
-    isOpenModal,
-    width,
-    height,
-    isShowPersonalData,
-    justifyContent,
-    alignItems,
-    children,
-  }) => {
-    useScrollVisibility(document.body, isOpenModal);
-    return (
-      <Container isOpenModal={isOpenModal}>
-        <ContentWrapper
-          width={width}
-          height={height}
-          isShowPersonalData={isShowPersonalData}
-          justifyContent={justifyContent}
-          alignItems={alignItems}
-        >
-          <CloseButton callback={() => setIsOpenModal(false)} />
-          {children}
-        </ContentWrapper>
-      </Container>
-    );
-  }
-);

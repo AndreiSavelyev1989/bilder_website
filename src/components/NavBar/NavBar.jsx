@@ -1,53 +1,14 @@
-import React, { forwardRef } from "react";
-import styled from "styled-components";
+import React, { forwardRef, useCallback } from "react";
 import { Nav } from "../Nav/Nav";
-import { COLOR } from "../../assets/styles";
-import { RxCross1 } from "react-icons/rx";
 import { useMarginTop } from "../../hooks";
-
-const Container = styled.div`
-  position: absolute;
-  width: 200px;
-  height: 100%;
-  top: 0;
-  right: ${({ isOpenMenu }) => (isOpenMenu ? "0" : "-250px")};
-  background: ${COLOR.orange200};
-  transition: ease 1s;
-  z-index: 14;
-`;
-
-const CloseWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  height: 60px;
-`;
-
-const Close = styled(RxCross1)`
-  width: 30px;
-  height: 30px;
-  margin: 20px 10px 0 0;
-  color: ${COLOR.grey400};
-  cursor: pointer;
-
-  &:hover {
-    color: ${COLOR.grey200};
-    transition: 0.5s ease;
-  }
-`;
-
-const NavBarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { Close, CloseWrapper, Container, NavBarWrapper } from "./NavBarStyles";
 
 export const NavBar = forwardRef(
   ({ setIsOpenMenu, isOpenMenu, reference }, ref) => {
-    const { marginTop } = useMarginTop(onClickHandler);
-
-    function onClickHandler() {
+    const onClickHandler = useCallback(function () {
       setIsOpenMenu(false);
-    }
+    }, []);
+    const { marginTop } = useMarginTop(onClickHandler);
 
     return (
       <Container isOpenMenu={isOpenMenu}>
