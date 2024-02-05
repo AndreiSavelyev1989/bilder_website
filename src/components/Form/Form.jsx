@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
@@ -9,6 +9,7 @@ import { sendEmail } from "./../../assets/helpers/index";
 import { createPortal } from "react-dom";
 import { useNotification, usePersonalDataModal } from "../../hooks";
 import { ResponseContext } from "../../context/context";
+import { Loader } from "../common/Loader/Loader";
 
 const Container = styled.div`
   display: flex;
@@ -81,6 +82,7 @@ const Error = styled.p`
 `;
 
 export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { displayModal, setIsOpen } = usePersonalDataModal();
   const context = useContext(ResponseContext);
   const { status } = useNotification(context.response);
@@ -116,6 +118,7 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
   };
 
   const onSubmit = (data) => {
+    setIsLoading(true);
     sendEmail(data)
       .then((result) => {
         context.updateResponse(result);
@@ -124,6 +127,9 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
       .catch((error) => {
         context.updateResponse(error);
         isModal && setIsOpenModal(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -206,6 +212,7 @@ export const Form = memo(({ width, height, isModal, setIsOpenModal }) => {
         </ButtonWrapper>
       </FormWrapper>
       {createPortal(displayModal(), document.body)}
+      {createPortal(isLoading && <Loader />, document.body)}
     </Container>
   );
 });
