@@ -1,7 +1,8 @@
 @font-face {
   font-family: "SofiaSansExtraCondensed";
   src: local("SofiaSansExtraCondensed"),
-    url("./assets/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf") format("truetype");
+    url("./assets/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf")
+      format("truetype");
 }
 
 * {
