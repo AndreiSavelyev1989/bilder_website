@@ -5,7 +5,6 @@ import { COLOR } from "./assets/styles";
 import { useNotification, useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { scrollToTop } from "./assets/helpers";
-// import { useNotification } from "./hooks";
 import { createPortal } from "react-dom";
 import { ResponseContext } from "./context/context";
 import { ReferenceType } from "./assets/types/types";
