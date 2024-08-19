@@ -3,13 +3,15 @@ import App from "../App";
 import { Login } from "../components/Login/Login";
 import { NotFound } from "../components/NotFound/NotFound";
 
+const baseUrl = "/bilder";
+
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: `${baseUrl}`,
     element: <App />,
   },
   {
-    path: "/login",
+    path: `${baseUrl}/login`,
     element: <Login />,
   },
   {

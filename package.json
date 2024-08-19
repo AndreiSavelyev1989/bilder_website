@@ -2,7 +2,7 @@
   "name": "builder_website_ts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andreisavelyev1989.github.io/bilder_website/",
+  "homepage": "https://andreisavelyev1989.github.io/bilder",
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
     "@react-oauth/google": "^0.12.1",
