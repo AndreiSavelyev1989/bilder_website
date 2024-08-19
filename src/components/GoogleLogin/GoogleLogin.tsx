@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button } from "../common/Button/Button";
 import { GoogleIcon } from "./GoogleLoginStyles";
 import { GoogleContext } from "../../context/context";
+import { baseUrl } from "../../router";
 
 type Props = {
   setIsLoading: any;
@@ -35,7 +36,7 @@ export const GoogleLogin = ({ setIsLoading }: Props) => {
   }, [user]);
 
   if (profile) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={`${baseUrl}`} />;
   }
 
   return (

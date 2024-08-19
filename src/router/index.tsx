@@ -3,7 +3,7 @@ import App from "../App";
 import { Login } from "../components/Login/Login";
 import { NotFound } from "../components/NotFound/NotFound";
 
-const baseUrl = "/bilder_website";
+export const baseUrl = "/bilder_website";
 
 export const router = createBrowserRouter([
   {

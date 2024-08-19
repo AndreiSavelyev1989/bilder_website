@@ -15,6 +15,7 @@ import {
   UserIcon,
   UserIconWrapper,
 } from "./UserProfileStyles";
+import { baseUrl } from "../../router";
 
 export const UserProfile = () => {
   const googleContext = useContext(GoogleContext);
@@ -37,7 +38,7 @@ export const UserProfile = () => {
 
   const logIn = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    navigate("/login");
+    navigate(`${baseUrl}/login`);
   };
 
   return (
