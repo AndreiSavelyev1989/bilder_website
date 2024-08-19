@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { ResponseContextProvider } from "./context/context";
+import { GoogleContextProvider, EmailContextProvider } from "./context/context";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,8 +14,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ResponseContextProvider>
-      <RouterProvider router={router} />
-    </ResponseContextProvider>
+    <EmailContextProvider>
+      <GoogleOAuthProvider clientId={googleClientId}>
+        <GoogleContextProvider>
+          <RouterProvider router={router} />
+        </GoogleContextProvider>
+      </GoogleOAuthProvider>
+    </EmailContextProvider>
   </React.StrictMode>
 );

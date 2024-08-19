@@ -1,31 +1,62 @@
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import React, { ReactNode, createContext, useState } from "react";
+import {
+  EmailContextType,
+  EmailType,
+  GoogleContextType,
+  GoogleProfileType,
+  GoogleUserType,
+} from "./type";
 
-type ResponseType = {
-  status: number;
-  text: string;
-};
+const EmailContext = createContext<EmailContextType | null>(null);
 
-interface ResponseContextType {
-  response: ResponseType | null;
-  updateResponse: (value: ResponseType | null) => void;
-}
-
-const ResponseContext = createContext<ResponseContextType | null>(null);
-
-const ResponseContextProvider: React.FC<{ children: ReactNode }> = ({
+const EmailContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [response, setResponse] = useState<ResponseType | null>(null);
+  const [response, setResponse] = useState<EmailType | null>(null);
 
-  const updateResponse = (newValue: ResponseType | null) => {
+  const updateResponse = (newValue: EmailType | null) => {
     setResponse(newValue);
   };
 
   return (
-    <ResponseContext.Provider value={{ response, updateResponse }}>
+    <EmailContext.Provider value={{ response, updateResponse }}>
       {children}
-    </ResponseContext.Provider>
+    </EmailContext.Provider>
   );
 };
 
-export { ResponseContext, ResponseContextProvider };
+const GoogleContext = createContext<GoogleContextType | null>(null);
+
+const GoogleContextProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [user, setUser] = useState<GoogleUserType | null>(null);
+  const [profile, setProfile] = useState<GoogleProfileType | null>(null);
+
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
+  const logOut = () => {
+    googleLogout();
+    setProfile(null);
+    setUser(null);
+  };
+
+  return (
+    <GoogleContext.Provider
+      value={{ user, profile, login, logOut, setProfile }}
+    >
+      {children}
+    </GoogleContext.Provider>
+  );
+};
+
+export {
+  EmailContext,
+  EmailContextProvider,
+  GoogleContext,
+  GoogleContextProvider,
+};

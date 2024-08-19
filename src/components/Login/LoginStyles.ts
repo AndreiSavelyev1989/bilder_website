@@ -21,6 +21,9 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   background: ${COLOR.white};
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  @media screen and (max-height: 770px) {
+    gap: 10px;
+  }
 `;
 
 export const UserIcon = styled.img`
@@ -49,4 +52,9 @@ export const Form = styled.form`
   justify-content: space-between;
   flex-direction: column;
   gap: 20px;
+`;
+
+export const Alternative = styled.div`
+  font-size: 30px;
+  font-weight: 700;
 `;

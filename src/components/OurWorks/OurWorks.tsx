@@ -31,7 +31,7 @@ const OurWorks = forwardRef((props, ref) => {
           title={`Показать все работы `}
           height={"54px"}
           width={"350px"}
-          isShowAll={true}
+          isShowAll
           background={COLOR.grey100}
           callback={modalHandler}
         />

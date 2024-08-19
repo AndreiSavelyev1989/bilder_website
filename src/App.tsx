@@ -6,7 +6,7 @@ import { useNotification, useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { scrollToTop } from "./assets/helpers";
 import { createPortal } from "react-dom";
-import { ResponseContext } from "./context/context";
+import { EmailContext } from "./context/context";
 import { ReferenceType } from "./assets/types/types";
 
 const NavBar = lazy(() => import("./components/NavBar/NavBar"));
@@ -35,7 +35,7 @@ const Container = styled.div`
 const App = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const scrollPosition = useScrollYPosition();
-  const context = useContext(ResponseContext);
+  const context = useContext(EmailContext);
   const { message, status } = useNotification(context && context.response);
 
   const servicesRef = useRef(null);

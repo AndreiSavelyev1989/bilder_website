@@ -5,7 +5,7 @@ import { Input } from "../common/Input/Input";
 import { Checkbox } from "../common/Checkbox/Checkbox";
 import { sendEmail } from "../../assets/helpers/index";
 import { createPortal } from "react-dom";
-import { ResponseContext } from "../../context/context";
+import { EmailContext, GoogleContext } from "../../context/context";
 import { Loader } from "../common/Loader/Loader";
 import {
   ButtonWrapper,
@@ -27,8 +27,10 @@ type Props = {
 export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { displayModal, setIsOpen } = usePersonalDataModal();
-  const context: any = useContext(ResponseContext);
-  const { status } = useNotification(context.response);
+  const context = useContext(EmailContext);
+  const { status } = useNotification(context && context.response);
+  const googleContext = useContext(GoogleContext);
+  const { profile } = googleContext ?? {};
 
   const {
     register,
@@ -38,9 +40,9 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
+      name: profile ? profile.name : "",
       phoneNumber: "",
-      email: "",
+      email: profile ? profile.email : "",
       isPrivateDataChecked: false,
     },
   });
@@ -64,13 +66,13 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
     setIsLoading(true);
     sendEmail(data)
       .then((result: any) => {
-        context.updateResponse(result);
+        context && context.updateResponse(result);
         if (isModal && setIsOpenModal) {
           setIsOpenModal(false);
         }
       })
       .catch((error: any) => {
-        context.updateResponse(error);
+        context && context.updateResponse(error);
         if (isModal && setIsOpenModal) {
           setIsOpenModal(false);
         }

@@ -6,15 +6,17 @@ import {
   HamburgerWrapper,
   List,
   ListItem,
+  LoginWrapper,
   NavWrapper,
 } from "./HeaderStyles";
 import { ReferenceType } from "../../assets/types/types";
+import { UserProfile } from "../UserProfile/UserProfile";
 
 type Props = {
   setIsOpenMenu: (value: boolean) => void;
   isOpenMenu: boolean;
-  reference: ReferenceType
-}
+  reference: ReferenceType;
+};
 
 export const Header = memo(
   forwardRef(({ setIsOpenMenu, isOpenMenu, reference }: Props, ref) => {
@@ -43,6 +45,9 @@ export const Header = memo(
               Контакты
             </ListItem>
           </List>
+          <LoginWrapper>
+            <UserProfile />
+          </LoginWrapper>
         </NavWrapper>
       </Container>
     );

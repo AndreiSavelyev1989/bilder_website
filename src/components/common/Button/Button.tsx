@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, MouseEventHandler, ReactElement } from "react";
 import { ShowAllIcon, StyledButton } from "./ButtonStyles";
 import { FieldError } from "react-hook-form";
 
@@ -12,9 +12,10 @@ type Props = {
   hoverBackground?: string;
   color?: string;
   isShowAll?: boolean;
-  callback?: () => void;
+  callback?: MouseEventHandler<HTMLButtonElement>;
   type?: "button" | "submit" | "reset" | undefined;
   disabled?: FieldError;
+  children?: ReactElement;
 };
 
 export const Button = memo(
@@ -31,6 +32,7 @@ export const Button = memo(
     callback,
     type,
     disabled,
+    children,
   }: Props) => {
     return (
       <StyledButton
@@ -44,9 +46,11 @@ export const Button = memo(
         onClick={callback}
         type={type}
         $disabled={disabled}
+        onMouseDown={callback}
       >
         {title}
         {isShowAll && <ShowAllIcon />}
+        {children}
       </StyledButton>
     );
   }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 import { Modal } from "../../components/common/Modal/Modal";
 import { Form } from "../../components/Form/Form";
 import { PersonalData } from "../../components/PersonalData/PersonalData";
@@ -202,6 +203,7 @@ export const useNotification = (
     error: false,
   });
   const [message, setMessage] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
     let timeoutId: any;
@@ -232,6 +234,10 @@ export const useNotification = (
       }
     }
   }, [response]);
+
+  useEffect(() => {
+    setStatus({ success: false, error: false });
+  }, [location.pathname]);
 
   return {
     status,

@@ -45,7 +45,7 @@ export const Hamburger = styled(GiHamburgerMenu)`
 
 export const NavWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 
@@ -60,7 +60,7 @@ export const List = styled.ul`
   justify-content: space-evenly;
   width: 70%;
   height: 100%;
-  margin: 0;
+  margin: 0 0 0 180px;
   padding: 0;
   list-style: none;
   font-weight: 600;
@@ -90,4 +90,12 @@ export const ListItem = styled.li`
   @media screen and (max-width: 700px) {
     height: 60px;
   }
+`;
+
+export const LoginWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  height: 100%;
 `;
