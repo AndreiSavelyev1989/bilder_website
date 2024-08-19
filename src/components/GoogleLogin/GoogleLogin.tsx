@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "../common/Button/Button";
-import { GoogleIcon } from "./GoogleLoginStyles";
+import { GoogleIcon, Wrapper } from "./GoogleLoginStyles";
 import { GoogleContext } from "../../context/context";
 import { baseUrl } from "../../router";
 
@@ -40,13 +40,10 @@ export const GoogleLogin = ({ setIsLoading }: Props) => {
   }
 
   return (
-    <Button
-      callback={login}
-      title="Sign in with"
-      margin="20px 0 0 0"
-      width="70%"
-    >
-      <GoogleIcon />
-    </Button>
+    <Wrapper>
+      <Button callback={login} title="Sign in with" margin="20px 0 0 0">
+        <GoogleIcon />
+      </Button>
+    </Wrapper>
   );
 };

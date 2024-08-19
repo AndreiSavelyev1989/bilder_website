@@ -6,3 +6,7 @@ export const GoogleIcon = styled(FaGooglePlusG)`
   height: 25px;
   margin-left: 10px;
 `;
+
+export const Wrapper = styled.div`
+  width: 70%;
+`;

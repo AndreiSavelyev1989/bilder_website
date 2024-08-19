@@ -1,8 +1,8 @@
 import { forwardRef, useCallback } from "react";
 import { executeScroll, scrollToTop } from "../../assets/helpers";
-import { List, ListItem } from "./NavStyles";
+import { Container, List, ListItem } from "./NavStyles";
 import { ReferenceType } from "../../assets/types/types";
-
+import { UserProfile } from "../UserProfile/UserProfile";
 
 type Props = {
   onOpenMenuHandler: () => void;
@@ -26,21 +26,24 @@ export const Nav = forwardRef(
     }, [onOpenMenuHandler]);
 
     return (
-      <List $marginTop={marginTop}>
-        <ListItem onClick={onMainBlockNavHandler}>Главная</ListItem>
-        <ListItem onClick={() => onClickHandler(reference.servicesRef)}>
-          Услуги
-        </ListItem>
-        <ListItem onClick={() => onClickHandler(reference.ourWorksRef)}>
-          Галерея
-        </ListItem>
-        <ListItem onClick={() => onClickHandler(reference.commentsRef)}>
-          Отзывы
-        </ListItem>
-        <ListItem onClick={() => onClickHandler(reference.contactsRef)}>
-          Контакты
-        </ListItem>
-      </List>
+      <Container $marginTop={marginTop}>
+        <UserProfile />
+        <List>
+          <ListItem onClick={onMainBlockNavHandler}>Главная</ListItem>
+          <ListItem onClick={() => onClickHandler(reference.servicesRef)}>
+            Услуги
+          </ListItem>
+          <ListItem onClick={() => onClickHandler(reference.ourWorksRef)}>
+            Галерея
+          </ListItem>
+          <ListItem onClick={() => onClickHandler(reference.commentsRef)}>
+            Отзывы
+          </ListItem>
+          <ListItem onClick={() => onClickHandler(reference.contactsRef)}>
+            Контакты
+          </ListItem>
+        </List>
+      </Container>
     );
   }
 );

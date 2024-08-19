@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import { COLOR } from "../../assets/styles";
 
-export const List = styled.ul<{ $marginTop: number }>`
+export const Container = styled.div<{ $marginTop: number }>`
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 0 0;
+  margin-top: ${({ $marginTop }) => `${$marginTop}px`};
+`;
+
+export const List = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -20,7 +27,6 @@ export const List = styled.ul<{ $marginTop: number }>`
     align-items: flex-start;
     padding: 0 0 0 30px;
   }
-  margin-top: ${({ $marginTop }) => `${$marginTop}px`};
 `;
 
 export const ListItem = styled.li`

@@ -4,15 +4,20 @@ import { COLOR } from "../../assets/styles";
 export const Container = styled.div`
   position: relative;
   cursor: pointer;
+  @media screen and (max-width: 700px) {
+    padding-left: 40px;
+  }
 `;
 
 export const UserIconWrapper = styled.div`
   position: relative;
+  width: 40px;
+  height: 40px;
 `;
 
 export const UserIcon = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 `;
 
@@ -25,6 +30,11 @@ export const Triangle = styled.div`
   border-style: solid;
   border-width: 10px 10px 10px 10px;
   border-color: transparent transparent ${COLOR.orange200} transparent;
+  @media screen and (max-width: 700px) {
+    top: 10px;
+    right: -19px;
+    border-color: transparent transparent transparent ${COLOR.orange200};
+  }
 `;
 export const TriangleUp = styled.div`
   position: absolute;
@@ -36,6 +46,11 @@ export const TriangleUp = styled.div`
   border-width: 10px 10px 10px 10px;
   border-color: ${COLOR.orange200} transparent transparent transparent;
   filter: drop-shadow(0 0 5px #000);
+  @media screen and (max-width: 700px) {
+    top: 11px;
+    right: 45px;
+    border-color: transparent ${COLOR.orange200} transparent transparent;
+  }
 `;
 export const TriangleDown = styled.div`
   position: absolute;
@@ -47,6 +62,11 @@ export const TriangleDown = styled.div`
   border-width: 10px 10px 10px 10px;
   border-color: transparent transparent ${COLOR.orange200} transparent;
   filter: drop-shadow(0 0 5px #000);
+  @media screen and (max-width: 700px) {
+    top: 11px;
+    right: 35px;
+    border-color: transparent  transparent  transparent ${COLOR.orange200};
+  }
 `;
 
 export const ProfileWrapper = styled.div`
@@ -59,6 +79,10 @@ export const ProfileWrapper = styled.div`
   background: ${COLOR.orange200};
   border-radius: 5px;
   filter: drop-shadow(0 0 5px #000);
+  @media screen and (max-width: 700px) {
+    top: 0px;
+    right: 211px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

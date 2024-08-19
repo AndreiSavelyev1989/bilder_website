@@ -21,20 +21,23 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   background: ${COLOR.white};
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  @media screen and (max-height: 770px) {
+  @media screen and (max-height: 900px) {
     gap: 10px;
+  }
+  @media screen and (max-width: 400px) {
+    height: 70%;
   }
 `;
 
 export const UserIcon = styled.img`
-  position: absolute;
-  top: 0;
-  left: calc(50% - 25px);
   width: 50px;
   height: 50px;
 `;
 
 export const Block = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 54px;
   background: ${COLOR.orange200};

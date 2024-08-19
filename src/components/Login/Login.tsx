@@ -21,8 +21,9 @@ export const Login = () => {
   return (
     <Container>
       <Wrapper>
-        <UserIcon src={userIcon} />
-        <Block />
+        <Block>
+          <UserIcon src={userIcon} />
+        </Block>
         <Title>Login</Title>
         <GoogleLogin setIsLoading={setIsLoading} />
         <Alternative>or</Alternative>

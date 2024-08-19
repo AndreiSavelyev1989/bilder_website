@@ -58,9 +58,9 @@ export const List = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 70%;
+  width: 90%;
   height: 100%;
-  margin: 0 0 0 180px;
+  margin: 0;
   padding: 0;
   list-style: none;
   font-weight: 600;
