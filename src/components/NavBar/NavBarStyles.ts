@@ -4,7 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 
 export const Container = styled.div<{ $isOpenMenu: boolean }>`
   position: absolute;
-  width: 200px;
+  width: 150px;
   height: 100%;
   top: 0;
   right: ${({ $isOpenMenu }) => ($isOpenMenu ? "0" : "-250px")};
