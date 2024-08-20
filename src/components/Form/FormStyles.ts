@@ -11,7 +11,7 @@ export const Container = styled.div<{
   flex-direction: column;
   gap: 10px;
   width: ${({ width }) => width || "70%"};
-  height: ${({ height }) => height || "530px"};
+  height: ${({ height }) => height};
   border-radius: 10px;
   background: ${COLOR.white};
 

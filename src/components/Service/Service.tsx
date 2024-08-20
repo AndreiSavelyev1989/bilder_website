@@ -19,7 +19,7 @@ type Props = {
 };
 
 export const Service = ({ title, services, photoSrc }: Props) => {
-  const { displayModal, setIsOpen } = useOrderModal();
+  const { displayModal, setIsOpen } = useOrderModal({ serviceTitle: title });
 
   return (
     <Container>

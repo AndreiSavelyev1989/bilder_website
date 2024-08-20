@@ -16,21 +16,30 @@ import {
   Title,
 } from "./FormStyles";
 import { useNotification, usePersonalDataModal } from "../../assets/hooks";
+import { Textarea } from "../common/Textarea/Textarea";
 
 type Props = {
   width?: string;
   height?: string;
   isModal?: boolean;
   setIsOpenModal?: (value: boolean) => void;
+  externalData?: { [key: string]: string };
 };
 
-export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
+export const Form = ({
+  width,
+  height,
+  isModal,
+  setIsOpenModal,
+  externalData,
+}: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const { displayModal, setIsOpen } = usePersonalDataModal();
   const context = useContext(EmailContext);
   const { status } = useNotification(context && context.response);
   const googleContext = useContext(GoogleContext);
   const { profile } = googleContext ?? {};
+  const { serviceTitle } = externalData ?? {};
 
   const {
     register,
@@ -43,6 +52,7 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
       name: profile ? profile.name : "",
       phoneNumber: "",
       email: profile ? profile.email : "",
+      textarea: serviceTitle ? serviceTitle : "",
       isPrivateDataChecked: false,
     },
   });
@@ -53,6 +63,7 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
         email: "",
         name: "",
         phoneNumber: "",
+        textarea: "",
         isPrivateDataChecked: false,
       });
     }
@@ -117,10 +128,9 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
         <InputWrapper>
           <Input
             inputId={"email"}
-            title={"E-Mail"}
+            title={"Е-мейл"}
             {...register("email", {
               pattern: {
-                // eslint-disable-next-line
                 value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                 message: "Введите правильный email адрес(example@example.com)",
               },
@@ -130,6 +140,13 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
             isError={errors?.email}
           />
           {renderError(errors?.email, errors?.email?.message)}
+        </InputWrapper>
+        <InputWrapper>
+          <Textarea
+            title={"Описание заявки"}
+            inputId={"textarea"}
+            register={register}
+          />
         </InputWrapper>
         <InputWrapper>
           <Checkbox
@@ -152,10 +169,7 @@ export const Form = ({ width, height, isModal, setIsOpenModal }: Props) => {
             title={"Отправить"}
             type={"submit"}
             disabled={
-              errors?.name ||
-              errors?.email ||
-              errors?.isPrivateDataChecked ||
-              errors?.phoneNumber
+              errors?.name || errors?.email || errors?.isPrivateDataChecked
             }
           />
         </ButtonWrapper>

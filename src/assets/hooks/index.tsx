@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { Modal } from "../../components/common/Modal/Modal";
 import { Form } from "../../components/Form/Form";
 import { PersonalData } from "../../components/PersonalData/PersonalData";
@@ -84,7 +84,7 @@ const useModal = (initialState: boolean) => {
   };
 };
 
-export const useOrderModal = () => {
+export const useOrderModal = (data?: { [key: string]: string }) => {
   const { displayModal, setIsOpen } = useModal(false);
 
   const displayOrderModal = () => {
@@ -98,6 +98,7 @@ export const useOrderModal = () => {
         height={"100%"}
         isModal={true}
         setIsOpenModal={setIsOpen}
+        externalData={data}
       />
     );
   };
