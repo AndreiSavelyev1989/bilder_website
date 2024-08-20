@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 4px;
 `;
 export const WrapperItem = styled.div`
   display: flex;
@@ -29,4 +29,5 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
 `;

@@ -13,8 +13,11 @@ export const UserIconWrapper = styled.div`
   position: relative;
   width: 40px;
   height: 40px;
-  @media screen and (max-width: 860px) {
+  @media screen and (max-width: 1200px) {
     margin-right: 30px;
+  }
+  @media screen and (max-width: 900px) {
+    margin-right: 50px;
   }
 `;
 
@@ -74,14 +77,20 @@ export const TriangleDown = styled.div`
 
 export const ProfileWrapper = styled.div`
   position: absolute;
-  top: 70px;
-  right: 0;
-  width: 180px;
-  height: 180px;
+  top: 62px;
+  right: -37px;
+  max-width: 180px;
+  max-height: 180px;
   padding: 5px;
   background: ${COLOR.orange200};
   border-radius: 5px;
   filter: drop-shadow(0 0 5px #000);
+  @media screen and (max-width: 1200px) {
+    right: -7px;
+  }
+  @media screen and (max-width: 900px) {
+    right: 12px;
+  }
   @media screen and (max-width: 700px) {
     top: 0px;
     right: 160px;
