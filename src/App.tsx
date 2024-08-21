@@ -1,4 +1,4 @@
-import { lazy, useContext, useRef, useState } from "react";
+import { lazy, useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Header } from "./components/Header/Header";
 import { COLOR } from "./assets/styles";
@@ -6,8 +6,9 @@ import { useNotification, useScrollYPosition } from "./assets/hooks";
 import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
 import { scrollToTop } from "./assets/helpers";
 import { createPortal } from "react-dom";
-import { EmailContext } from "./context/context";
+import { EmailContext, UserProfileContext } from "./context/context";
 import { ReferenceType } from "./assets/types/types";
+import { AuthAPI } from "./api/api";
 
 const NavBar = lazy(() => import("./components/NavBar/NavBar"));
 const ContactInfo = lazy(() => import("./components/ContactInfo/ContactInfo"));
@@ -37,6 +38,8 @@ const App = () => {
   const scrollPosition = useScrollYPosition();
   const context = useContext(EmailContext);
   const { message, status } = useNotification(context && context.response);
+  const profileContext = useContext(UserProfileContext);
+  const { profile, setProfile } = profileContext ?? {};
 
   const servicesRef = useRef(null);
   const ourWorksRef = useRef(null);
@@ -48,6 +51,21 @@ const App = () => {
     ourWorksRef: ourWorksRef,
     commentsRef: commentsRef,
     contactsRef: contactsRef,
+  };
+
+  useEffect(() => {
+    !profile && authMe();
+  }, []);
+
+  const authMe = async () => {
+    try {
+      const response = await AuthAPI.auth();
+      const { email, profile_image, username } = response.data;
+      setProfile &&
+        setProfile({ email, name: username, picture: profile_image });
+    } catch (err) {
+      console.log("authMe", err);
+    }
   };
 
   return (

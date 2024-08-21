@@ -5,7 +5,10 @@ import { Input } from "../common/Input/Input";
 import { Checkbox } from "../common/Checkbox/Checkbox";
 import { sendEmail } from "../../assets/helpers/index";
 import { createPortal } from "react-dom";
-import { EmailContext, GoogleContext } from "../../context/context";
+import {
+  EmailContext,
+  UserProfileContext,
+} from "../../context/context";
 import { Loader } from "../common/Loader/Loader";
 import {
   ButtonWrapper,
@@ -37,8 +40,8 @@ export const Form = ({
   const { displayModal, setIsOpen } = usePersonalDataModal();
   const context = useContext(EmailContext);
   const { status } = useNotification(context && context.response);
-  const googleContext = useContext(GoogleContext);
-  const { profile } = googleContext ?? {};
+  const profileContext = useContext(UserProfileContext);
+  const { profile } = profileContext ?? {};
   const { serviceTitle } = externalData ?? {};
 
   const {

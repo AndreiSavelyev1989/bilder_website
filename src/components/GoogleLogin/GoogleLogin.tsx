@@ -1,10 +1,10 @@
 import { useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
 import { Button } from "../common/Button/Button";
 import { GoogleIcon, Wrapper } from "./GoogleLoginStyles";
-import { GoogleContext } from "../../context/context";
+import { GoogleContext, UserProfileContext } from "../../context/context";
 import { baseUrl } from "../../router";
+import { AuthAPI } from "./../../api/api";
 
 type Props = {
   setIsLoading: any;
@@ -12,28 +12,29 @@ type Props = {
 
 export const GoogleLogin = ({ setIsLoading }: Props) => {
   const googleContext = useContext(GoogleContext);
-  const { user, profile, login, setProfile } = googleContext ?? {};
+  const { user, login } = googleContext ?? {};
+  const profileContext = useContext(UserProfileContext);
+  const { profile, setProfile } = profileContext ?? {};
 
   useEffect(() => {
     if (user) {
-      setIsLoading(true);
-      axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          setProfile && setProfile(res.data);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setIsLoading(false));
+      loginGoogleUser(user);
     }
   }, [user]);
+
+  const loginGoogleUser = async (user: any) => {
+    try {
+      setIsLoading(true);
+      const response = await AuthAPI.googleLogin(user);
+      const { email, username, profile_image } = response.data.user;
+      setProfile &&
+        setProfile({ email, name: username, picture: profile_image });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   if (profile) {
     return <Navigate to={`${baseUrl}`} />;

@@ -6,6 +6,8 @@ import {
   GoogleContextType,
   GoogleProfileType,
   GoogleUserType,
+  UserProfile,
+  UserProfileContextType,
 } from "./type";
 
 const EmailContext = createContext<EmailContextType | null>(null);
@@ -32,7 +34,6 @@ const GoogleContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<GoogleUserType | null>(null);
-  const [profile, setProfile] = useState<GoogleProfileType | null>(null);
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -41,16 +42,27 @@ const GoogleContextProvider: React.FC<{ children: ReactNode }> = ({
 
   const logOut = () => {
     googleLogout();
-    setProfile(null);
     setUser(null);
   };
 
   return (
-    <GoogleContext.Provider
-      value={{ user, profile, login, logOut, setProfile }}
-    >
+    <GoogleContext.Provider value={{ user, login, logOut }}>
       {children}
     </GoogleContext.Provider>
+  );
+};
+
+const UserProfileContext = createContext<UserProfileContextType | null>(null);
+
+const UserProfileContextProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+
+  return (
+    <UserProfileContext.Provider value={{ profile, setProfile }}>
+      {children}
+    </UserProfileContext.Provider>
   );
 };
 
@@ -59,4 +71,6 @@ export {
   EmailContextProvider,
   GoogleContext,
   GoogleContextProvider,
+  UserProfileContext,
+  UserProfileContextProvider,
 };

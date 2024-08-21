@@ -1,25 +1,23 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createPortal } from "react-dom";
+import { useForm } from "react-hook-form";
 import { Button } from "../common/Button/Button";
 import { Input } from "../common/Input/Input";
 import {
-  Alternative,
   Block,
   Container,
   Form,
   Title,
   UserIcon,
   Wrapper,
-} from "./LoginStyles";
+} from "./RegisterStyles";
 import userIcon from "../../assets/images/user.svg";
-import { GoogleLogin } from "../GoogleLogin/GoogleLogin";
-import { useState } from "react";
 import { Loader } from "../common/Loader/Loader";
-import { createPortal } from "react-dom";
-import { useForm } from "react-hook-form";
 import { AuthAPI } from "../../api/api";
-import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../router";
 
-export const Login = () => {
+export const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -40,12 +38,12 @@ export const Login = () => {
   const onSubmit = async (data: any) => {
     try {
       setIsLoading(true);
-      const response = await AuthAPI.login({
+      await AuthAPI.register({
         email: data.email,
+        username: data.username,
         password: data.password,
       });
-      console.log({response});
-      navigate(`${baseUrl}`);
+      navigate(`${baseUrl}/login`);
     } catch (err) {
       console.log({ err });
     } finally {
@@ -59,10 +57,17 @@ export const Login = () => {
         <Block>
           <UserIcon src={userIcon} />
         </Block>
-        <Title>Login</Title>
-        <GoogleLogin setIsLoading={setIsLoading} />
-        <Alternative>or</Alternative>
+        <Title>Регистрация</Title>
         <Form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            inputId={"username"}
+            title="Имя пользователя"
+            type="text"
+            {...register("username", {
+              required: "Поле обязательное для заполнения",
+            })}
+            isRequired={true}
+          />
           <Input
             inputId={"email"}
             title="Е-мейл"

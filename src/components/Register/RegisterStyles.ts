@@ -56,8 +56,3 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 20px;
 `;
-
-export const Alternative = styled.div`
-  font-size: 30px;
-  font-weight: 700;
-`;

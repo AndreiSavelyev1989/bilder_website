@@ -100,5 +100,6 @@ export const ProfileWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 5px;
 `;

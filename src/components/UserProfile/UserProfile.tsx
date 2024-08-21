@@ -1,7 +1,7 @@
 import { useContext, useState, MouseEvent } from "react";
 import userIcon from "../../assets/images/user.svg";
 import { useNavigate } from "react-router-dom";
-import { GoogleContext } from "../../context/context";
+import { GoogleContext, UserProfileContext } from "../../context/context";
 import { COLOR } from "../../assets/styles";
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 import { Button } from "../common/Button/Button";
@@ -16,10 +16,13 @@ import {
   UserIconWrapper,
 } from "./UserProfileStyles";
 import { baseUrl } from "../../router";
+import { AuthAPI } from "../../api/api";
 
 export const UserProfile = () => {
   const googleContext = useContext(GoogleContext);
-  const { profile, logOut } = googleContext ?? {};
+  const { logOut } = googleContext ?? {};
+  const profileContext = useContext(UserProfileContext);
+  const { profile, setProfile } = profileContext ?? {};
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -34,9 +37,16 @@ export const UserProfile = () => {
   const logout = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     logOut && logOut();
+    AuthAPI.logout();
+    setProfile && setProfile(null);
   };
 
-  const logIn = (e: MouseEvent<HTMLButtonElement>) => {
+  const register = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    navigate(`${baseUrl}/register`);
+  };
+
+  const login = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     navigate(`${baseUrl}/login`);
   };
@@ -53,8 +63,15 @@ export const UserProfile = () => {
           {!profile ? (
             <ButtonWrapper>
               <Button
-                callback={logIn}
+                callback={login}
                 title="login"
+                background={COLOR.grey300}
+                width="80px"
+                height="30px"
+              />
+              <Button
+                callback={register}
+                title="register"
                 background={COLOR.grey300}
                 width="80px"
                 height="30px"

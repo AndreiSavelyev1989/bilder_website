@@ -31,8 +31,17 @@ export type GoogleProfileType = {
 
 export interface GoogleContextType {
   user: GoogleUserType | null;
-  profile: GoogleProfileType | null;
   login: () => void;
   logOut: () => void;
-  setProfile: Dispatch<SetStateAction<GoogleProfileType | null>>;
+}
+
+export type UserProfile = {
+  name: string;
+  email: string;
+  picture: string;
+};
+
+export interface UserProfileContextType {
+  profile: UserProfile | null;
+  setProfile: Dispatch<SetStateAction<UserProfile | null>>;
 }

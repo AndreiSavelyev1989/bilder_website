@@ -8,10 +8,10 @@ import {
   WrapperItem,
 } from "./ProfileInfoStyles";
 import { MouseEventHandler } from "react";
-import { GoogleProfileType } from "../../../context/type";
+import { UserProfile } from "../../../context/type";
 
 type Props = {
-  profile: GoogleProfileType;
+  profile: UserProfile;
   logout: MouseEventHandler<HTMLButtonElement>;
 };
 
