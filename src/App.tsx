@@ -57,6 +57,10 @@ const App = () => {
     !profile && authMe();
   }, []);
 
+  useEffect(() => {
+    status && context?.updateResponse(null);
+  }, [status]);
+
   const authMe = async () => {
     try {
       const response = await AuthAPI.auth();

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import { Button } from "../common/Button/Button";
@@ -16,16 +16,26 @@ import userIcon from "../../assets/images/user.svg";
 import { Loader } from "../common/Loader/Loader";
 import { AuthAPI } from "../../api/api";
 import { baseUrl } from "../../router";
+import { useNotification } from "../../assets/hooks";
+import Notification from "./../Notification/Notification";
 
 export const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const [serverResponse, setServerResponse] = useState<any>(null);
+  const { message, status } = useNotification(
+    serverResponse && {
+      status: serverResponse.status,
+      text: `${serverResponse.data.error}. ${serverResponse.data.message}`,
+    }
+  );
+
+  useEffect(() => {
+    status && setServerResponse(null);
+  }, [status]);
 
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -38,18 +48,22 @@ export const Register = () => {
   const onSubmit = async (data: any) => {
     try {
       setIsLoading(true);
-      await AuthAPI.register({
+      const response = await AuthAPI.register({
         email: data.email,
         username: data.username,
         password: data.password,
       });
-      navigate(`${baseUrl}/login`);
-    } catch (err) {
-      console.log({ err });
+      setServerResponse(response);
+    } catch (err: any) {
+      setServerResponse(err?.response);
     } finally {
       setIsLoading(false);
     }
   };
+
+  if (serverResponse?.status >= 200 && serverResponse?.status < 300) {
+    return <Navigate to={`${baseUrl}/login`} />;
+  }
 
   return (
     <Container>
@@ -68,7 +82,10 @@ export const Register = () => {
             })}
             isRequired={true}
             isError={errors?.username}
-            error={{isError: errors?.username, errorMsg: errors?.username?.message}}
+            error={{
+              isError: errors?.username,
+              errorMsg: errors?.username?.message,
+            }}
           />
           <Input
             inputId={"email"}
@@ -79,7 +96,7 @@ export const Register = () => {
             })}
             isRequired={true}
             isError={errors?.email}
-            error={{isError: errors?.email, errorMsg: errors?.email?.message}}
+            error={{ isError: errors?.email, errorMsg: errors?.email?.message }}
           />
           <Input
             inputId={"password"}
@@ -90,12 +107,25 @@ export const Register = () => {
             })}
             isRequired={true}
             isError={errors?.password}
-            error={{isError: errors?.password, errorMsg: errors?.password?.message}}
+            error={{
+              isError: errors?.password,
+              errorMsg: errors?.password?.message,
+            }}
           />
           <Button title="Отправить" margin="20px 0 0 0" />
         </Form>
       </Wrapper>
       {createPortal(isLoading && <Loader />, document.body)}
+      {createPortal(
+        (status.success || status.error) && (
+          <Notification
+            message={message}
+            isSuccess={status.success}
+            isError={status.error}
+          />
+        ),
+        document.body
+      )}
     </Container>
   );
 };

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Modal } from "../../components/common/Modal/Modal";
 import { Form } from "../../components/Form/Form";
 import { PersonalData } from "../../components/PersonalData/PersonalData";
@@ -204,7 +203,6 @@ export const useNotification = (
     error: false,
   });
   const [message, setMessage] = useState("");
-  const location = useLocation();
 
   useEffect(() => {
     let timeoutId: any;
@@ -216,7 +214,7 @@ export const useNotification = (
     if (status.error) {
       timeoutId = setTimeout(() => {
         setStatus((prev) => ({ ...prev, error: false }));
-      }, 3000);
+      }, 5000);
     }
 
     return () => {
@@ -226,19 +224,17 @@ export const useNotification = (
 
   useEffect(() => {
     if (response) {
-      if (response.status >= 200 && response.status < 300) {
-        setStatus((prev) => ({ ...prev, success: true }));
-        setMessage("Отправлено успешно!");
-      } else {
-        setStatus((prev) => ({ ...prev, error: true }));
-        setMessage(`Произошла ошибка: ${response.text}`);
+      const isSuccess = response.status >= 200 && response.status < 300;
+      if (status.success !== isSuccess || status.error === isSuccess) {
+        setStatus({ success: isSuccess, error: !isSuccess });
+        setMessage(
+          isSuccess
+            ? `Отправлено успешно! ${response.text}`
+            : `Произошла ошибка: ${response.text}`
+        );
       }
     }
-  }, [response]);
-
-  useEffect(() => {
-    setStatus({ success: false, error: false });
-  }, [location.pathname]);
+  }, [response?.status]);
 
   return {
     status,

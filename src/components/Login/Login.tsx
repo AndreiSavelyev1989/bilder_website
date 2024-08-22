@@ -11,17 +11,29 @@ import {
 } from "./LoginStyles";
 import userIcon from "../../assets/images/user.svg";
 import { GoogleLogin } from "../GoogleLogin/GoogleLogin";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Loader } from "../common/Loader/Loader";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import { AuthAPI } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { baseUrl } from "../../router";
+import Notification from "./../Notification/Notification";
+import { useNotification } from "../../assets/hooks";
 
 export const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const [serverResponse, setServerResponse] = useState<any>(null);
+  const { message, status } = useNotification(
+    serverResponse && {
+      status: serverResponse.status,
+      text: serverResponse.data.message,
+    }
+  );
+
+  useEffect(() => {
+    status && setServerResponse(null);
+  }, [status]);
 
   const {
     register,
@@ -38,17 +50,21 @@ export const Login = () => {
   const onSubmit = async (data: any) => {
     try {
       setIsLoading(true);
-      await AuthAPI.login({
+      const response = await AuthAPI.login({
         email: data.email,
         password: data.password,
       });
-      navigate(`${baseUrl}`);
-    } catch (err) {
-      console.log({ err });
+      setServerResponse(response);
+    } catch (err: any) {
+      setServerResponse(err?.response);
     } finally {
       setIsLoading(false);
     }
   };
+
+  if (serverResponse?.status >= 200 && serverResponse?.status < 300) {
+    return <Navigate to={`${baseUrl}`} />;
+  }
 
   return (
     <Container>
@@ -89,6 +105,16 @@ export const Login = () => {
         </Form>
       </Wrapper>
       {createPortal(isLoading && <Loader />, document.body)}
+      {createPortal(
+        (status.success || status.error) && (
+          <Notification
+            message={message}
+            isSuccess={status.success}
+            isError={status.error}
+          />
+        ),
+        document.body
+      )}
     </Container>
   );
 };
