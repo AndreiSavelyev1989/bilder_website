@@ -26,8 +26,6 @@ export const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -40,11 +38,10 @@ export const Login = () => {
   const onSubmit = async (data: any) => {
     try {
       setIsLoading(true);
-      const response = await AuthAPI.login({
+      await AuthAPI.login({
         email: data.email,
         password: data.password,
       });
-      console.log({response});
       navigate(`${baseUrl}`);
     } catch (err) {
       console.log({ err });
@@ -59,7 +56,7 @@ export const Login = () => {
         <Block>
           <UserIcon src={userIcon} />
         </Block>
-        <Title>Login</Title>
+        <Title>Логин</Title>
         <GoogleLogin setIsLoading={setIsLoading} />
         <Alternative>or</Alternative>
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -68,18 +65,25 @@ export const Login = () => {
             title="Е-мейл"
             type="text"
             {...register("email", {
-              required: "Поле обязательное для заполнения",
+              required: "Поле 'Е-мейл' обязательное для заполнения",
             })}
             isRequired={true}
+            isError={errors?.email}
+            error={{ isError: errors?.email, errorMsg: errors?.email?.message }}
           />
           <Input
             inputId={"password"}
             title="Пароль"
             type="password"
             {...register("password", {
-              required: "Поле обязательное для заполнения",
+              required: "Поле 'Пароль' обязательное для заполнения",
             })}
             isRequired={true}
+            isError={errors?.password}
+            error={{
+              isError: errors?.password,
+              errorMsg: errors?.password?.message,
+            }}
           />
           <Button title="Отправить" margin="20px 0 0 0" />
         </Form>

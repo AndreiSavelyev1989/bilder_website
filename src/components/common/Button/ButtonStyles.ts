@@ -35,6 +35,7 @@ export const StyledButton = styled.button<ButtonType>`
   border: ${({ $borderColor }) =>
     $borderColor ? `2px solid ${$borderColor}` : "2px solid transparent"};
   color: ${({ $color }) => $color || COLOR.grey400};
+  padding: 10px 20px;
   cursor: ${({ $disabled }) => ($disabled ? "auto" : "pointer")};
 
   &:hover {

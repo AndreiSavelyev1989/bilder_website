@@ -3,17 +3,13 @@ import { useForm } from "react-hook-form";
 import { Button } from "../common/Button/Button";
 import { Input } from "../common/Input/Input";
 import { Checkbox } from "../common/Checkbox/Checkbox";
-import { sendEmail } from "../../assets/helpers/index";
+import { renderError, sendEmail } from "../../assets/helpers/index";
 import { createPortal } from "react-dom";
-import {
-  EmailContext,
-  UserProfileContext,
-} from "../../context/context";
+import { EmailContext, UserProfileContext } from "../../context/context";
 import { Loader } from "../common/Loader/Loader";
 import {
   ButtonWrapper,
   Container,
-  Error,
   FormWrapper,
   InputWrapper,
   Title,
@@ -62,18 +58,18 @@ export const Form = ({
 
   useEffect(() => {
     if (status.success && !isModal) {
-      reset({
-        email: "",
-        name: "",
-        phoneNumber: "",
-        textarea: "",
-        isPrivateDataChecked: false,
-      });
+      resetForm();
     }
   }, [status, isModal, reset]);
 
-  const renderError = (isError: any, errorMsg: any) => {
-    return <Error isVisible={isError}>{isError ? errorMsg : ""}</Error>;
+  const resetForm = () => {
+    reset({
+      email: "",
+      name: "",
+      phoneNumber: "",
+      textarea: "",
+      isPrivateDataChecked: false,
+    });
   };
 
   const onSubmit = (data: any) => {
@@ -100,50 +96,46 @@ export const Form = ({
     <Container width={width} height={height} isModal={isModal}>
       <Title>Оставить заявку</Title>
       <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <InputWrapper>
-          <Input
-            inputId={"name"}
-            title={"Имя"}
-            {...register("name", {
-              required: "Имя обязательное для заполнения",
-            })}
-            isRequired={true}
-            isError={errors?.name}
-          />
-          {renderError(errors?.name, errors?.name?.message)}
-        </InputWrapper>
-        <InputWrapper>
-          <Input
-            inputId={"tel"}
-            type={"tel"}
-            title={"Телефон"}
-            {...register("phoneNumber", {
-              pattern: {
-                value: /^\+?\d{2,3}\s?\(?\d{2,3}\)?[-.\s]?\d{3}[-.\s]?\d{3}$/,
-                message:
-                  "Неверный номер. Пример: +375291111111 или 80291111111",
-              },
-            })}
-            isError={errors?.phoneNumber}
-          />
-          {renderError(errors?.phoneNumber, errors?.phoneNumber?.message)}
-        </InputWrapper>
-        <InputWrapper>
-          <Input
-            inputId={"email"}
-            title={"Е-мейл"}
-            {...register("email", {
-              pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                message: "Введите правильный email адрес(example@example.com)",
-              },
-              required: "E-Mail обязательное для заполнения",
-            })}
-            isRequired={true}
-            isError={errors?.email}
-          />
-          {renderError(errors?.email, errors?.email?.message)}
-        </InputWrapper>
+        <Input
+          inputId={"name"}
+          title={"Имя пользователя"}
+          {...register("name", {
+            required: "Поле 'Имя пользователя' обязательное для заполнения",
+          })}
+          isRequired={true}
+          isError={errors?.name}
+          error={{ isError: errors?.name, errorMsg: errors?.name?.message }}
+        />
+        <Input
+          inputId={"tel"}
+          type={"tel"}
+          title={"Телефон"}
+          {...register("phoneNumber", {
+            pattern: {
+              value: /^\+?\d{2,3}\s?\(?\d{2,3}\)?[-.\s]?\d{3}[-.\s]?\d{3}$/,
+              message: "Неверный номер. Пример: +375291111111 или 80291111111",
+            },
+          })}
+          isError={errors?.phoneNumber}
+          error={{
+            isError: errors?.phoneNumber,
+            errorMsg: errors?.phoneNumber?.message,
+          }}
+        />
+        <Input
+          inputId={"email"}
+          title={"Е-мейл"}
+          {...register("email", {
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: "Введите правильный email адрес(example@example.com)",
+            },
+            required: "Поле 'Е-мейл' обязательное для заполнения",
+          })}
+          isRequired={true}
+          isError={errors?.email}
+          error={{ isError: errors?.email, errorMsg: errors?.email?.message }}
+        />
         <InputWrapper>
           <Textarea
             title={"Описание заявки"}

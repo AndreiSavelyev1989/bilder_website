@@ -45,3 +45,14 @@ export const InputField = styled.input<{
     background: ${COLOR.orange80};
   }
 `;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media screen and (max-height: 500px) {
+    input {
+      height: 35px;
+    }
+  }
+`;

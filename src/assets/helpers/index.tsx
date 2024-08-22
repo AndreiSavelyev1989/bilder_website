@@ -1,4 +1,7 @@
 import emailjs from "@emailjs/browser";
+import { FieldError } from "react-hook-form";
+import styled from "styled-components";
+import { COLOR } from "../styles";
 
 export const executeScroll = (ref: any) => ref.current.scrollIntoView();
 export const scrollToTop = () => window.scrollTo({ top: 0 });
@@ -32,4 +35,21 @@ export const sendEmail = (formData: any) => {
         }
       );
   });
+};
+
+const Error = styled.p<{ isVisible: FieldError }>`
+  height: 10px;
+  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+  margin: 3px 0;
+  color: ${COLOR.red};
+`;
+
+export const renderError = (
+  isError: FieldError | undefined,
+  errorMsg: string | undefined
+) => {
+  if (isError) {
+    return <Error isVisible={isError}>{errorMsg}</Error>;
+  }
+  return null;
 };

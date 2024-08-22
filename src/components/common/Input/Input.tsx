@@ -3,10 +3,12 @@ import {
   Asterisk,
   Container,
   InputField,
+  InputWrapper,
   Label,
   LabelWrapper,
 } from "./InputStyles";
 import { ChangeHandler, FieldError } from "react-hook-form";
+import { renderError } from "../../../assets/helpers";
 
 type Props = {
   title: string;
@@ -17,6 +19,7 @@ type Props = {
   type?: string;
   isError?: FieldError;
   inputId?: string;
+  error?: { isError?: FieldError; errorMsg?: string };
 };
 export const Input = memo(
   forwardRef(
@@ -30,6 +33,7 @@ export const Input = memo(
         type,
         isError,
         inputId,
+        error,
       }: Props,
       ref
     ) => {
@@ -39,15 +43,18 @@ export const Input = memo(
             {isRequired && <Asterisk>*</Asterisk>}
             <Label htmlFor={inputId}>{title}</Label>
           </LabelWrapper>
-          <InputField
-            id={inputId}
-            type={type}
-            name={name}
-            ref={ref}
-            onChange={onChange}
-            onBlur={onBlur}
-            isError={isError}
-          />
+          <InputWrapper>
+            <InputField
+              id={inputId}
+              type={type}
+              name={name}
+              ref={ref}
+              onChange={onChange}
+              onBlur={onBlur}
+              isError={isError}
+            />
+            {renderError(error?.isError, error?.errorMsg || "")}
+          </InputWrapper>
         </Container>
       );
     }

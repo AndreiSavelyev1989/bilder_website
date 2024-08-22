@@ -20,18 +20,18 @@ export const ProfileInfo = ({ profile, logout }: Props) => {
     <Container>
       <ContentWrapper>
         <WrapperItem>
-          <Title>Name:</Title>
+          <Title>Имя пользователя:</Title>
           <div>{profile.name}</div>
         </WrapperItem>
         <WrapperItem>
-          <Title>Email:</Title>
+          <Title>Е-мейл:</Title>
           <div>{profile.email}</div>
         </WrapperItem>
       </ContentWrapper>
       <ButtonWrapper>
         <Button
           callback={logout}
-          title="logout"
+          title="Выход"
           background={COLOR.grey300}
           width="80px"
           height="30px"

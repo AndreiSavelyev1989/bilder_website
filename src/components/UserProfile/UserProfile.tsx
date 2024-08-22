@@ -64,16 +64,14 @@ export const UserProfile = () => {
             <ButtonWrapper>
               <Button
                 callback={login}
-                title="login"
+                title="Вход"
                 background={COLOR.grey300}
-                width="80px"
                 height="30px"
               />
               <Button
                 callback={register}
-                title="register"
+                title="Регистрация"
                 background={COLOR.grey300}
-                width="80px"
                 height="30px"
               />
             </ButtonWrapper>

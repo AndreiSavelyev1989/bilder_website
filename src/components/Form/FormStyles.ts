@@ -67,10 +67,3 @@ export const InputWrapper = styled.div`
     }
   }
 `;
-
-export const Error = styled.p<{ isVisible: boolean }>`
-  height: 10px;
-  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
-  margin: 3px 0;
-  color: ${COLOR.red};
-`;
