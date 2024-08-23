@@ -79,8 +79,7 @@ export const ProfileWrapper = styled.div`
   position: absolute;
   top: 62px;
   right: -37px;
-  max-width: 180px;
-  max-height: 180px;
+  min-width: 150px;
   padding: 5px;
   background: ${COLOR.orange200};
   border-radius: 5px;

@@ -24,6 +24,7 @@ export const UserProfile = () => {
   const profileContext = useContext(UserProfileContext);
   const { profile, setProfile } = profileContext ?? {};
   const [isOpen, setIsOpen] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const navigate = useNavigate();
 
   const openProfileMenu = () => {
@@ -31,7 +32,7 @@ export const UserProfile = () => {
   };
 
   const closeProfileMenu = () => {
-    setIsOpen(false);
+    !isEdit && setIsOpen(false);
   };
 
   const logout = (e: MouseEvent<HTMLButtonElement>) => {
@@ -76,7 +77,13 @@ export const UserProfile = () => {
               />
             </ButtonWrapper>
           ) : (
-            <ProfileInfo profile={profile} logout={logout} />
+            <ProfileInfo
+              profile={profile}
+              setProfile={setProfile}
+              logout={logout}
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
+            />
           )}
         </ProfileWrapper>
       )}

@@ -80,3 +80,17 @@ export const AuthAPI = {
     }
   },
 };
+
+export const ProfileAPI = {
+  updateProfile: async ({ username, profile_image }: any) => {
+    try {
+      const response = await axios.put(`${baseUrl}/update-profile`, {
+        username,
+        profile_image,
+      });
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
+};
