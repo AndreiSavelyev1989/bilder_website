@@ -2,12 +2,15 @@ import { COLOR } from "./../../../assets/styles";
 import { Button } from "../../common/Button/Button";
 import {
   ButtonWrapper,
+  CloseButton,
   Container,
   ContentWrapper,
   EditButton,
+  EditButtonWrapper,
   Input,
   Textarea,
   Title,
+  Tooltip,
   Wrapper,
   WrapperItem,
 } from "./ProfileInfoStyles";
@@ -22,6 +25,8 @@ import { UserProfile } from "../../../context/type";
 import { AuthAPI, ProfileAPI } from "../../../api/api";
 import { createPortal } from "react-dom";
 import { Loader } from "../../common/Loader/Loader";
+import { useNotification } from "../../../assets/hooks";
+import Notification from "../../Notification/Notification";
 
 type Props = {
   profile: UserProfile;
@@ -29,6 +34,7 @@ type Props = {
   isEdit: boolean;
   setIsEdit: Dispatch<SetStateAction<boolean>>;
   setProfile: Dispatch<SetStateAction<UserProfile | null>> | undefined;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export const ProfileInfo = ({
@@ -37,12 +43,20 @@ export const ProfileInfo = ({
   isEdit,
   setIsEdit,
   setProfile,
+  setIsOpen,
 }: Props) => {
   const [data, setData] = useState({
     username: profile.name,
     profileImageUrl: profile.picture,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [serverResponse, setServerResponse] = useState<any>(null);
+  const { message, status } = useNotification(
+    serverResponse && {
+      status: serverResponse.status,
+      text: serverResponse.data.message,
+    }
+  );
 
   const updateData = (
     event: ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLInputElement>
@@ -59,11 +73,14 @@ export const ProfileInfo = ({
         username: data.username,
         profile_image: data.profileImageUrl,
       });
+      setServerResponse(response);
       const { email, profile_image, username } = response.data.user;
       setProfile &&
         setProfile({ email, name: username, picture: profile_image });
       setIsEdit(false);
-    } catch (err) {
+      setIsOpen(false);
+    } catch (err: any) {
+      setServerResponse(err?.response);
       setIsLoading(false);
     } finally {
       setIsLoading(false);
@@ -94,7 +111,7 @@ export const ProfileInfo = ({
           )}
           {isEdit && (
             <WrapperItem>
-              <Title>Фото адресс:</Title>
+              <Title>URL адресс фото профиля:</Title>
               <Textarea
                 name="profileImageUrl"
                 value={data.profileImageUrl}
@@ -103,7 +120,16 @@ export const ProfileInfo = ({
             </WrapperItem>
           )}
         </ContentWrapper>
-        <EditButton onClick={() => setIsEdit(!isEdit)} />
+        <EditButtonWrapper>
+          {!isEdit ? (
+            <EditButton onClick={() => setIsEdit(true)} />
+          ) : (
+            <CloseButton onClick={() => setIsEdit(false)} />
+          )}
+          <Tooltip>
+            {!isEdit ? "Редактировать профиль" : "Закрыть редактирование"}
+          </Tooltip>
+        </EditButtonWrapper>
       </Wrapper>
       <ButtonWrapper>
         {!isEdit && (
@@ -118,14 +144,25 @@ export const ProfileInfo = ({
         {isEdit && (
           <Button
             callback={updateProfile}
-            title="Обновить профиль"
+            title="Обновить"
             background={COLOR.grey300}
-            width="180px"
+            width="170px"
             height="30px"
+            margin="0 15px 0 0"
           />
         )}
       </ButtonWrapper>
       {createPortal(isLoading && <Loader />, document.body)}
+      {createPortal(
+        (status.success || status.error) && (
+          <Notification
+            message={message}
+            isSuccess={status.success}
+            isError={status.error}
+          />
+        ),
+        document.body
+      )}
     </Container>
   );
 };

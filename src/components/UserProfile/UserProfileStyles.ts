@@ -79,7 +79,7 @@ export const ProfileWrapper = styled.div`
   position: absolute;
   top: 62px;
   right: -37px;
-  min-width: 150px;
+  min-width: 170px;
   padding: 5px;
   background: ${COLOR.orange200};
   border-radius: 5px;
@@ -92,7 +92,7 @@ export const ProfileWrapper = styled.div`
   }
   @media screen and (max-width: 700px) {
     top: 0px;
-    right: 160px;
+    right: 130px;
   }
 `;
 

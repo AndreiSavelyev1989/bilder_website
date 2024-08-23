@@ -9,4 +9,7 @@ export const GoogleIcon = styled(FaGooglePlusG)`
 
 export const Wrapper = styled.div`
   width: 70%;
+  @media screen and (max-width: 400px) {
+    width: 84%;
+  }
 `;

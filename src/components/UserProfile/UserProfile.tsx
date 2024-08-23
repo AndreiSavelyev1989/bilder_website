@@ -83,6 +83,7 @@ export const UserProfile = () => {
               logout={logout}
               isEdit={isEdit}
               setIsEdit={setIsEdit}
+              setIsOpen={setIsOpen}
             />
           )}
         </ProfileWrapper>

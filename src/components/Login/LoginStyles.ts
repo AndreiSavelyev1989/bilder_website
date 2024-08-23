@@ -25,7 +25,8 @@ export const Wrapper = styled.div`
     gap: 10px;
   }
   @media screen and (max-width: 400px) {
-    height: 70%;
+    height: 75%;
+    width: 90%;
   }
 `;
 
