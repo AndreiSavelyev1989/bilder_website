@@ -35,6 +35,7 @@ export const ImageWrapper = styled.div`
 export const Image = styled.img`
   width: 100%;
   max-height: 600px;
+  object-fit: cover;
 
   @media screen and (max-height: 500px) {
     max-height: 450px;

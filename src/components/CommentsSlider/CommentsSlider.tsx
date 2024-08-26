@@ -2,10 +2,19 @@ import { memo } from "react";
 import { Slide } from "react-slideshow-image";
 import { CommentSlider } from "../CommentSlider/CommentSlider";
 import { ButtonWrapper, NextButton, PrevButton } from "./CommentsSliderStyles";
-import { SliderCommentType } from "../../assets/mockData";
+
+type Comment = {
+  _id: string;
+  email: string;
+  text: string;
+  user: {
+    profile_image: string;
+    username: string;
+  };
+};
 
 type Props = {
-  comments: SliderCommentType[];
+  comments: Comment[];
 };
 
 const properties = {
@@ -25,7 +34,7 @@ export const CommentsSlider = memo(({ comments }: Props) => {
   return (
     <Slide {...properties} autoplay={false}>
       {comments.map((el, index) => (
-        <CommentSlider key={el.id} data={el} index={index} />
+        <CommentSlider key={el._id} data={el} index={index} />
       ))}
     </Slide>
   );

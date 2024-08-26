@@ -16,12 +16,14 @@ export const ImageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  width: 80px;
 `;
 
 export const Image = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
 `;
 
 export const Text = styled.p`

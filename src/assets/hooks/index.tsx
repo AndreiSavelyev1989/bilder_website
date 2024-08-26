@@ -148,7 +148,7 @@ export const useGalleryModal = () => {
   };
 };
 
-export const useCommentsModal = () => {
+export const useCommentsModal = ({ comments, isLoading }: any) => {
   const { displayModal, setIsOpen } = useModal(false);
 
   const displayCommentsModal = () => {
@@ -158,7 +158,7 @@ export const useCommentsModal = () => {
         alignItems: "flex-start",
         justifyContent: "flex-start",
       },
-      <Comments />
+      <Comments comments={comments} isLoading={isLoading} />
     );
   };
 

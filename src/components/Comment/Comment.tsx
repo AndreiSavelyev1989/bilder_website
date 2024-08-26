@@ -19,7 +19,6 @@ export const Comment = memo(({ data }: Props) => {
         <Image src={data.user.profile_image} alt="avatar" />
         <Name>{data.user.username}</Name>
       </ImageWrapper>
-
       <Text>{data.text}</Text>
     </Container>
   );

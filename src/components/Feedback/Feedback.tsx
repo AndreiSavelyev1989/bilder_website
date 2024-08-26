@@ -1,4 +1,4 @@
-import { forwardRef, useContext } from "react";
+import { forwardRef, useContext, useEffect, useState } from "react";
 import "react-slideshow-image/dist/styles.css";
 import { COLOR } from "../../assets/styles";
 import { sliderComments as comments } from "../../assets/mockData";
@@ -18,12 +18,31 @@ import {
 } from "./FeedbackStyles";
 import { useCommentsModal, useCreateCommentModal } from "../../assets/hooks";
 import { UserProfileContext } from "../../context/context";
+import { CommentsAPI } from "../../api/api";
 
 const Feedback = forwardRef((props, ref) => {
-  const { displayModal, setIsOpen } = useCommentsModal();
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { displayModal, setIsOpen } = useCommentsModal({ comments, isLoading });
   const { displayCreateCommentModal, setIsCreateCommentOpen } =
     useCreateCommentModal();
   const { profile } = useContext(UserProfileContext) ?? {};
+
+  useEffect(() => {
+    requestComments();
+  }, []);
+
+  const requestComments = async () => {
+    try {
+      setIsLoading(true);
+      const response = await CommentsAPI.getComments();
+      setComments(response.data);
+    } catch (err: any) {
+      console.log({ err });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const modalHandler = () => {
     setIsOpen(true);

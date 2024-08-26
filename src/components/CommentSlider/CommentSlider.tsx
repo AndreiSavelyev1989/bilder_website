@@ -10,23 +10,32 @@ import {
 import { SliderCommentType } from "../../assets/mockData";
 
 type Props = {
-  data: SliderCommentType;
+  data: {
+    _id: string;
+    email: string;
+    text: string;
+    user: {
+      profile_image: string;
+      username: string;
+    };
+  };
   index: number;
 };
 
 export const CommentSlider = memo(({ data, index }: Props) => {
+  console.log({ data });
+
   return (
-    <ItemWrapper key={index} $url={data.url} $background={data.background}>
+    <ItemWrapper
+      key={index}
+      $url={data.user.profile_image}
+      $background={"white"}
+    >
       <Item>
-        <Image src={data.url} alt={"comment-owner"} />
+        <Image src={data.user.profile_image} alt={"comment-owner"} />
         <MessageWrapper>
-          <Message>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-            consequuntur aperiam illum tempore cupiditate corporis totam
-            aspernatur corrupti nulla numquam laboriosam illo ratione voluptate
-            perferendis, ipsam eveniet ea modi ad.
-          </Message>
-          <MessageOwner>John Smith</MessageOwner>
+          <Message>{data.text}</Message>
+          <MessageOwner>{data.user.username}</MessageOwner>
         </MessageWrapper>
       </Item>
     </ItemWrapper>
