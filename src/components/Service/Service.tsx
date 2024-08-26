@@ -37,7 +37,7 @@ export const Service = ({ title, services, photoSrc }: Props) => {
           <Button
             title={"Заказать"}
             width={"100%"}
-            callback={() => setIsOpen(true)}
+            onClick={() => setIsOpen(true)}
           />
         </DescriptionBlock>
       </DescriptionBlockWrapper>

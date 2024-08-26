@@ -22,7 +22,7 @@ import {
   useState,
 } from "react";
 import { UserProfile } from "../../../context/type";
-import { AuthAPI, ProfileAPI } from "../../../api/api";
+import { ProfileAPI } from "../../../api/api";
 import { createPortal } from "react-dom";
 import { Loader } from "../../common/Loader/Loader";
 import { useNotification } from "../../../assets/hooks";
@@ -134,7 +134,7 @@ export const ProfileInfo = ({
       <ButtonWrapper>
         {!isEdit && (
           <Button
-            callback={logout}
+            onMouseDown={logout}
             title="Выход"
             background={COLOR.grey300}
             width="80px"
@@ -143,7 +143,7 @@ export const ProfileInfo = ({
         )}
         {isEdit && (
           <Button
-            callback={updateProfile}
+            onMouseDown={updateProfile}
             title="Обновить"
             background={COLOR.grey300}
             width="170px"

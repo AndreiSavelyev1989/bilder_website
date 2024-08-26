@@ -42,7 +42,7 @@ export const GoogleLogin = ({ setIsLoading }: Props) => {
 
   return (
     <Wrapper>
-      <Button callback={login} title="Sign in with" margin="20px 0 0 0">
+      <Button onClick={login} title="Sign in with" margin="20px 0 0 0">
         <GoogleIcon />
       </Button>
     </Wrapper>

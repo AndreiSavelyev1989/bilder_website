@@ -64,13 +64,13 @@ export const UserProfile = () => {
           {!profile ? (
             <ButtonWrapper>
               <Button
-                callback={login}
+                onMouseDown={login}
                 title="Вход"
                 background={COLOR.grey300}
                 height="30px"
               />
               <Button
-                callback={register}
+                onMouseDown={register}
                 title="Регистрация"
                 background={COLOR.grey300}
                 height="30px"

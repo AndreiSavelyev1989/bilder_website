@@ -31,14 +31,14 @@ const Main = ({ reference }: Props) => {
           <Button
             title={"Узнать больше"}
             width={"50%"}
-            callback={() => executeScroll(reference.servicesRef)}
+            onClick={() => executeScroll(reference.servicesRef)}
           />
           <Button
             title={"Получить консультацию"}
             margin={"0 0 0 20px"}
             width={"50%"}
             background={COLOR.grey100}
-            callback={() => setIsOpen(true)}
+            onClick={() => setIsOpen(true)}
           />
         </ButtonsWrapper>
       </MainBlock>

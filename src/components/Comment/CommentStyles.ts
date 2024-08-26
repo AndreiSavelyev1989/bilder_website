@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import { COLOR } from "../../assets/styles";
 
 export const Container = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
-  padding-right: 10px;
+  padding: 10px 20px;
   gap: 20px;
+  border: 1px solid ${COLOR.grey400};
+  border-radius: 5px;
 `;
+
 export const ImageWrapper = styled.div`
   display: flex;
   flex-direction: column;

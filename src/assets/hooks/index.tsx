@@ -5,6 +5,7 @@ import { PersonalData } from "../../components/PersonalData/PersonalData";
 import { Galleries } from "../../components/Galleries/Galleries";
 import { Comments } from "../../components/Comments/Comments";
 import { ImagePreview } from "../../components/ImagePreview/ImagePreview";
+import { CreateComment } from "../../components/CreateComment/CreateComment";
 
 export const useScrollYPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -164,6 +165,26 @@ export const useCommentsModal = () => {
   return {
     displayModal: displayCommentsModal,
     setIsOpen,
+  };
+};
+export const useCreateCommentModal = () => {
+  const { displayModal, setIsOpen } = useModal(false);
+
+  const displayCreateCommentModal = () => {
+    return displayModal(
+      {
+        width: "40%",
+        height: "45%",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+      },
+      <CreateComment setIsModal={setIsOpen} />
+    );
+  };
+
+  return {
+    displayCreateCommentModal: displayCreateCommentModal,
+    setIsCreateCommentOpen: setIsOpen,
   };
 };
 

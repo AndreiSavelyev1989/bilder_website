@@ -12,10 +12,11 @@ type Props = {
   hoverBackground?: string;
   color?: string;
   isShowAll?: boolean;
-  callback?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: "button" | "submit" | "reset" | undefined;
   disabled?: FieldError;
   children?: ReactElement;
+  onMouseDown?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const Button = memo(
@@ -29,7 +30,8 @@ export const Button = memo(
     hoverBackground,
     color,
     isShowAll = false,
-    callback,
+    onClick,
+    onMouseDown,
     type,
     disabled,
     children,
@@ -43,10 +45,10 @@ export const Button = memo(
         $margin={margin}
         $hoverBackground={hoverBackground}
         $color={color}
-        onClick={callback}
+        onClick={onClick}
         type={type}
         $disabled={disabled}
-        onMouseDown={callback}
+        onMouseDown={onMouseDown}
       >
         {title}
         {isShowAll && <ShowAllIcon />}

@@ -33,7 +33,7 @@ const OurWorks = forwardRef((props, ref) => {
           width={"350px"}
           isShowAll
           background={COLOR.grey100}
-          callback={modalHandler}
+          onClick={modalHandler}
         />
       </ButtonWrapper>
       {createPortal(displayModal(), document.body)}

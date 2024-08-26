@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const baseUrl = "https://builder-service.onrender.com";
-// const baseUrl = "http://localhost:5000";
+// const baseUrl = "https://builder-service.onrender.com";
+const baseUrl = "http://localhost:5000";
 
 axios.interceptors.request.use(
   (config) => {
@@ -87,6 +87,28 @@ export const ProfileAPI = {
       const response = await axios.put(`${baseUrl}/update-profile`, {
         username,
         profile_image,
+      });
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
+};
+
+export const CommentsAPI = {
+  getComments: async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/comments`);
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
+  createComment: async ({ text, email }: any) => {
+    try {
+      const response = await axios.post(`${baseUrl}/comment`, {
+        text,
+        email,
       });
       return response;
     } catch (error) {

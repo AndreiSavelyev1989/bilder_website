@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
   height: 100%;
   gap: 20px;
   overflow-y: auto;
+  padding: 0 10px;
   /* width */
   &::-webkit-scrollbar {
     width: 10px;

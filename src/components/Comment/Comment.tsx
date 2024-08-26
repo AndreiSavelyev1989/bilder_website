@@ -1,15 +1,26 @@
 import React, { memo } from "react";
 import { Container, Image, ImageWrapper, Name, Text } from "./CommentStyles";
 
-export const Comment = memo(({ data }: any) => {
+type Props = {
+  data: {
+    _id: string;
+    email: string;
+    text: string;
+    user: {
+      profile_image: string;
+      username: string;
+    };
+  };
+};
+export const Comment = memo(({ data }: Props) => {
   return (
     <Container>
       <ImageWrapper>
-        <Image src={data.url} alt="avatar" />
-        <Name>{data.name}</Name>
+        <Image src={data.user.profile_image} alt="avatar" />
+        <Name>{data.user.username}</Name>
       </ImageWrapper>
 
-      <Text>{data.caption}</Text>
+      <Text>{data.text}</Text>
     </Container>
   );
 });

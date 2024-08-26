@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
 import "react-slideshow-image/dist/styles.css";
 import { COLOR } from "../../assets/styles";
 import { sliderComments as comments } from "../../assets/mockData";
@@ -8,14 +8,22 @@ import { CommentsSlider } from "../CommentsSlider/CommentsSlider";
 import {
   ButtonWrapper,
   Container,
+  CreateCommentButton,
+  CreateCommentButtonWrapper,
+  CreateCommentWrapper,
   RefBlock,
   SlideWrapper,
   Title,
+  Tooltip,
 } from "./FeedbackStyles";
-import { useCommentsModal } from "../../assets/hooks";
+import { useCommentsModal, useCreateCommentModal } from "../../assets/hooks";
+import { UserProfileContext } from "../../context/context";
 
 const Feedback = forwardRef((props, ref) => {
   const { displayModal, setIsOpen } = useCommentsModal();
+  const { displayCreateCommentModal, setIsCreateCommentOpen } =
+    useCreateCommentModal();
+  const { profile } = useContext(UserProfileContext) ?? {};
 
   const modalHandler = () => {
     setIsOpen(true);
@@ -25,6 +33,14 @@ const Feedback = forwardRef((props, ref) => {
     <Container>
       <RefBlock ref={ref} />
       <Title>Отзывы наших клиентов</Title>
+      {profile && (
+        <CreateCommentWrapper>
+          <CreateCommentButtonWrapper>
+            <CreateCommentButton onClick={() => setIsCreateCommentOpen(true)} />
+            <Tooltip>Написать отзыв</Tooltip>
+          </CreateCommentButtonWrapper>
+        </CreateCommentWrapper>
+      )}
       <SlideWrapper>
         <CommentsSlider comments={comments} />
       </SlideWrapper>
@@ -35,10 +51,11 @@ const Feedback = forwardRef((props, ref) => {
           hoverBackground={COLOR.grey200}
           background={COLOR.grey100}
           isShowAll
-          callback={modalHandler}
+          onClick={modalHandler}
         />
       </ButtonWrapper>
       {createPortal(displayModal(), document.body)}
+      {createPortal(displayCreateCommentModal(), document.body)}
     </Container>
   );
 });
