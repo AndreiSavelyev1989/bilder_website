@@ -36,6 +36,9 @@ export const ButtonWrapper = styled.div`
   justify-content: center;
   margin-bottom: 40px;
   width: 80%;
+  @media screen and (max-width: 530px){
+    margin-top: 20px;
+  }
 `;
 
 export const Tooltip = styled.span`

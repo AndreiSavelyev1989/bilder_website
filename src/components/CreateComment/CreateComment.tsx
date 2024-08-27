@@ -8,6 +8,7 @@ import {
 } from "react";
 import { Button } from "../common/Button/Button";
 import {
+  ButtonContainer,
   ButtonWrapper,
   Container,
   RaitingTitle,
@@ -41,7 +42,6 @@ export const CreateComment = ({ setIsModal }: Props) => {
       text: serverResponse.data.error,
     }
   );
-
 
   useEffect(() => {
     status && setServerResponse(null);
@@ -82,14 +82,16 @@ export const CreateComment = ({ setIsModal }: Props) => {
         </RatingWrapper>
         <TextareaTitle>Отзыв:</TextareaTitle>
         <Textarea value={text} onChange={onChangeTextHandler} />
-        <ButtonWrapper>
-          <Button
-            title="Отправить отзыв"
-            margin="5px 0 0 0"
-            width="180px"
-            onClick={onSendComment}
-          />
-        </ButtonWrapper>
+        <ButtonContainer>
+          <ButtonWrapper>
+            <Button
+              title="Отправить отзыв"
+              margin="5px 0 0 0"
+              height="100%"
+              onClick={onSendComment}
+            />
+          </ButtonWrapper>
+        </ButtonContainer>
       </Wrapper>
       {createPortal(isLoading && <Loader />, document.body)}
       {createPortal(

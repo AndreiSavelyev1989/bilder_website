@@ -23,13 +23,12 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 70%;
   gap: 10px;
-  padding-bottom: 20px;
 `;
 
 export const Textarea = styled.textarea`
   max-width: 90%;
-  max-height: 70%;
-  min-height: 70%;
+  max-height: 250px;
+  min-height: 250px;
   min-width: 90%;
   overflow: auto;
   padding: 5px 10px;
@@ -50,10 +49,15 @@ export const TextareaTitle = styled.span`
   font-weight: 700;
 `;
 
-export const ButtonWrapper = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 90%;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 180px;
+  height: 54px;
 `;
 
 export const RatingWrapper = styled.div`

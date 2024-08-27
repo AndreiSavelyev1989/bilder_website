@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, memo } from "react";
+import { forwardRef, useCallback, memo, useState } from "react";
 import { executeScroll, scrollToTop } from "../../assets/helpers";
 import {
   Container,
@@ -20,6 +20,7 @@ type Props = {
 
 export const Header = memo(
   forwardRef(({ setIsOpenMenu, isOpenMenu, reference }: Props, ref) => {
+    const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
     const onClickHandler = useCallback(() => {
       setIsOpenMenu(!isOpenMenu);
     }, [isOpenMenu, setIsOpenMenu]);
@@ -46,7 +47,10 @@ export const Header = memo(
             </ListItem>
           </List>
           <LoginWrapper>
-            <UserProfile />
+            <UserProfile
+              isOpen={isProfileMenuOpen}
+              setIsOpen={setIsProfileMenuOpen}
+            />
           </LoginWrapper>
         </NavWrapper>
       </Container>

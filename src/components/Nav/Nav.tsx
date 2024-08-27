@@ -1,4 +1,4 @@
-import { forwardRef, useCallback } from "react";
+import { Dispatch, forwardRef, SetStateAction, useCallback } from "react";
 import { executeScroll, scrollToTop } from "../../assets/helpers";
 import { Container, List, ListItem } from "./NavStyles";
 import { ReferenceType } from "../../assets/types/types";
@@ -8,10 +8,21 @@ type Props = {
   onOpenMenuHandler: () => void;
   marginTop: number;
   reference: ReferenceType;
+  isProfileMenuOpen: boolean;
+  setIsProfileMenuOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export const Nav = forwardRef(
-  ({ onOpenMenuHandler, reference, marginTop }: Props, ref) => {
+  (
+    {
+      onOpenMenuHandler,
+      reference,
+      marginTop,
+      isProfileMenuOpen,
+      setIsProfileMenuOpen,
+    }: Props,
+    ref
+  ) => {
     const onClickHandler = useCallback(
       (ref: ReferenceType[keyof ReferenceType]) => {
         onOpenMenuHandler();
@@ -27,7 +38,10 @@ export const Nav = forwardRef(
 
     return (
       <Container $marginTop={marginTop}>
-        <UserProfile />
+        <UserProfile
+          isOpen={isProfileMenuOpen}
+          setIsOpen={setIsProfileMenuOpen}
+        />
         <List>
           <ListItem onClick={onMainBlockNavHandler}>Главная</ListItem>
           <ListItem onClick={() => onClickHandler(reference.servicesRef)}>

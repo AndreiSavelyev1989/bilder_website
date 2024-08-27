@@ -24,8 +24,7 @@ const Feedback = forwardRef((props, ref) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { displayModal, setIsOpen } = useCommentsModal();
-  const { displayCreateCommentModal, setIsCreateCommentOpen } =
-    useCreateCommentModal();
+  const createCommentModal = useCreateCommentModal();
   const { profile } = useContext(UserProfileContext) ?? {};
 
   useEffect(() => {
@@ -55,13 +54,15 @@ const Feedback = forwardRef((props, ref) => {
       {profile && (
         <CreateCommentWrapper>
           <CreateCommentButtonWrapper>
-            <CreateCommentButton onClick={() => setIsCreateCommentOpen(true)} />
+            <CreateCommentButton
+              onClick={() => createCommentModal.setIsOpen(true)}
+            />
             <Tooltip>Написать отзыв</Tooltip>
           </CreateCommentButtonWrapper>
         </CreateCommentWrapper>
       )}
       <SlideWrapper>
-      {comments.length > 0 && <CommentsSlider comments={comments} />}
+        {comments.length > 0 && <CommentsSlider comments={comments} />}
       </SlideWrapper>
       <ButtonWrapper>
         <Button
@@ -75,7 +76,7 @@ const Feedback = forwardRef((props, ref) => {
         />
       </ButtonWrapper>
       {createPortal(displayModal(), document.body)}
-      {createPortal(displayCreateCommentModal(), document.body)}
+      {createPortal(createCommentModal.displayModal(), document.body)}
       {createPortal(isLoading && <Loader />, document.body)}
     </Container>
   );

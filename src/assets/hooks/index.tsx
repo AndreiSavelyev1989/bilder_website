@@ -116,7 +116,7 @@ export const usePersonalDataModal = () => {
     return displayModal(
       {
         width: "90%",
-        height: "85%",
+        height: "auto",
         isShowPersonalData: true,
       },
       <PersonalData />
@@ -174,17 +174,15 @@ export const useCreateCommentModal = () => {
     return displayModal(
       {
         width: "40%",
-        height: "45%",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
+        height: "auto",
       },
       <CreateComment setIsModal={setIsOpen} />
     );
   };
 
   return {
-    displayCreateCommentModal: displayCreateCommentModal,
-    setIsCreateCommentOpen: setIsOpen,
+    displayModal: displayCreateCommentModal,
+    setIsOpen,
   };
 };
 

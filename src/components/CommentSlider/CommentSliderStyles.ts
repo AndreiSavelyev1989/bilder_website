@@ -38,6 +38,9 @@ export const MessageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 60%;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const Message = styled.div`

@@ -9,6 +9,10 @@ export const Container = styled.div`
   gap: 20px;
   border: 1px solid ${COLOR.grey400};
   border-radius: 5px;
+  @media screen and (max-width: 600px) {
+    padding: 5px 20px 5px 5px;
+    gap: 5px;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -21,6 +25,15 @@ export const Image = styled.img`
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+
+  @media screen and (max-width: 600px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media screen and (max-width: 400px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const Text = styled.p`

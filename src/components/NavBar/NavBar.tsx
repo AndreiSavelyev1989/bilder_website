@@ -1,4 +1,4 @@
-import { forwardRef, useCallback } from "react";
+import { forwardRef, useCallback, useState } from "react";
 import { Nav } from "../Nav/Nav";
 import { Close, CloseWrapper, Container, NavBarWrapper } from "./NavBarStyles";
 import { ReferenceType } from "../../assets/types/types";
@@ -12,9 +12,12 @@ type Props = {
 
 const NavBar = forwardRef(
   ({ setIsOpenMenu, isOpenMenu, reference }: Props, ref) => {
+    const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
     const onClickHandler = useCallback(
       function () {
         setIsOpenMenu(false);
+        setIsProfileMenuOpen(false);
       },
       [setIsOpenMenu]
     );
@@ -30,6 +33,8 @@ const NavBar = forwardRef(
             reference={reference}
             onOpenMenuHandler={onClickHandler}
             marginTop={marginTop}
+            isProfileMenuOpen={isProfileMenuOpen}
+            setIsProfileMenuOpen={setIsProfileMenuOpen}
           />
         </NavBarWrapper>
       </Container>

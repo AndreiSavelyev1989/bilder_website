@@ -1,4 +1,10 @@
-import { useContext, useState, MouseEvent } from "react";
+import {
+  useContext,
+  useState,
+  MouseEvent,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import userIcon from "../../assets/images/user.svg";
 import { useNavigate } from "react-router-dom";
 import { GoogleContext, UserProfileContext } from "../../context/context";
@@ -18,12 +24,16 @@ import {
 import { baseUrl } from "../../router";
 import { AuthAPI } from "../../api/api";
 
-export const UserProfile = () => {
+type Props = {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export const UserProfile = ({ isOpen, setIsOpen }: Props) => {
   const googleContext = useContext(GoogleContext);
   const { logOut } = googleContext ?? {};
   const profileContext = useContext(UserProfileContext);
   const { profile, setProfile } = profileContext ?? {};
-  const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const navigate = useNavigate();
 
