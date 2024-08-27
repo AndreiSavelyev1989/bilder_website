@@ -34,8 +34,8 @@ const Feedback = forwardRef((props, ref) => {
   const requestComments = async () => {
     try {
       setIsLoading(true);
-      const response = await CommentsAPI.getComments();
-      setComments(response.data);
+      const response = await CommentsAPI.getComments({ page: 1, pageSize: 10 });
+      setComments(response.data.comments);
     } catch (err: any) {
       console.log({ err });
     } finally {

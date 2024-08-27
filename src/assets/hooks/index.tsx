@@ -155,6 +155,7 @@ export const useCommentsModal = () => {
     return displayModal(
       {
         width: "50%",
+        height: "80%",
         alignItems: "flex-start",
         justifyContent: "flex-start",
       },

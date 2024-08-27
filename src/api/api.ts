@@ -96,9 +96,11 @@ export const ProfileAPI = {
 };
 
 export const CommentsAPI = {
-  getComments: async () => {
+  getComments: async ({ page, pageSize }: any) => {
     try {
-      const response = await axios.get(`${baseUrl}/comments`);
+      const response = await axios.get(
+        `${baseUrl}/comments?page=${page}&pageSize=${pageSize}`
+      );
       return response;
     } catch (error) {
       return Promise.reject(error);
