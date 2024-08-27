@@ -104,9 +104,10 @@ export const CommentsAPI = {
       return Promise.reject(error);
     }
   },
-  createComment: async ({ text, email }: any) => {
+  createComment: async ({ rating, text, email }: any) => {
     try {
       const response = await axios.post(`${baseUrl}/comment`, {
+        rating,
         text,
         email,
       });

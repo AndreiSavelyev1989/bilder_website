@@ -2,6 +2,7 @@ import emailjs from "@emailjs/browser";
 import { FieldError } from "react-hook-form";
 import styled from "styled-components";
 import { COLOR } from "../styles";
+import moment from "moment";
 
 export const executeScroll = (ref: any) => ref.current.scrollIntoView();
 export const scrollToTop = () => window.scrollTo({ top: 0 });
@@ -16,7 +17,7 @@ export const sendEmail = (formData: any) => {
       reject("One or more environment variables are not defined");
       return;
     }
-    
+
     emailjs
       .send(
         process.env.REACT_APP_SERVICE_ID,
@@ -52,4 +53,9 @@ export const renderError = (
     return <Error isVisible={isError}>{errorMsg}</Error>;
   }
   return null;
+};
+
+export const dateFormat = (dateString: string) => {
+  const date = moment(dateString);
+  return date.format("DD/MM/YYYY HH:mm:ss");
 };

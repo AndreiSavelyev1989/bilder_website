@@ -18,17 +18,6 @@ export type GoogleUserType = {
   scope: string;
   token_type: string;
 };
-
-export type GoogleProfileType = {
-  email: string;
-  family_name: string;
-  given_name: string;
-  id: string;
-  name: string;
-  picture: string;
-  verified_email: string | boolean;
-};
-
 export interface GoogleContextType {
   user: GoogleUserType | null;
   login: () => void;

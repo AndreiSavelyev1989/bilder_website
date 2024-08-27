@@ -2,19 +2,10 @@ import { memo } from "react";
 import { Slide } from "react-slideshow-image";
 import { CommentSlider } from "../CommentSlider/CommentSlider";
 import { ButtonWrapper, NextButton, PrevButton } from "./CommentsSliderStyles";
-
-type Comment = {
-  _id: string;
-  email: string;
-  text: string;
-  user: {
-    profile_image: string;
-    username: string;
-  };
-};
+import { CommentType } from "../../assets/types/types";
 
 type Props = {
-  comments: Comment[];
+  comments: CommentType[];
 };
 
 const properties = {

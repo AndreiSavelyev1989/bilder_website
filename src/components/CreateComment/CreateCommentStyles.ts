@@ -55,3 +55,17 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
   width: 90%;
 `;
+
+export const RatingWrapper = styled.div`
+  display: flex;
+  width: 90%;
+  height: 40px;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const RaitingTitle = styled.span`
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 10px;
+`;

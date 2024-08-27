@@ -1,25 +1,31 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Comment } from "../Comment/Comment";
 import { Container, Title, Wrapper } from "./CommentsStyles";
 import { createPortal } from "react-dom";
 import { Loader } from "../common/Loader/Loader";
+import { CommentType } from "../../assets/types/types";
+import { CommentsAPI } from "../../api/api";
 
-type CommentType = {
-  _id: string;
-  email: string;
-  text: string;
-  user: {
-    profile_image: string;
-    username: string;
+export const Comments = memo(() => {
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    requestComments();
+  }, []);
+
+  const requestComments = async () => {
+    try {
+      setIsLoading(true);
+      const response = await CommentsAPI.getComments();
+      setComments(response.data);
+    } catch (err: any) {
+      console.log({ err });
+    } finally {
+      setIsLoading(false);
+    }
   };
-};
 
-type Props = {
-  comments: CommentType[];
-  isLoading: boolean;
-};
-
-export const Comments = memo(({ comments, isLoading }: Props) => {
   return (
     <Container>
       <Title>Комментарии</Title>

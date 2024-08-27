@@ -4,7 +4,6 @@ import {
   EmailContextType,
   EmailType,
   GoogleContextType,
-  GoogleProfileType,
   GoogleUserType,
   UserProfile,
   UserProfileContextType,

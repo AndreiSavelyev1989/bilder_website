@@ -7,24 +7,14 @@ import {
   MessageOwner,
   MessageWrapper,
 } from "./CommentSliderStyles";
-import { SliderCommentType } from "../../assets/mockData";
+import { CommentType } from "../../assets/types/types";
 
 type Props = {
-  data: {
-    _id: string;
-    email: string;
-    text: string;
-    user: {
-      profile_image: string;
-      username: string;
-    };
-  };
+  data: CommentType;
   index: number;
 };
 
 export const CommentSlider = memo(({ data, index }: Props) => {
-  console.log({ data });
-
   return (
     <ItemWrapper
       key={index}

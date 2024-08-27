@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLOR } from "../../assets/styles";
 
 export const ItemWrapper = styled.div<{ $background: string; $url: string }>`
   display: flex;
@@ -17,6 +18,8 @@ export const Item = styled.div`
   justify-content: space-around;
   width: 80%;
   height: 100%;
+  border: 1px solid ${COLOR.grey200};
+  border-radius: 10px;
   @media screen and (max-width: 770px) {
     flex-direction: column;
   }
@@ -38,8 +41,19 @@ export const MessageWrapper = styled.div`
 `;
 
 export const Message = styled.div`
-  text-align: center;
+  align-content: center;
   font-size: 22px;
+  height: 200px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #d4cfcf;
+    border-radius: 10px;
+  }
 `;
 
 export const MessageOwner = styled.div`
