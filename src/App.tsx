@@ -1,25 +1,25 @@
 import { lazy, useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Header } from "./components/Header/Header";
+import { Header } from "@components/Header/Header";
 import { COLOR } from "./assets/styles";
 import { useNotification, useScrollYPosition } from "./assets/hooks";
-import { ScrollButton } from "./components/common/ScrollButton/ScrollButton";
-import { scrollToTop } from "./assets/helpers";
+import { ScrollButton } from "@common/ScrollButton/ScrollButton";
+import { scrollToTop } from "@assets/helpers";
 import { createPortal } from "react-dom";
-import { EmailContext, UserProfileContext } from "./context/context";
-import { ReferenceType } from "./assets/types/types";
-import { AuthAPI } from "./api/api";
+import { EmailContext, UserProfileContext } from "@context/context";
+import { ReferenceType } from "@assets/types/types";
+import { AuthAPI } from "@api/api";
 
-const NavBar = lazy(() => import("./components/NavBar/NavBar"));
-const ContactInfo = lazy(() => import("./components/ContactInfo/ContactInfo"));
-const Main = lazy(() => import("./components/Main/Main"));
-const Services = lazy(() => import("./components/Services/Services"));
-const OurWorks = lazy(() => import("./components/OurWorks/OurWorks"));
-const Order = lazy(() => import("./components/Order/Order"));
-const Feedback = lazy(() => import("./components/Feedback/Feedback"));
-const Footer = lazy(() => import("./components/Footer/Footer"));
+const NavBar = lazy(() => import("@components/NavBar/NavBar"));
+const ContactInfo = lazy(() => import("@components/ContactInfo/ContactInfo"));
+const Main = lazy(() => import("@components/Main/Main"));
+const Services = lazy(() => import("@components/Services/Services"));
+const OurWorks = lazy(() => import("@components/OurWorks/OurWorks"));
+const Order = lazy(() => import("@components/Order/Order"));
+const Feedback = lazy(() => import("@components/Feedback/Feedback"));
+const Footer = lazy(() => import("@components/Footer/Footer"));
 const Notification = lazy(
-  () => import("./components/common/Notification/Notification")
+  () => import("@common/Notification/Notification")
 );
 
 const Container = styled.div`

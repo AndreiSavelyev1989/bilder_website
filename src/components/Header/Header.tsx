@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, memo, useState } from "react";
-import { executeScroll, scrollToTop } from "../../assets/helpers";
+import { executeScroll, scrollToTop } from "@assets/helpers";
 import {
   Container,
   Hamburger,
@@ -9,7 +9,7 @@ import {
   LoginWrapper,
   NavWrapper,
 } from "./HeaderStyles";
-import { ReferenceType } from "../../assets/types/types";
+import { ReferenceType } from "@assets/types/types";
 import { UserProfile } from "./UserProfile/UserProfile";
 
 type Props = {

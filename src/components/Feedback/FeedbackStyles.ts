@@ -1,7 +1,7 @@
 import { ForwardedRef } from "react";
 import styled from "styled-components";
 import { FaRegPenToSquare } from "react-icons/fa6";
-import { COLOR } from "../../assets/styles";
+import { COLOR } from "@assets/styles";
 
 export const Container = styled.div`
   display: flex;

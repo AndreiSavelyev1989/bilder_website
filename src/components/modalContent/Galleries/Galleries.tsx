@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { GalleryItemType, galleries } from "../../../assets/mockData";
-import { Select } from "../../common/Select/Select";
+import { GalleryItemType, galleries } from "@assets/mockData";
+import { Select } from "@common/Select/Select";
 import { GalleryItem } from "./GalleryItem/GalleryItem";
 import { createPortal } from "react-dom";
 import {
@@ -10,7 +10,7 @@ import {
   SelectWrapper,
   Title,
 } from "./GalleriesStyles";
-import { useImagePreview } from "../../../assets/hooks";
+import { useImagePreview } from "@assets/hooks";
 
 export const Galleries = () => {
   const [selectedCategory, setSelectedCategory] = useState<{

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BsCheck2Square } from "react-icons/bs";
-import { COLOR } from "../../../assets/styles";
+import { COLOR } from "@assets/styles";
 
 export const Detail = styled.div`
   display: flex;

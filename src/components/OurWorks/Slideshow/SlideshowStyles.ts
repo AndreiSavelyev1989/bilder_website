@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR } from "../../../assets/styles/index";
+import { COLOR } from "@assets/styles/index";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 export const Container = styled.div`

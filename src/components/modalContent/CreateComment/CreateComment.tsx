@@ -6,7 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Button } from "../../common/Button/Button";
+import { Button } from "@common/Button/Button";
 import {
   ButtonContainer,
   ButtonWrapper,
@@ -18,13 +18,13 @@ import {
   Title,
   Wrapper,
 } from "./CreateCommentStyles";
-import { CommentsAPI } from "../../../api/api";
-import { UserProfileContext } from "../../../context/context";
+import { CommentsAPI } from "@api/api";
+import { UserProfileContext } from "@context/context";
 import { createPortal } from "react-dom";
-import { Loader } from "../../common/Loader/Loader";
-import { Rating } from "../../common/Rating/Rating";
-import { useNotification } from "../../../assets/hooks";
-import Notification from "../../common/Notification/Notification";
+import { Loader } from "@common/Loader/Loader";
+import { Rating } from "@common/Rating/Rating";
+import { useNotification } from "@assets/hooks";
+import Notification from "@common/Notification/Notification";
 
 type Props = {
   setIsModal: Dispatch<SetStateAction<boolean>>;

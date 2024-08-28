@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from "react";
-import { CloseButton } from "../../common/CloseButton/CloseButton";
+import { CloseButton } from "@common/CloseButton/CloseButton";
 import { Container, Image, ImageWrapper } from "./ImagePreviewStyles";
 
 type Props = {

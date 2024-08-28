@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR } from "../../../assets/styles";
+import { COLOR } from "@assets/styles";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 export const PrevButton = styled(BiLeftArrow)`

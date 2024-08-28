@@ -5,12 +5,12 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import userIcon from "../../../assets/images/user.svg";
+import userIcon from "@assets/images/user.svg";
 import { useNavigate } from "react-router-dom";
-import { GoogleContext, UserProfileContext } from "../../../context/context";
-import { COLOR } from "../../../assets/styles";
+import { GoogleContext, UserProfileContext } from "@context/context";
+import { COLOR } from "@assets/styles";
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
-import { Button } from "../../common/Button/Button";
+import { Button } from "@common/Button/Button";
 import {
   ButtonWrapper,
   Container,
@@ -21,8 +21,8 @@ import {
   UserIcon,
   UserIconWrapper,
 } from "./UserProfileStyles";
-import { baseUrl } from "../../../router";
-import { AuthAPI } from "../../../api/api";
+import { baseUrl } from "@router/index";
+import { AuthAPI } from "@api/api";
 
 type Props = {
   isOpen: boolean;

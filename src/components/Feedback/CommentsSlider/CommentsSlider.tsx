@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Slide } from "react-slideshow-image";
 import { CommentSlider } from "./CommentSlider/CommentSlider";
 import { ButtonWrapper, NextButton, PrevButton } from "./CommentsSliderStyles";
-import { CommentType } from "../../../assets/types/types";
+import { CommentType } from "@assets/types/types";
 
 type Props = {
   comments: CommentType[];

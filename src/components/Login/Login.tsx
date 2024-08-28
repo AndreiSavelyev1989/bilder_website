@@ -1,5 +1,5 @@
-import { Button } from "../common/Button/Button";
-import { Input } from "../common/Input/Input";
+import { Button } from "@common/Button/Button";
+import { Input } from "@common/Input/Input";
 import {
   Alternative,
   Block,
@@ -9,17 +9,17 @@ import {
   UserIcon,
   Wrapper,
 } from "./LoginStyles";
-import userIcon from "../../assets/images/user.svg";
+import userIcon from "@assets/images/user.svg";
 import { GoogleLogin } from "./GoogleLogin/GoogleLogin";
 import { useEffect, useState } from "react";
-import { Loader } from "../common/Loader/Loader";
+import { Loader } from "@common/Loader/Loader";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
-import { AuthAPI } from "../../api/api";
+import { AuthAPI } from "@api/api";
 import { Navigate } from "react-router-dom";
-import { baseUrl } from "../../router";
-import Notification from "../common/Notification/Notification";
-import { useNotification } from "../../assets/hooks";
+import { baseUrl } from "@router/index";
+import Notification from "@common/Notification/Notification";
+import { useNotification } from "@assets/hooks";
 
 export const Login = () => {
   const [isLoading, setIsLoading] = useState(false);

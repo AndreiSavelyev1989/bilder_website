@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR } from "../../../../assets/styles";
+import { COLOR } from "@assets/styles";
 import { FaPen } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 

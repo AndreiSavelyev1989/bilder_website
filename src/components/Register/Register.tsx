@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
-import { Button } from "../common/Button/Button";
-import { Input } from "../common/Input/Input";
+import { Button } from "@common/Button/Button";
+import { Input } from "@common/Input/Input";
 import {
   Block,
   Container,
@@ -12,12 +12,12 @@ import {
   UserIcon,
   Wrapper,
 } from "./RegisterStyles";
-import userIcon from "../../assets/images/user.svg";
-import { Loader } from "../common/Loader/Loader";
-import { AuthAPI } from "../../api/api";
-import { baseUrl } from "../../router";
-import { useNotification } from "../../assets/hooks";
-import Notification from "../common/Notification/Notification";
+import userIcon from "@assets/images/user.svg";
+import { Loader } from "@common/Loader/Loader";
+import { AuthAPI } from "@api/api";
+import { baseUrl } from "@router/index";
+import { useNotification } from "@assets/hooks";
+import Notification from "@common/Notification/Notification";
 
 export const Register = () => {
   const [isLoading, setIsLoading] = useState(false);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdPhoneInTalk } from "react-icons/md";
-import { COLOR } from "../../assets/styles";
+import { COLOR } from "@assets/styles";
 
 export const Container = styled.div`
   display: flex;

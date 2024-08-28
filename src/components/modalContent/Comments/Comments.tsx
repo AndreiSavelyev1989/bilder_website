@@ -2,9 +2,9 @@ import { memo, useEffect, useState, useCallback, useRef } from "react";
 import { Comment } from "./Comment/Comment";
 import { Container, Title, Wrapper } from "./CommentsStyles";
 import { createPortal } from "react-dom";
-import { Loader } from "../../common/Loader/Loader";
-import { CommentType } from "../../../assets/types/types";
-import { CommentsAPI } from "../../../api/api";
+import { Loader } from "@common/Loader/Loader";
+import { CommentType } from "@assets/types/types";
+import { CommentsAPI } from "@api/api";
 
 export const Comments = memo(() => {
   const [comments, setComments] = useState<CommentType[]>([]);

@@ -1,8 +1,8 @@
 import { Dispatch, forwardRef, SetStateAction, useCallback } from "react";
-import { executeScroll, scrollToTop } from "../../../assets/helpers";
+import { executeScroll, scrollToTop } from "@assets/helpers";
 import { Container, List, ListItem } from "./NavStyles";
-import { ReferenceType } from "../../../assets/types/types";
-import { UserProfile } from "../../Header/UserProfile/UserProfile";
+import { ReferenceType } from "@assets/types/types";
+import { UserProfile } from "@components/Header/UserProfile/UserProfile";
 
 type Props = {
   onOpenMenuHandler: () => void;

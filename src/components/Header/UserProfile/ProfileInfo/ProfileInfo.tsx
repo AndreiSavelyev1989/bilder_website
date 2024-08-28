@@ -1,5 +1,5 @@
-import { COLOR } from "../../../../assets/styles";
-import { Button } from "../../../common/Button/Button";
+import { COLOR } from "@assets/styles";
+import { Button } from "@common/Button/Button";
 import {
   ButtonWrapper,
   CloseButton,
@@ -21,12 +21,12 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import { UserProfile } from "../../../../context/type";
-import { ProfileAPI } from "../../../../api/api";
+import { UserProfile } from "@context/type";
+import { ProfileAPI } from "@api/api";
 import { createPortal } from "react-dom";
-import { Loader } from "../../../common/Loader/Loader";
-import { useNotification } from "../../../../assets/hooks";
-import Notification from "../../../common/Notification/Notification";
+import { Loader } from "@common/Loader/Loader";
+import { useNotification } from "@assets/hooks";
+import Notification from "@common/Notification/Notification";
 
 type Props = {
   profile: UserProfile;

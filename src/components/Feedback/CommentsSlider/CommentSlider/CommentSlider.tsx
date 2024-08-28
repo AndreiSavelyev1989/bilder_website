@@ -7,7 +7,7 @@ import {
   MessageOwner,
   MessageWrapper,
 } from "./CommentSliderStyles";
-import { CommentType } from "../../../../assets/types/types";
+import { CommentType } from "@assets/types/types";
 
 type Props = {
   data: CommentType;

@@ -1,4 +1,4 @@
-import { Button } from "../../common/Button/Button";
+import { Button } from "@common/Button/Button";
 import { createPortal } from "react-dom";
 import {
   Container,
@@ -10,7 +10,7 @@ import {
   Title,
   Wrapper,
 } from "./ServiceStyles";
-import { useOrderModal } from "../../../assets/hooks";
+import { useOrderModal } from "@assets/hooks";
 
 type Props = {
   title: string;

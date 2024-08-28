@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Form } from "../common/Form/Form";
+import { Form } from "@common/Form/Form";
 import { OrderDetail } from "./OrderDetail/OrderDetail";
 import {
   Container,

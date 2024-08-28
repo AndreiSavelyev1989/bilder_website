@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { galleries } from "../../../assets/mockData";
+import { galleries } from "@assets/mockData";
 import {
   ButtonWrapper,
   Container,

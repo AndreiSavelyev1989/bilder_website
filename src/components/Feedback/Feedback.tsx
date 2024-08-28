@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useEffect, useState } from "react";
 import "react-slideshow-image/dist/styles.css";
-import { COLOR } from "../../assets/styles";
+import { COLOR } from "@assets/styles";
 import { Button } from "../common/Button/Button";
 import { createPortal } from "react-dom";
 import { CommentsSlider } from "./CommentsSlider/CommentsSlider";
@@ -15,9 +15,9 @@ import {
   Title,
   Tooltip,
 } from "./FeedbackStyles";
-import { useCommentsModal, useCreateCommentModal } from "../../assets/hooks";
-import { UserProfileContext } from "../../context/context";
-import { CommentsAPI } from "../../api/api";
+import { useCommentsModal, useCreateCommentModal } from "@assets/hooks";
+import { UserProfileContext } from "@context/context";
+import { CommentsAPI } from "@api/api";
 import { Loader } from "../common/Loader/Loader";
 
 const Feedback = forwardRef((props, ref) => {

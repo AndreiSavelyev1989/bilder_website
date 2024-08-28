@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR } from "../../assets/styles";
+import { COLOR } from "@assets/styles";
 import { MdPhoneInTalk } from "react-icons/md";
 import { TfiEmail } from "react-icons/tfi";
 import { GrMapLocation } from "react-icons/gr";

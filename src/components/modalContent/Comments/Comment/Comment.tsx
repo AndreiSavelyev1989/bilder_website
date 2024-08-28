@@ -11,9 +11,9 @@ import {
   Title,
   Wrapper,
 } from "./CommentStyles";
-import { CommentType } from "../../../../assets/types/types";
-import { Rating } from "../../../common/Rating/Rating";
-import { dateFormat } from "../../../../assets/helpers";
+import { CommentType } from "@assets/types/types";
+import { Rating } from "@common/Rating/Rating";
+import { dateFormat } from "@assets/helpers";
 
 type Props = {
   data: CommentType;

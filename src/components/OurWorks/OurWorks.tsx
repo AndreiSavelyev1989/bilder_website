@@ -1,7 +1,7 @@
 import { forwardRef, useCallback } from "react";
-import { Button } from "../common/Button/Button";
+import { Button } from "@common/Button/Button";
 import { Slideshow } from "./Slideshow/Slideshow";
-import { COLOR } from "../../assets/styles";
+import { COLOR } from "@assets/styles";
 import { createPortal } from "react-dom";
 import {
   ButtonWrapper,
@@ -10,7 +10,7 @@ import {
   Title,
   WorksWrapper,
 } from "./OurWorksStyles";
-import { useGalleryModal } from "../../assets/hooks";
+import { useGalleryModal } from "@assets/hooks";
 
 const OurWorks = forwardRef((props, ref) => {
   const { displayModal, setIsOpen } = useGalleryModal();

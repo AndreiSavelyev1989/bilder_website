@@ -2,7 +2,7 @@ import { BsInstagram } from "react-icons/bs";
 import { SiOdnoklassniki } from "react-icons/si";
 import { SlSocialVkontakte } from "react-icons/sl";
 import styled from "styled-components";
-import { COLOR } from "../../../assets/styles";
+import { COLOR } from "@assets/styles";
 
 export const SocialLinksWrapper = styled.div<{ width?: string }>`
   display: flex;

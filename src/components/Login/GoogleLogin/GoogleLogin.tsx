@@ -1,10 +1,10 @@
 import { useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { Button } from "../../common/Button/Button";
+import { Button } from "@common/Button/Button";
 import { GoogleIcon, Wrapper } from "./GoogleLoginStyles";
-import { GoogleContext, UserProfileContext } from "../../../context/context";
-import { baseUrl } from "../../../router";
-import { AuthAPI } from "../../../api/api";
+import { GoogleContext, UserProfileContext } from "@context/context";
+import { baseUrl } from "@router/index";
+import { AuthAPI } from "@api/api";
 
 type Props = {
   setIsLoading: any;

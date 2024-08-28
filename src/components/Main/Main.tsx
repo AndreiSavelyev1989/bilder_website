@@ -1,7 +1,7 @@
 import React from "react";
-import { COLOR } from "../../assets/styles";
-import { Button } from "../common/Button/Button";
-import { executeScroll } from "../../assets/helpers";
+import { COLOR } from "@assets/styles";
+import { Button } from "@common/Button/Button";
+import { executeScroll } from "@assets/helpers";
 import { createPortal } from "react-dom";
 import {
   ButtonsWrapper,
@@ -10,7 +10,7 @@ import {
   Title,
   TitleWrapper,
 } from "./MainStyles";
-import { useOrderModal } from "../../assets/hooks";
+import { useOrderModal } from "@assets/hooks";
 
 type Props = {
   reference: {
