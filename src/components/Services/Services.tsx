@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react";
-import { Service } from "../Service/Service";
+import { Service } from "./Service/Service";
 import { services } from "../../assets/mockData/index";
 import { Container, RefBlock, Title, Wrapper } from "./ServicesStyles";
 

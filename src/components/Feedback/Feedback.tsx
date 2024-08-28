@@ -3,7 +3,7 @@ import "react-slideshow-image/dist/styles.css";
 import { COLOR } from "../../assets/styles";
 import { Button } from "../common/Button/Button";
 import { createPortal } from "react-dom";
-import { CommentsSlider } from "../CommentsSlider/CommentsSlider";
+import { CommentsSlider } from "./CommentsSlider/CommentsSlider";
 import {
   ButtonWrapper,
   Container,

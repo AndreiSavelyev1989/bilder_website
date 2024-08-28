@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Modal } from "../../components/common/Modal/Modal";
-import { Form } from "../../components/Form/Form";
-import { PersonalData } from "../../components/PersonalData/PersonalData";
-import { Galleries } from "../../components/Galleries/Galleries";
-import { Comments } from "../../components/Comments/Comments";
-import { ImagePreview } from "../../components/ImagePreview/ImagePreview";
-import { CreateComment } from "../../components/CreateComment/CreateComment";
+import { Form } from "../../components/common/Form/Form";
+import { PersonalData } from "../../components/modalContent/PersonalData/PersonalData";
+import { Galleries } from "../../components/modalContent/Galleries/Galleries";
+import { Comments } from "../../components/modalContent/Comments/Comments";
+import { ImagePreview } from "../../components/modalContent/ImagePreview/ImagePreview";
+import { CreateComment } from "../../components/modalContent/CreateComment/CreateComment";
 
 export const useScrollYPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);

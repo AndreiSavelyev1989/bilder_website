@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useState } from "react";
-import { Nav } from "../Nav/Nav";
+import { Nav } from "./Nav/Nav";
 import { Close, CloseWrapper, Container, NavBarWrapper } from "./NavBarStyles";
 import { ReferenceType } from "../../assets/types/types";
 import { useMarginTop } from "../../assets/hooks";

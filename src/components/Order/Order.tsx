@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Form } from "../Form/Form";
-import { OrderDetail } from "../OrderDetail/OrderDetail";
+import { Form } from "../common/Form/Form";
+import { OrderDetail } from "./OrderDetail/OrderDetail";
 import {
   Container,
   Details,

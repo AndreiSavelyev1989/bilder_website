@@ -10,7 +10,7 @@ import {
   NavWrapper,
 } from "./HeaderStyles";
 import { ReferenceType } from "../../assets/types/types";
-import { UserProfile } from "../UserProfile/UserProfile";
+import { UserProfile } from "./UserProfile/UserProfile";
 
 type Props = {
   setIsOpenMenu: (value: boolean) => void;

@@ -1,6 +1,6 @@
 import { forwardRef, useCallback } from "react";
 import { Button } from "../common/Button/Button";
-import { Slideshow } from "../Slideshow/Slideshow";
+import { Slideshow } from "./Slideshow/Slideshow";
 import { COLOR } from "../../assets/styles";
 import { createPortal } from "react-dom";
 import {

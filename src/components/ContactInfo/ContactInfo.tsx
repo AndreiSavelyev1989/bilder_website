@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { SocialLinks } from "../SocialLinks/SocialLinks";
+import { SocialLinks } from "../Footer/SocialLinks/SocialLinks";
 import {
   ContactWrapper,
   Container,

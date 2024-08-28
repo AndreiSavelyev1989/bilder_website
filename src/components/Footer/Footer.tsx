@@ -1,6 +1,6 @@
 import { forwardRef, memo } from "react";
-import { SocialLinks } from "../SocialLinks/SocialLinks";
-import { Contact } from "../Contact/Contact";
+import { SocialLinks } from "./SocialLinks/SocialLinks";
+import { Contact } from "./Contact/Contact";
 import {
   AddressIcon,
   Container,

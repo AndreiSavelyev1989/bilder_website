@@ -17,7 +17,7 @@ import { Loader } from "../common/Loader/Loader";
 import { AuthAPI } from "../../api/api";
 import { baseUrl } from "../../router";
 import { useNotification } from "../../assets/hooks";
-import Notification from "./../Notification/Notification";
+import Notification from "../common/Notification/Notification";
 
 export const Register = () => {
   const [isLoading, setIsLoading] = useState(false);

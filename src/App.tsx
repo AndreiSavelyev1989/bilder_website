@@ -19,7 +19,7 @@ const Order = lazy(() => import("./components/Order/Order"));
 const Feedback = lazy(() => import("./components/Feedback/Feedback"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
 const Notification = lazy(
-  () => import("./components/Notification/Notification")
+  () => import("./components/common/Notification/Notification")
 );
 
 const Container = styled.div`
