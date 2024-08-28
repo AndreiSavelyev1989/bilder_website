@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const baseUrl = "https://builder-service.onrender.com/api";
-const baseUrl = "http://localhost:5000/api";
+const baseUrl = "https://builder-service.onrender.com/api";
+// const baseUrl = "http://localhost:5000/api";
 
 axios.interceptors.request.use(
   (config) => {
