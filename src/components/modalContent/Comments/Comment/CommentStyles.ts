@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLOR } from "@assets/styles";
+import { FaTrashAlt } from "react-icons/fa";
 
 export const Container = styled.div`
   display: flex;
@@ -46,6 +47,7 @@ export const Name = styled.span`
 `;
 
 export const CommentWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -68,9 +70,23 @@ export const Title = styled.span`
 export const RaitingWrapper = styled.div`
   width: 30%;
 `;
+
 export const AuthorWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 25px;
+`;
+
+export const TrashButton = styled(FaTrashAlt)`
+  width: 20px;
+  height: 20px;
+  color: ${COLOR.grey400};
+  margin-left: 10px;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+  &:hover {
+    color: ${COLOR.red};
+    transform: scale(1.1);
+  }
 `;

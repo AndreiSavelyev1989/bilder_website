@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { Modal } from "../../components/common/Modal/Modal";
 import { Form } from "../../components/common/Form/Form";
 import { PersonalData } from "../../components/modalContent/PersonalData/PersonalData";
@@ -168,7 +168,9 @@ export const useCommentsModal = () => {
     setIsOpen,
   };
 };
-export const useCreateCommentModal = () => {
+export const useCreateCommentModal = (
+  setServerResponse: Dispatch<SetStateAction<any>>
+) => {
   const { displayModal, setIsOpen } = useModal(false);
 
   const displayCreateCommentModal = () => {
@@ -177,7 +179,10 @@ export const useCreateCommentModal = () => {
         width: "40%",
         height: "auto",
       },
-      <CreateComment setIsModal={setIsOpen} />
+      <CreateComment
+        setIsModal={setIsOpen}
+        setServerResponse={setServerResponse}
+      />
     );
   };
 
@@ -249,7 +254,7 @@ export const useNotification = (
         setStatus({ success: isSuccess, error: !isSuccess });
         setMessage(
           isSuccess
-            ? `Отправлено успешно! ${response.text}`
+            ? `Успешно выполнено! ${response.text}`
             : `Произошла ошибка: ${response.text}`
         );
       }

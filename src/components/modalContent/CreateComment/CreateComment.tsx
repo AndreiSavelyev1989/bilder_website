@@ -3,7 +3,6 @@ import {
   Dispatch,
   SetStateAction,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { Button } from "@common/Button/Button";
@@ -23,29 +22,17 @@ import { UserProfileContext } from "@context/context";
 import { createPortal } from "react-dom";
 import { Loader } from "@common/Loader/Loader";
 import { Rating } from "@common/Rating/Rating";
-import { useNotification } from "@assets/hooks";
-import Notification from "@common/Notification/Notification";
 
 type Props = {
   setIsModal: Dispatch<SetStateAction<boolean>>;
+  setServerResponse: Dispatch<SetStateAction<any>>;
 };
 
-export const CreateComment = ({ setIsModal }: Props) => {
+export const CreateComment = ({ setIsModal, setServerResponse }: Props) => {
   const [text, setText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [rating, setRating] = useState(0);
-  const [serverResponse, setServerResponse] = useState<any>(null);
   const { profile } = useContext(UserProfileContext) ?? {};
-  const { message, status } = useNotification(
-    serverResponse && {
-      status: serverResponse.status,
-      text: serverResponse.data.error,
-    }
-  );
-
-  useEffect(() => {
-    status && setServerResponse(null);
-  }, [status]);
 
   const onChangeTextHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value);
@@ -74,7 +61,7 @@ export const CreateComment = ({ setIsModal }: Props) => {
 
   return (
     <Container>
-      <Title>Оставить отзыв</Title>
+      <Title>Написать отзыв</Title>
       <Wrapper>
         <RatingWrapper>
           <RaitingTitle>Рейтинг:</RaitingTitle>
@@ -85,7 +72,7 @@ export const CreateComment = ({ setIsModal }: Props) => {
         <ButtonContainer>
           <ButtonWrapper>
             <Button
-              title="Отправить отзыв"
+              title="Отправить"
               margin="5px 0 0 0"
               height="100%"
               onClick={onSendComment}
@@ -94,16 +81,6 @@ export const CreateComment = ({ setIsModal }: Props) => {
         </ButtonContainer>
       </Wrapper>
       {createPortal(isLoading && <Loader />, document.body)}
-      {createPortal(
-        (status.success || status.error) && (
-          <Notification
-            message={message}
-            isSuccess={status.success}
-            isError={status.error}
-          />
-        ),
-        document.body
-      )}
     </Container>
   );
 };

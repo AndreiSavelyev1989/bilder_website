@@ -59,3 +59,7 @@ export const dateFormat = (dateString: string) => {
   const date = moment(dateString);
   return date.format("DD/MM/YYYY HH:mm:ss");
 };
+
+export const isAuthorCheck = (profileEmail: string, commentEmail: string) => {
+  return profileEmail === commentEmail;
+};

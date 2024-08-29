@@ -118,4 +118,12 @@ export const CommentsAPI = {
       return Promise.reject(error);
     }
   },
+  deleteComment: async (id: string) => {
+    try {
+      const response = await axios.delete(`${baseUrl}/comment/${id}`);
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  },
 };

@@ -1,7 +1,7 @@
 import { forwardRef, useContext, useEffect, useState } from "react";
 import "react-slideshow-image/dist/styles.css";
 import { COLOR } from "@assets/styles";
-import { Button } from "../common/Button/Button";
+import { Button } from "@common/Button/Button";
 import { createPortal } from "react-dom";
 import { CommentsSlider } from "./CommentsSlider/CommentsSlider";
 import {
@@ -15,21 +15,38 @@ import {
   Title,
   Tooltip,
 } from "./FeedbackStyles";
-import { useCommentsModal, useCreateCommentModal } from "@assets/hooks";
+import {
+  useCommentsModal,
+  useCreateCommentModal,
+  useNotification,
+} from "@assets/hooks";
 import { UserProfileContext } from "@context/context";
 import { CommentsAPI } from "@api/api";
-import { Loader } from "../common/Loader/Loader";
+import { Loader } from "@common/Loader/Loader";
+import Notification from "@common/Notification/Notification";
 
 const Feedback = forwardRef((props, ref) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { displayModal, setIsOpen } = useCommentsModal();
-  const createCommentModal = useCreateCommentModal();
   const { profile } = useContext(UserProfileContext) ?? {};
+  const [serverResponse, setServerResponse] = useState<any>(null);
+  const createCommentModal = useCreateCommentModal(setServerResponse);
+  const { message, status } = useNotification(
+    serverResponse && {
+      status: serverResponse.status,
+      text: serverResponse.data.message,
+    }
+  );
+console.log({serverResponse});
 
   useEffect(() => {
     requestComments();
   }, []);
+
+  useEffect(() => {
+    status && setServerResponse(null);
+  }, [status]);
 
   const requestComments = async () => {
     try {
@@ -78,6 +95,16 @@ const Feedback = forwardRef((props, ref) => {
       {createPortal(displayModal(), document.body)}
       {createPortal(createCommentModal.displayModal(), document.body)}
       {createPortal(isLoading && <Loader />, document.body)}
+      {createPortal(
+        (status.success || status.error) && (
+          <Notification
+            message={message}
+            isSuccess={status.success}
+            isError={status.error}
+          />
+        ),
+        document.body
+      )}
     </Container>
   );
 });
