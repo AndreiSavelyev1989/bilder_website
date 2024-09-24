@@ -24,11 +24,12 @@ import { UserProfileContext } from "@context/context";
 import { CommentsAPI } from "@api/api";
 import { Loader } from "@common/Loader/Loader";
 import Notification from "@common/Notification/Notification";
+import { CommentType } from "@assets/types/types";
 
 const Feedback = forwardRef((props, ref) => {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<CommentType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { displayModal, setIsOpen } = useCommentsModal();
+  const { displayModal, setIsOpen, isCommentsUpdated } = useCommentsModal();
   const { profile } = useContext(UserProfileContext) ?? {};
   const [serverResponse, setServerResponse] = useState<any>(null);
   const createCommentModal = useCreateCommentModal(setServerResponse);
@@ -38,11 +39,10 @@ const Feedback = forwardRef((props, ref) => {
       text: serverResponse.data.message,
     }
   );
-console.log({serverResponse});
 
   useEffect(() => {
     requestComments();
-  }, []);
+  }, [isCommentsUpdated]);
 
   useEffect(() => {
     status && setServerResponse(null);

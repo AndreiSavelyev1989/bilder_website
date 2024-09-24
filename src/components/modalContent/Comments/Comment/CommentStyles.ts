@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { COLOR } from "@assets/styles";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaPen, FaTrashAlt } from "react-icons/fa";
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px 20px;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
   gap: 20px;
   border: 1px solid ${COLOR.grey400};
   border-radius: 5px;
@@ -54,11 +56,21 @@ export const CommentWrapper = styled.div`
   gap: 5px;
 `;
 
-export const Wrapper = styled.div`
+export const WrapperContent = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   height: 25px;
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  @media screen and (max-width: 600px) {
+    padding: 5px 20px 5px 5px;
+    gap: 5px;
+  }
 `;
 
 export const Title = styled.span`
@@ -88,5 +100,50 @@ export const TrashButton = styled(FaTrashAlt)`
   &:hover {
     color: ${COLOR.red};
     transform: scale(1.1);
+  }
+`;
+
+export const EditWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
+export const Tooltip = styled.span`
+  position: absolute;
+  top: -20px;
+  left: -85px;
+  text-align: center;
+  align-content: center;
+  width: 100px;
+  height: 20px;
+  font-size: 12px;
+  background: ${COLOR.orange200};
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-out;
+`;
+
+export const EditButtonWrapper = styled.div`
+  position: relative;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+
+  &:hover ${Tooltip} {
+    visibility: visible;
+    opacity: 1;
+  }
+`;
+
+export const EditButton = styled(FaPen)`
+  width: 15px;
+  height: 15px;
+  color: ${COLOR.grey400};
+  transition: all 0.3s ease-out;
+  margin-top: 5px;
+  &:hover {
+    color: ${COLOR.grey200};
   }
 `;

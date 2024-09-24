@@ -1,4 +1,4 @@
-import { memo, useEffect, useState, useCallback, useRef } from "react";
+import { memo, useEffect, useState, useCallback, useRef, Dispatch, SetStateAction } from "react";
 import { Comment } from "./Comment/Comment";
 import { Container, Title, Wrapper } from "./CommentsStyles";
 import { createPortal } from "react-dom";
@@ -8,7 +8,11 @@ import { CommentsAPI } from "@api/api";
 import { useNotification } from "@assets/hooks";
 import Notification from "@common/Notification/Notification";
 
-export const Comments = memo(() => {
+type Props = {
+  setIsCommentsUpdated: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Comments = memo(({ setIsCommentsUpdated }: Props) => {
   const [serverResponse, setServerResponse] = useState<any>(null);
   const [comments, setComments] = useState<CommentType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +26,10 @@ export const Comments = memo(() => {
       text: serverResponse.data.message,
     }
   );
+
+  useEffect(() => {
+    setIsCommentsUpdated(false);
+  }, [])
 
   const requestComments = useCallback(
     async (page: number, pageSize: number) => {
@@ -75,7 +83,7 @@ export const Comments = memo(() => {
     }
   }, [isLoading, hasMore]);
 
-  const getFilteredComments = (comments: CommentType[]) => {
+  const getChangedComments = (comments: CommentType[]) => {
     setComments(comments);
   };
 
@@ -88,9 +96,10 @@ export const Comments = memo(() => {
             key={el._id}
             data={el}
             comments={comments}
-            getFilteredComments={getFilteredComments}
+            getChangedComments={getChangedComments}
             setIsLoading={setIsLoading}
             setServerResponse={setServerResponse}
+            setIsCommentsUpdated={setIsCommentsUpdated}
           />
         ))}
       </Wrapper>

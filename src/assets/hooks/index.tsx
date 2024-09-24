@@ -5,7 +5,8 @@ import { PersonalData } from "../../components/modalContent/PersonalData/Persona
 import { Galleries } from "../../components/modalContent/Galleries/Galleries";
 import { Comments } from "../../components/modalContent/Comments/Comments";
 import { ImagePreview } from "../../components/modalContent/ImagePreview/ImagePreview";
-import { CreateComment } from "../../components/modalContent/CreateComment/CreateComment";
+import { NewComment } from "../../components/modalContent/NewComment/NewComment";
+import { CommentType } from "@assets/types/types";
 
 export const useScrollYPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -150,6 +151,7 @@ export const useGalleryModal = () => {
 
 export const useCommentsModal = () => {
   const { displayModal, setIsOpen } = useModal(false);
+  const [isCommentsUpdated, setIsCommentsUpdated] = useState(false);
 
   const displayCommentsModal = () => {
     return displayModal(
@@ -159,13 +161,14 @@ export const useCommentsModal = () => {
         alignItems: "flex-start",
         justifyContent: "flex-start",
       },
-      <Comments />
+      <Comments setIsCommentsUpdated={setIsCommentsUpdated} />
     );
   };
 
   return {
     displayModal: displayCommentsModal,
     setIsOpen,
+    isCommentsUpdated
   };
 };
 export const useCreateCommentModal = (
@@ -179,7 +182,7 @@ export const useCreateCommentModal = (
         width: "40%",
         height: "auto",
       },
-      <CreateComment
+      <NewComment
         setIsModal={setIsOpen}
         setServerResponse={setServerResponse}
       />
@@ -189,6 +192,36 @@ export const useCreateCommentModal = (
   return {
     displayModal: displayCreateCommentModal,
     setIsOpen,
+
+  };
+};
+export const useUpdateCommentModal = (
+  setServerResponse: Dispatch<SetStateAction<any>>,
+  data: CommentType
+) => {
+  const { displayModal, setIsOpen } = useModal(false);
+  const [updatedComment, setUpdatedComment] = useState<CommentType | null>(null);
+
+  const displayUpdateCommentModal = () => {
+    return displayModal(
+      {
+        width: "40%",
+        height: "auto",
+      },
+      <NewComment
+        setIsModal={setIsOpen}
+        setServerResponse={setServerResponse}
+        setUpdatedComment={setUpdatedComment}
+        data={data}
+        isEdit
+      />
+    );
+  };
+
+  return {
+    displayModal: displayUpdateCommentModal,
+    setIsOpen,
+    updatedComment
   };
 };
 
